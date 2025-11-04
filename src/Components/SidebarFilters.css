@@ -1,0 +1,30 @@
+.rc-slider-track {
+    background-color: black;
+  }
+  
+ /* For the slider marks (dots) */
+.rc-slider-dot {
+    background-color: black !important;  /* Change marks dots to black */
+    border-color: black !important;      /* Ensure marks dots border is also black */
+  }
+  
+  /* For the handle dots (the circles you drag) */
+  .rc-slider-handle {
+    background-color: black !important;  /* Change handle circle color to black */
+    border-color: black !important;      /* Ensure handle border is also black */
+  }
+  
+  /* Optional: Change the color when handles are hovered or focused */
+  .rc-slider-handle:hover,
+  .rc-slider-handle:focus {
+    background-color: black !important;
+    border-color: black !important;
+  }
+  
+  /* Change the unselected handles (starting and ending dots) to black */
+  .rc-slider-handle:not(.rc-slider-handle-clicked) {
+    background-color: black !important;
+    border-color: black !important;
+  }
+  
+ 

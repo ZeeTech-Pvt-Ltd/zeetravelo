@@ -1,0 +1,12 @@
+.custom-modal .modal-content {
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: none;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .bg-gradient-primary {
+    background: linear-gradient(90deg, #0066cc, #3399ff);
+  }
+  

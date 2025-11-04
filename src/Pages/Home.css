@@ -1,0 +1,43 @@
+.kayak-tab-container {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    background: rgba(51, 51, 51, 0); /* #333 with 80% opacity */
+    backdrop-filter: blur(4px); /* Optional: adds a nice blur effect behind it */
+  }
+  
+  
+  .kayak-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px;
+    width: 72px;
+    height: 72px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #2c2c2c;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+  }
+  
+  .kayak-tab:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .kayak-tab .icon {
+    font-size: 20px;
+  }
+  
+  .kayak-tab.active {
+    background-color: #0d6efd;
+    color: white;
+  }
+  
+  .kayak-tab.active .icon {
+    color: white;
+  }
+  

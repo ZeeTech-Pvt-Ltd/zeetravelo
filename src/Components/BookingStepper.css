@@ -1,0 +1,65 @@
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 40px auto;
+  max-width: 900px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: lightgray;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-weight: bold;
+}
+
+.circle.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.label {
+  margin-top: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.line {
+  position: absolute;
+  top: 20px; /* Vertically centers the line with the circles */
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: lightgray;
+  z-index: 0;
+}
+
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 20px; /* Same as above */
+  left: 50%;
+  right: -50%;
+  height: 2px;
+  background-color: lightgray;
+  z-index: 0;
+}
+
+.step.active:not(:last-child)::after {
+  background-color: #007bff;
+}

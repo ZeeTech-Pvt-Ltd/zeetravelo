@@ -1,0 +1,121 @@
+.zeetravelo-footer {
+  background-color: #eff7fc;
+  padding: 40px 20px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  font-size: 14px;
+}
+
+.footer-sections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.footer-group {
+  flex: 1;
+  min-width: 200px;
+  margin-left: 80px;
+}
+
+.footer-group h5 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+.footer-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-group li {
+  margin-bottom: 8px;
+  cursor: pointer;
+  color: #005eb8;
+}
+
+.footer-group li:hover {
+  text-decoration: underline;
+}
+
+.app-section img {
+  width: 140px;
+  margin: 8px 0;
+}
+
+.footer-divider {
+  border-top: 1px solid #ddd;
+  margin: 30px 0;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footer-legal {
+  text-align: center;
+}
+
+.footer-legal p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+.footer-legal ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-legal li {
+  cursor: pointer;
+  color: #005eb8;
+}
+
+.footer-legal li:hover {
+  text-decoration: underline;
+}
+
+.footer-social-language {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 16px;
+  font-size: 18px;
+}
+
+.footer-language {
+  font-size: 13px;
+  color: #444;
+}
+
+.app-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.app-buttons img {
+  width: 160px;
+  height: auto;
+}
+
