@@ -49,8 +49,8 @@ app.use(cors({
   credentials: true
 }));
 
-// Handle preflight requests
-app.options('*', cors());
+// CORS middleware already handles OPTIONS preflight requests automatically
+// No need for explicit app.options handler
 
 app.use(express.json());
 
