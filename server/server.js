@@ -102,8 +102,12 @@ const ensureAccessToken = async (req, res, next) => {
   if (!accessToken || Date.now() >= tokenExpiry - (60 * 1000)) { // Refresh token if it's expired or about to expire
     try {
       await getAmadeusAccessToken();
+      if (!accessToken) {
+        return res.status(500).json({ error: 'Failed to obtain Amadeus access token - token is null.' });
+      }
     } catch (error) {
-      return res.status(500).json({ error: 'Failed to obtain Amadeus access token.' });
+      console.error('Error in ensureAccessToken:', error);
+      return res.status(500).json({ error: 'Failed to obtain Amadeus access token.', details: error.message });
     }
   }
   next();
@@ -175,25 +179,35 @@ const filtered = airports.filter(airport => {
 
 // Endpoint to fetch flight offers
 app.get('/api/flights', ensureAccessToken, async (req, res) => {
-  const { origin, destination, date, adults } = req.query;
+  const { origin, destination, date, adults, children = 0, infants = 0, travelClass = 'ECONOMY' } = req.query;
 
   if (!origin || !destination || !date || !adults) {
     return res.status(400).json({ error: 'Missing required query parameters.' });
   }
 
-  const apiUrl = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${origin}&destinationLocationCode=${destination}&departureDate=${date}&adults=${adults}`;
-
   try {
-    const response = await axios.post(apiUrl, {
+    const response = await axios.get('https://test.api.amadeus.com/v2/shopping/flight-offers', {
       headers: {
-        'Authorization': `Bearer ${accessToken}`  //asdas
+        'Authorization': `Bearer ${accessToken}`
+      },
+      params: {
+        originLocationCode: origin,
+        destinationLocationCode: destination,
+        departureDate: date,
+        adults: parseInt(adults),
+        ...(children > 0 && { children: parseInt(children) }),
+        ...(infants > 0 && { infants: parseInt(infants) }),
+        ...(travelClass && { travelClass })
       }
     });
 
     res.json(response.data);
   } catch (error) {
     console.error('Error fetching flight offers:', error.response?.data || error.message);
-    res.status(500).json({ error: 'Failed to fetch flight offers.' });
+    res.status(error.response?.status || 500).json({ 
+      error: 'Failed to fetch flight offers.',
+      details: error.response?.data || error.message 
+    });
   }
 });
 
