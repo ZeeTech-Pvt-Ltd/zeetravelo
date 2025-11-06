@@ -47,7 +47,8 @@ const HotelSearch = () => {
     }
 
     try {
-      const response = await axios.get(`http://localhost:3001/api/locations?keyword=${keyword}`);
+      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const response = await axios.get(`${API_BASE_URL}/api/locations?keyword=${keyword}`);
       setLocationSuggestions(response.data.data || []);
       setShowLocationSuggestions(true);
     } catch (err) {
@@ -59,7 +60,8 @@ const HotelSearch = () => {
   const handleSearch = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:3001/api/hotels', {
+      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+    const response = await axios.get(`${API_BASE_URL}/api/hotels`, {
         params: {
           cityCode,
           radius: 5,
@@ -90,7 +92,8 @@ const HotelSearch = () => {
   // setError(null);
 
   try {
-    const response = await axios.get('http://localhost:3001/api/fetch-hotel-offers', {
+    const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+    const response = await axios.get(`${API_BASE_URL}/api/fetch-hotel-offers`, {
       params: {
         hotelIds: hotelId,
         checkInDate: checkInDate.toISOString().split('T')[0],

@@ -78,7 +78,8 @@ const OrderDetails = ({ flight, passengers }) => {
           : passengers.length,
       };
 
-      const bookingRes = await fetch('http://localhost:3001/api/book-flight', {
+      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const bookingRes = await fetch(`${API_BASE_URL}/api/book-flight`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -66,7 +66,8 @@ const ConfirmBooking = () => {
 
     useEffect(() => {
         if (orderDetails?.data) {
-          axios.post('http://localhost:3001/api/save-booking', {
+          const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+          axios.post(`${API_BASE_URL}/api/save-booking`, {
             bookingData: orderDetails.data
           })
           .then(res => {

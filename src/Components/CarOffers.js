@@ -36,7 +36,8 @@ const CarOffers = ({
     const finalFormData = getFinalFormData();
 
     try {
-      const response = await axios.post('http://localhost:3001/api/transfer-offers', finalFormData);
+      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const response = await axios.post(`${API_BASE_URL}/api/transfer-offers`, finalFormData);
       setResults(response.data.data || []);
     } catch (err) {
       console.error(err);
@@ -128,7 +129,8 @@ const CarOffers = ({
     };
 
     try {
-      const response = await axios.post('http://localhost:3001/api/transfer-booking', payload);
+      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const response = await axios.post(`${API_BASE_URL}/api/transfer-booking`, payload);
       const bookingData = response.data;
 
       navigate('/car-booking', {

@@ -25,7 +25,8 @@ const FlightList = ({ searchParams }) => {
 
   useEffect(() => {
     const { origin, destination, date, adults } = searchParams;
-    const apiUrl = `http://localhost:3001/api/flights?origin=${origin}&destination=${destination}&date=${date}&adults=${adults}`;
+    const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+    const apiUrl = `${API_BASE_URL}/api/flights?origin=${origin}&destination=${destination}&date=${date}&adults=${adults}`;
 
     setLoading(true);
     setError(null);

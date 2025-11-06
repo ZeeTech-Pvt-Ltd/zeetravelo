@@ -270,9 +270,10 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
       try {
         let apiUrl;
         let requestBody;
+        const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
         if (tripType === 'oneway') {
-          apiUrl = `http://localhost:3001/api/flights`;
+          apiUrl = `${API_BASE_URL}/api/flights`;
           requestBody = {
             origin,
             destination,
@@ -283,7 +284,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
             travelClass,
           };
         } else if (tripType === 'return') {
-          apiUrl = `http://localhost:3001/api/return-flights`;
+          apiUrl = `${API_BASE_URL}/api/return-flights`;
           requestBody = {
             currencyCode: "USD",
             originDestinations: [
@@ -353,7 +354,8 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
 
     try {
       // Send flight data to the API for pricing
-      const response = await axios.post('http://localhost:3001/api/flight-pricing', flight);
+      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const response = await axios.post(`${API_BASE_URL}/api/flight-pricing`, flight);
       const confirmedFlight = response.data.data?.flightOffers?.[0];  // Extract the first flight offer
 
       console.log('Confirmed Flight:', confirmedFlight);

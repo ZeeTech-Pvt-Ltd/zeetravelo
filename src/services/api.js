@@ -1,7 +1,8 @@
 import axios from 'axios';
 import qs from 'qs';
 
-const API_ENDPOINT = 'http://localhost:3001/api/getToken'; // Your Node.js API endpoint
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const API_ENDPOINT = `${API_BASE_URL}/api/getToken`; // Your Node.js API endpoint
 
 export const fetchToken = async () => {
   try {

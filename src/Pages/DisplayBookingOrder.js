@@ -15,8 +15,9 @@ const DisplayBookingOrder = () => {
 
   const handleFetch = () => {
     setLoading(true);
+    const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
     axios
-      .get(`http://localhost:3001/api/booking-details/${bookingId}`)
+      .get(`${API_BASE_URL}/api/booking-details/${bookingId}`)
       .then((res) => {
         setOrderDetails(res.data.data);
         setError(null);

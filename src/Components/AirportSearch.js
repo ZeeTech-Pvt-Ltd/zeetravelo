@@ -79,7 +79,8 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
     const resolveAirportName = async (code, setter) => {
   if (!code) return;
   try {
-    const res = await axios.get(`http://localhost:3001/api/locations/airportByCode?code=${code}`);
+            const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+            const res = await axios.get(`${API_BASE_URL}/api/locations/airportByCode?code=${code}`);
     const data = res.data?.data?.[0]; // ✅ FIXED: use first airport result
     if (data && data.name && data.iataCode) {
       setter(`${data.name} (${data.iataCode})`);
@@ -101,7 +102,8 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
       return;
     }
     try {
-      const response = await axios.get(`http://localhost:3001/api/locations/airports?keyword=${keyword}`);
+              const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+              const response = await axios.get(`${API_BASE_URL}/api/locations/airports?keyword=${keyword}`);
       setSuggestions(response.data.data);
     } catch {
       setSuggestions([]);

@@ -6,7 +6,8 @@ const HotelApitude = () => {
 
   const handleClick = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/hotelbeds-status');
+      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const res = await fetch(`${API_BASE_URL}/api/hotelbeds-status`);
       const data = await res.json();
       setResponse(data);
       setError(null);

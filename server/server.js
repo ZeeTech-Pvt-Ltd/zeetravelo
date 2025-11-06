@@ -11,10 +11,17 @@ require('dotenv').config({ path: './.env' });
 
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 const BOOKINGS_FILE = path.join(__dirname, 'ConfirmedBookings.json');
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://zeetravelo.vercel.app", // your deployed frontend
+    "http://localhost:3000" // for local development
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 
 

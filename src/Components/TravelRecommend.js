@@ -44,7 +44,8 @@ const TravelRecommend = () => {
                 }
 
                 const originIATA = iataMap.get(city);
-                const recRes = await fetch(`http://localhost:3001/api/recommended-locations?origin=${originIATA}`);
+                        const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+                        const recRes = await fetch(`${API_BASE_URL}/api/recommended-locations?origin=${originIATA}`);
                 const contentType = recRes.headers.get('content-type');
 
                 if (contentType && contentType.includes('application/json')) {

@@ -36,7 +36,8 @@ function CarSearchForm({ header }) {
       return;
     }
     try {
-      const response = await axios.get(`http://localhost:3001/api/locations?keyword=${keyword}`);
+      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const response = await axios.get(`${API_BASE_URL}/api/locations?keyword=${keyword}`);
       setLocationSuggestions(response.data.data);
     } catch (err) {
       setLocationSuggestions([]);

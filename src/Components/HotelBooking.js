@@ -58,7 +58,8 @@ const HotelBooking = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:3001/api/book-hotel', {
+      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const response = await axios.post(`${API_BASE_URL}/api/book-hotel`, {
         offerId: hotel.offerId || 'TEST_OFFER_ID',
         guests: [guestData],
         payments: [paymentData]
