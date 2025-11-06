@@ -14,14 +14,44 @@ const app = express();
 const port = process.env.PORT || 3001;
 const BOOKINGS_FILE = path.join(__dirname, 'ConfirmedBookings.json');
 
+// CORS configuration - allow Vercel deployments and localhost
+const allowedOrigins = [
+  "https://zeetravelo.vercel.app",
+  /^https:\/\/zeetravelo.*\.vercel\.app$/, // Allow all Vercel preview deployments
+  "http://localhost:3000",
+  "http://localhost:3001"
+];
+
 app.use(cors({
-  origin: [
-    "https://zeetravelo.vercel.app", // your deployed frontend
-    "http://localhost:3000" // for local development
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    // Check if origin matches allowed origins
+    const isAllowed = allowedOrigins.some(allowed => {
+      if (typeof allowed === 'string') {
+        return origin === allowed;
+      } else if (allowed instanceof RegExp) {
+        return allowed.test(origin);
+      }
+      return false;
+    });
+    
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+
+// Handle preflight requests
+app.options('*', cors());
+
 app.use(express.json());
 
 
