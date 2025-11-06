@@ -1,0 +1,275 @@
+/* Booking Details Page Styling */
+.booking-details-container {
+  background: linear-gradient(180deg, #f8fbff 0%, #f0f9ff 50%, #e8f4fd 100%);
+  min-height: 100vh;
+  padding: 90px 0 40px 0;
+}
+.booking-details-header {
+  background: linear-gradient(135deg, rgba(77, 157, 224, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+  padding: 32px 0;
+  margin-bottom: 32px;
+  border-radius: 0;
+}
+
+.booking-details-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #1e293b;
+  margin: 0;
+  text-align: center;
+}
+
+/* Flight Details Card */
+.flight-details-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%) !important;
+  border: 1px solid rgba(77, 157, 224, 0.2) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  overflow: hidden;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.flight-details-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.15), 0 6px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+.flight-card-body {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%) !important;
+  padding: 28px !important;
+}
+
+.flight-route-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(77, 157, 224, 0.2);
+  letter-spacing: -0.01em;
+}
+
+.segment-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%) !important;
+  border: 1px solid rgba(77, 157, 224, 0.15) !important;
+  border-radius: 16px !important;
+  padding: 24px !important;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08) !important;
+  transition: all 0.2s ease;
+}
+
+.segment-card:hover {
+  border-color: rgba(77, 157, 224, 0.3) !important;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12) !important;
+}
+
+.segment-time {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.segment-route {
+  font-size: 1rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.segment-info {
+  font-size: 0.95rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.stopover-info {
+  background: linear-gradient(135deg, rgba(77, 157, 224, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%);
+  border-left: 4px solid #2563eb;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 0.95rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* Pricing Card */
+.pricing-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%) !important;
+  border: 1px solid rgba(77, 157, 224, 0.2) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  padding: 24px !important;
+  position: sticky;
+  top: 90px;
+}
+
+.pricing-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(77, 157, 224, 0.2);
+  letter-spacing: -0.01em;
+}
+
+.pricing-item {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(77, 157, 224, 0.1);
+}
+
+.pricing-item:last-child {
+  border-bottom: none;
+}
+
+.pricing-item-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.pricing-item-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2563eb;
+  letter-spacing: -0.01em;
+}
+
+/* Passenger Details Card */
+.passenger-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%) !important;
+  border: 1px solid rgba(77, 157, 224, 0.2) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  margin-bottom: 32px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.passenger-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.15), 0 6px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+.passenger-card-body {
+  padding: 32px !important;
+}
+
+.passenger-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.section-badge {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* Form Styling */
+.booking-form-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.booking-form-control {
+  border: 1px solid rgba(77, 157, 224, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  font-size: 0.95rem !important;
+  transition: all 0.2s ease !important;
+  background: #ffffff !important;
+}
+
+.booking-form-control:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+  outline: none !important;
+}
+
+.booking-form-select {
+  border: 1px solid rgba(77, 157, 224, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  font-size: 0.95rem !important;
+  transition: all 0.2s ease !important;
+  background: #ffffff !important;
+}
+
+.booking-form-select:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+  outline: none !important;
+}
+
+/* Confirm Button */
+.confirm-booking-btn {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  border: none !important;
+  padding: 16px 48px !important;
+  border-radius: 12px !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4) !important;
+  transition: all 0.2s ease !important;
+}
+
+.confirm-booking-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.5) !important;
+}
+
+.confirm-booking-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4) !important;
+}
+
+/* Section Divider */
+.section-divider {
+  border: none;
+  border-top: 2px solid rgba(77, 157, 224, 0.2);
+  margin: 40px 0;
+}
+
+/* Airline Logo */
+.airline-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .booking-details-title {
+    font-size: 2rem;
+  }
+  
+  .pricing-card {
+    position: relative;
+    top: 0;
+    margin-top: 24px;
+  }
+}
+

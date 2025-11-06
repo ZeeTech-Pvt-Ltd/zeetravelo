@@ -1,8 +1,8 @@
 .zeetravelo-footer {
-  background-color: #eff7fc;
+  background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
   padding: 40px 20px 20px;
   font-family: 'Segoe UI', sans-serif;
-  color: #333;
+  color: #e5ecff;
   font-size: 14px;
 }
 
@@ -24,7 +24,7 @@
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
-  color: #111;
+  color: #ffffff;
 }
 
 .footer-group ul {
@@ -36,7 +36,7 @@
 .footer-group li {
   margin-bottom: 8px;
   cursor: pointer;
-  color: #005eb8;
+  color: #e5ecff;
 }
 
 .footer-group li:hover {
@@ -66,7 +66,7 @@
 .footer-legal p {
   margin: 0 0 10px;
   font-size: 13px;
-  color: #555;
+  color: #cbd5e1;
 }
 
 .footer-legal ul {
@@ -81,7 +81,7 @@
 
 .footer-legal li {
   cursor: pointer;
-  color: #005eb8;
+  color: #e5ecff;
 }
 
 .footer-legal li:hover {
@@ -104,7 +104,7 @@
 
 .footer-language {
   font-size: 13px;
-  color: #444;
+  color: #cbd5e1;
 }
 
 .app-buttons {

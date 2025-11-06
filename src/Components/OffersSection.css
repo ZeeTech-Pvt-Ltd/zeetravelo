@@ -1,0 +1,57 @@
+.offers-section { padding: 12px 0 24px 0; background: transparent; }
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.offer-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--bg-200);
+  background: #ffffff;
+  min-height: 140px;
+}
+.offer-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(1200px 220px at -10% -30%, #e8f1ff 0%, transparent 60%),
+              radial-gradient(800px 200px at 120% 130%, #e6f0ff 0%, transparent 60%);
+}
+.offer-content { position: relative; padding: 16px; }
+.offer-title { font-weight: 800; color: var(--ink-900); letter-spacing: -0.01em; }
+.offer-subtitle { color: var(--ink-500); font-size: 0.95rem; }
+
+@media (max-width: 768px) {
+  .offers-section { padding: 8px 0 18px 0; }
+}
+
+.offers-section { padding: 12px 0 24px 0; background: transparent; }
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.offer-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--bg-200);
+  background: #ffffff;
+  min-height: 140px;
+}
+.offer-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(1200px 220px at -10% -30%, #e8f1ff 0%, transparent 60%),
+              radial-gradient(800px 200px at 120% 130%, #e6f0ff 0%, transparent 60%);
+}
+.offer-content { position: relative; padding: 16px; }
+.offer-title { font-weight: 800; color: var(--ink-900); letter-spacing: -0.01em; }
+.offer-subtitle { color: var(--ink-500); font-size: 0.95rem; }
+
+@media (max-width: 768px) {
+  .offers-section { padding: 8px 0 18px 0; }
+}
+
+

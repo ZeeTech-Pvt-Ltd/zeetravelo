@@ -40,7 +40,10 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
 
   const parseDateParam = (param) => {
     const value = searchParams.get(param);
-    return value ? new Date(value) : null;
+    if (!value) return null;
+    // Parse date string (YYYY-MM-DD) in local time to avoid timezone shift
+    const [year, month, day] = value.split('-').map(Number);
+    return new Date(year, month - 1, day); // month is 0-indexed in Date constructor
   };
   const navigate = useNavigate();
   const [tripType, setTripType] = useState(searchParams.get('tripType') || 'oneway');
@@ -192,14 +195,18 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
   return (
     <div
       style={{
-        backgroundImage: `url(${FlightBg})`,
+        backgroundImage: `linear-gradient(rgba(11, 17, 30, 0.45), rgba(11, 17, 30, 0.45)), url(${FlightBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        paddingTop: '50px',
-        paddingBottom: '40px',
+        paddingTop: '70px',
+        paddingBottom: '48px',
       }}
     >
-      <Container className="my-5">
+      <Container className="my-3">
+        <div className="site-container text-center" style={{ marginBottom: '16px' }}>
+          <h1 className="hero-title">Find your next flight</h1>
+          <p className="hero-subtitle">Compare deals across airlines and book in minutes</p>
+        </div>
         <div className="kayak-tab-container">
           <NavLink
             to="/flights"
@@ -242,13 +249,16 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
           </NavLink>
         </div>
 
-        <Card className="p-4 shadow-sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', }}>
+        <Card className="bookme-search-panel p-4 shadow-sm search-card">
           <Form ref={dropdownRef}>
-            <Row className="mb-3">
+            <Row className="mb-3 bookme-trip-pills">
               <Col>
-                <Form.Check inline label="One-way" type="radio" name="tripType" value="oneway" checked={tripType === 'oneway'} onChange={(e) => setTripType(e.target.value)} />
-                <Form.Check inline label="Return" type="radio" name="tripType" value="return" checked={tripType === 'return'} onChange={(e) => setTripType(e.target.value)} />
-                <Form.Check inline label="Multi-city" type="radio" name="tripType" value="multicity" checked={tripType === 'multicity'} disabled />
+                <Form.Check inline type="radio" name="tripType" value="oneway" id="trip-oneway" checked={tripType === 'oneway'} onChange={(e) => setTripType(e.target.value)} />
+                <Form.Label htmlFor="trip-oneway" className="form-check-label">One Way</Form.Label>
+                <Form.Check inline type="radio" name="tripType" value="return" id="trip-return" checked={tripType === 'return'} onChange={(e) => setTripType(e.target.value)} />
+                <Form.Label htmlFor="trip-return" className="form-check-label">Round Trip</Form.Label>
+                <Form.Check inline type="radio" name="tripType" value="multicity" id="trip-multi" checked={tripType === 'multicity'} disabled />
+                <Form.Label htmlFor="trip-multi" className="form-check-label">Multi-City</Form.Label>
               </Col>
             </Row>
 

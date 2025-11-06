@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './PopularFlight.css';
+import './TravelBanner.css';
 import newAirports from '../data/New_airports.json';
 import { useNavigate } from 'react-router-dom';
 
@@ -130,7 +131,7 @@ const PopularFlight = () => {
         <h5 className="recommended-header-title">Popular Flights</h5>
       </div>
 
-      <div className="popular-flights-container">
+      <div className="popular-flights-container deals-container">
         <div className="popular-flights-grid">
           {routes.map((route, index) => {
             const [fromCity, toCity] = route.split('⇌').map(x => x.trim());
@@ -138,16 +139,18 @@ const PopularFlight = () => {
             return (
               <div
                 key={index}
-                className="flight-card"
+                className="travel-card"
                 onClick={() => handleRouteClick(fromCity, toCity)}
                 style={{ cursor: 'pointer' }}
               >
                 <img
                   src={imgSrc || 'https://via.placeholder.com/300x200?text=Flight'}
                   alt={toCity}
-                  className="flight-image"
+                  className="travel-image"
                 />
-                <div className="flight-route">{`${fromCity} ⇌ ${toCity}`}</div>
+                <div className="travel-content">
+                  <h3 className="travel-title">{`${fromCity} ⇌ ${toCity}`}</h3>
+                </div>
               </div>
             );
           })}

@@ -400,10 +400,10 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
     );
 
   return (
-    <Container className="my-5" >
+    <Container className="my-5">
       <Row>
         {/* Sidebar Filters on the left */}
-        <Col md={3}>
+        <Col md={3} style={{ paddingRight: '24px', minWidth: '320px', maxWidth: '380px' }}>
           <br />
           <SidebarFilters
             availableStops={['0', '1', '2+']}
@@ -441,11 +441,11 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                 .slice(0, visibleCount)
                 .map((flight, index) => (
 
-                  <Card className="mb-2 shadow-sm flight-card" key={index}>
-                    <Card.Body>
+                  <Card className="mb-3 flight-card" key={index} style={{ border: 'none', boxShadow: 'none' }}>
+                    <Card.Body className="p-4">
                       {/* Flight Type Heading */}
-                      <div className="mb-2">
-                        <span className="bg-light text-dark small px-3 py-1 rounded-3 d-inline-block">
+                      <div className="mb-3">
+                        <span className="flight-type-badge">
                           {searchParams.tripType === 'oneway' ? 'One Way Flight' : 'Return Flight'}
                         </span>
                       </div>
@@ -460,39 +460,40 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                                     <img
                                       src={`https://content.airhex.com/content/logos/airlines_${itinerary.segments[0].carrierCode}_64_64_s.png`}
                                       alt={itinerary.segments[0].carrierCode}
-                                      width="28"
-                                      height="28"
+                                      width="40"
+                                      height="40"
                                       className="me-2"
+                                      style={{ borderRadius: '4px' }}
                                       onError={(e) => (e.target.style.display = 'none')}
                                     />
-                                    <span className="fw-semibold small">
+                                    <span className="fw-bold" style={{ fontSize: '1.25rem', color: '#1e293b' }}>
                                       {getAirlineName(itinerary.segments[0].carrierCode)}
                                     </span>
                                   </div>
-                                  <div className="small text-muted">
+                                  <div style={{ fontSize: '1.1rem', color: '#64748b', fontWeight: 600 }}>
                                     <strong>Flight No:</strong> {itinerary.segments[0].number}
                                   </div>
                                 </Col>
 
                                 <Col md={4}>
-                                  <div className="small mb-1">
-                                    <FaClock className="me-1 text-warning" />
+                                  <div style={{ fontSize: '1.2rem', marginBottom: '10px', fontWeight: 700, color: '#1e293b' }}>
+                                    <FaClock className="me-1" style={{ color: '#f59e0b', fontSize: '1.1rem' }} />
                                     <strong>Duration:</strong>{' '}
                                     {itinerary.duration.replace('PT', '').toLowerCase()}
                                   </div>
-                                  <div className="small text-muted">
+                                  <div style={{ fontSize: '1.1rem', color: '#64748b', fontWeight: 600 }}>
                                     <strong>Stops:</strong> {itinerary.segments.length - 1}
                                   </div>
                                 </Col>
 
                                 <Col md={4}>
-                                  <div className="fw-semibold mb-1 small">
-                                    <FaPlaneDeparture className="me-1 text-primary" />
+                                  <div className="fw-bold mb-2" style={{ fontSize: '1.35rem', color: '#1e293b' }}>
+                                    <FaPlaneDeparture className="me-1" style={{ color: '#2563eb', fontSize: '1.2rem' }} />
                                     {itinerary.segments[0].departure.iataCode} →{' '}
                                     {itinerary.segments.slice(-1)[0].arrival.iataCode}
-                                    <FaPlaneArrival className="ms-1 text-primary" />
+                                    <FaPlaneArrival className="ms-1" style={{ color: '#2563eb', fontSize: '1.2rem' }} />
                                   </div>
-                                  <div className="small text-muted">
+                                  <div style={{ fontSize: '1.15rem', color: '#64748b', fontWeight: 700 }}>
                                     {new Date(itinerary.segments[0].departure.at).toLocaleTimeString([], {
                                       hour: '2-digit',
                                       minute: '2-digit',
@@ -511,14 +512,14 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
 
                         <Col
                           md={3}
-                          className="d-flex flex-column justify-content-center align-items-center border-start border-secondary-subtle ps-3"
+                          className="d-flex flex-column justify-content-center align-items-center border-start border-secondary-subtle ps-4"
                         >
-                          <div className="text-uppercase small text-muted mb-1">
+                          <div className="text-uppercase mb-2" style={{ letterSpacing: '1px', fontSize: '1rem', fontWeight: 700, color: '#64748b' }}>
                             {flight.travelerPricings?.[0]?.fareDetailsBySegment?.[0]?.cabin || 'Class'}
                           </div>
-                          <h5 className="text-success mb-2 fw-bold fs-6">
+                          <h3 className="mb-4 fw-bold" style={{ color: '#2563eb', fontSize: '2rem', letterSpacing: '-0.02em', lineHeight: '1.2' }}>
                             {flight.price.total} {flight.price.currency}
-                          </h5>
+                          </h3>
 
                           <Button
                             variant="primary"
@@ -527,9 +528,29 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                               setSelectedFlight(flight);
                               handleSelectWithModal(flight, index);
                             }}
-                            className="px-3 py-1 fw-semibold small"
+                            className="flight-select-btn"
+                            style={{ 
+                              background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+                              border: 'none',
+                              padding: '12px 32px',
+                              borderRadius: '12px',
+                              fontWeight: 700,
+                              fontSize: '0.95rem',
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.5px',
+                              boxShadow: '0 6px 16px rgba(37, 99, 235, 0.3)',
+                              transition: 'all 0.2s ease'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.target.style.transform = 'translateY(-2px)';
+                              e.target.style.boxShadow = '0 8px 20px rgba(37, 99, 235, 0.4)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.target.style.transform = 'translateY(0)';
+                              e.target.style.boxShadow = '0 6px 16px rgba(37, 99, 235, 0.3)';
+                            }}
                           >
-                            Select
+                            Select Flight
                           </Button>
                         </Col>
                       </Row>
@@ -542,14 +563,15 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                           return (
                             <div
                               key={itinIdx}
-                              className="mb-3 p-3 border rounded shadow-sm bg-white"
+                              className="mb-3 p-4 border rounded"
                               style={{
-                                borderLeft: '5px solid #0d6efd',
-                                backgroundColor: '#f8f9fa',
-                                boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)',
+                                borderLeft: '4px solid #2563eb',
+                                background: 'linear-gradient(135deg, #f8fbff 0%, #ffffff 100%)',
+                                boxShadow: '0 4px 12px rgba(37, 99, 235, 0.08)',
+                                borderRadius: '12px',
                               }}
                             >
-                              <h6 className="fw-semibold mb-2 fs-4 text-center">{tripLabel}</h6>
+                              <h6 className="fw-bold mb-3 fs-5 text-center" style={{ color: '#2563eb', letterSpacing: '-0.01em' }}>{tripLabel}</h6>
 
                               {itinerary.segments.map((segment, segIdx, segmentsArray) => {
                                 const departureTime = new Date(segment.departure.at);
@@ -572,11 +594,11 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
 
                                 return (
                                   <React.Fragment key={`${itinIdx}-${segIdx}`}>
-                                    <div className="position-relative mb-2 p-3 border rounded bg-light d-flex justify-content-between align-items-center">
+                                    <div className="position-relative mb-3 p-4 border rounded segment-detail d-flex justify-content-between align-items-center" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f8fbff 100%)', borderRadius: '12px', borderColor: '#eef2f7' }}>
 
                                       {/* Top-right: Duration Badge */}
                                       <div className="position-absolute top-0 end-0 m-2">
-                                        <span className="badge bg-secondary-subtle text-dark fs-6">
+                                        <span className="badge" style={{ background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)', color: '#ffffff', fontSize: '0.75rem', fontWeight: 600, padding: '6px 12px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(37, 99, 235, 0.25)' }}>
                                           Duration: {duration}
                                         </span>
                                       </div>

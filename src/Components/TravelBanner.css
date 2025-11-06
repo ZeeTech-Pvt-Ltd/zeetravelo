@@ -4,56 +4,58 @@
     margin: 8px 100px;
   }
   
-  .travel-banner {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: 12px;
-    padding: 10px 100px;
-  }
+/* Use PopularFlights grid layout for deals */
+.deals-container { background: transparent !important; padding: 0 80px; border-radius: 0; }
   
   .travel-card {
     position: relative;
     overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: #fff;
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 12px 28px rgba(2,6,23,0.18);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    background: #0b0f19;
     cursor: pointer;
+    width: 280px;
   }
   
   .travel-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(2,6,23,0.28);
+    filter: saturate(1.03);
   }
   
   .travel-image {
     width: 100%;
-    height: 250px;
+    aspect-ratio: 16 / 10;
+    height: auto;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    display: block;
+    transition: transform 0.6s ease;
   }
   
   .travel-card:hover .travel-image {
     transform: scale(1.1);
   }
   
-  .travel-info {
-    padding: 16px;
-    background-color: #fff;
+  .travel-content {
+    padding: 14px 14px 16px 14px;
+    text-align: center;
   }
   
-  .travel-info h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #333;
+  .travel-title {
+    margin: 0 0 6px 0;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.01em;
   }
   
-  .travel-info p {
+  .travel-desc {
     margin: 0;
-    font-size: 0.95rem;
-    color: #666;
-    line-height: 1.5;
+    color: #e5ecff;
+    font-size: 0.92rem;
+    line-height: 1.45;
   }
   
   /* Shine effect */
@@ -78,19 +80,25 @@
   .travel-card:hover::before {
     transform: rotate(25deg) translate(200%, 200%);
   }
+
+  @media (max-width: 768px) {
+    .deals-container { padding-left: 12px; padding-right: 12px; }
+    .travel-card { width: 100%; max-width: 360px; }
+    .travel-title { font-size: 1rem; }
+  }
   
   .recommended-header-container {
-  padding: 20px;
-  background: linear-gradient(135deg, #f0f8ff, #e6f0ff);
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1);
-  max-width: 800px;
-  margin: 0 auto 30px;
+  max-width: 1180px;
+  margin: 0 auto 12px;
+  padding: 8px 16px 0 16px;
 }
 
 .recommended-header-title {
-  font-size: 5rem;
-  font-weight: 700;
-  color: #003366;
-  margin-bottom: 10px;
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: var(--ink-900);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+  display: inline-block;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Collapse, Button, Form } from 'react-bootstrap';
+import { FaFilter, FaPlaneDeparture, FaPlaneArrival, FaClock, FaTags, FaBuilding } from 'react-icons/fa';
 import Select from 'react-select';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -78,16 +79,38 @@ const SidebarFilters = ({
     return `$${price.toFixed(2)}`;
   };
 
+  const formatPriceShort = (price) => {
+    if (price >= 1000) {
+      const kValue = price / 1000;
+      return `${kValue.toFixed(1)}K`;
+    }
+    return price.toFixed(0);
+  };
+
+  const getTimeIcon = (iconType) => {
+    switch (iconType) {
+      case 'morning':
+      case 'evening':
+        return <FaPlaneDeparture style={{ fontSize: '18px', color: '#94a3b8' }} />;
+      case 'noon':
+      case 'night':
+        return <FaClock style={{ fontSize: '18px', color: '#94a3b8' }} />;
+      default:
+        return null;
+    }
+  };
+
   // Ensure filters.priceRange exists and is correctly accessed
   if (!filters || !filters.priceRange) return null;  // Early exit if priceRange is undefined
 
   const sidebarStyle = {
     position: 'sticky',
-    top: '80px',
+    top: '72px',
     alignSelf: 'flex-start',
     zIndex: 1000,
-    marginTop: '-63px',
-    
+    maxHeight: 'calc(100vh - 100px)',
+    overflowY: 'auto',
+    overflowX: 'hidden',
   };
 
   const totalFlights = Array.isArray(flightData) ? flightData.length : 0;
@@ -108,42 +131,189 @@ const SidebarFilters = ({
       )}
 
       <Collapse in={!isMobile || showMobileFilters}>
-        <div>
-          <Card className="p-4 shadow-sm border-0">
-            <h5 className="mb-2 fw-bold">Flight Filters</h5>
+        <div style={sidebarStyle} className="sidebar-scrollable">
+          <Card className="shadow-sm border-0 filter-card">
+            <h5 className="mb-3 fw-bold filter-header">Filters</h5>
 
-            {/* Flight Count */}
-            <div className="">
-              <strong>Total Flights:</strong> {totalFlights}
+            {/* Price Range */}
+            <div className="mb-3 filter-section">
+              <Form.Label className="fw-bold mb-2 filter-label">Price Range</Form.Label>
+              <Slider
+                range
+                min={0}
+                max={2000}
+                value={filters.priceRange}
+                onChange={(value) => onFiltersChange({ ...filters, priceRange: value })}
+                className="price-slider"
+              />
+              <div className="d-flex justify-content-between mt-2 price-values">
+                <span className="price-value">{formatPriceShort(filters.priceRange[0])}</span>
+                <span className="price-value">{formatPriceShort(filters.priceRange[1])}</span>
+              </div>
             </div>
-            <hr/>
+            <hr className="filter-divider" />
 
-            {/* Stops Filter */}
-            <div className="mb-2">
-              <Form.Label className="fw-bold">Stops</Form.Label>
-              {availableStops.map(stop => (
-                <Form.Check
-                  key={stop}
-                  type="checkbox"
-                  className="mb-1"
-                  label={`${stop} Stop${stop !== '1' ? 's' : ''}`}
-                  checked={filters.stops instanceof Set && filters.stops.has(stop)}
-                  onChange={(e) => {
-                    const updatedStops = new Set(filters.stops);
-                    if (e.target.checked) {
-                      updatedStops.add(stop);
-                    } else {
-                      updatedStops.delete(stop);
-                    }
-                    onFiltersChange({ ...filters, stops: updatedStops });
+            {/* Number of Layover */}
+            <div className="mb-3 filter-section">
+              <Form.Label className="fw-bold mb-2 filter-label">Number of Layover</Form.Label>
+              <div className="layover-buttons">
+                {['Non-stop', '1', '2', '3', 'Any'].map(layover => {
+                  const stopsSize = filters.stops?.size || 0;
+                  const isSelected = 
+                    (layover === 'Any' && stopsSize === 0) ||
+                    (layover === 'Non-stop' && filters.stops?.has('0')) ||
+                    (layover === '1' && filters.stops?.has('1')) ||
+                    (layover === '2' && filters.stops?.has('2')) ||
+                    (layover === '3' && filters.stops?.has('3'));
+                  
+                  return (
+                    <button
+                      key={layover}
+                      className={`layover-btn ${isSelected ? 'selected' : ''}`}
+                      onClick={() => {
+                        const updatedStops = new Set();
+                        if (layover !== 'Any') {
+                          if (layover === 'Non-stop') {
+                            updatedStops.add('0');
+                          } else {
+                            updatedStops.add(layover);
+                          }
+                        }
+                        onFiltersChange({ ...filters, stops: updatedStops });
+                      }}
+                    >
+                      {layover}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+            <hr className="filter-divider" />
+
+            {/* Duration Range */}
+            <div className="mb-3 filter-section">
+              <Form.Label className="fw-bold mb-2 filter-label">Duration</Form.Label>
+              <div className="text-muted small mb-2">
+                {formatDuration(filters.durationRange[0])} – {formatDuration(filters.durationRange[1])}
+              </div>
+              <Slider
+                range
+                min={0}
+                max={2000}
+                value={filters.durationRange}
+                onChange={(value) => onFiltersChange({ ...filters, durationRange: value })}
+                className="price-slider"
+                marks={{
+                  0: '0h',
+                  600: '10h',
+                  1200: '20h',
+                  1800: '30h',
+                  2000: '33h',
+                }}
+                step={50}
+              />
+            </div>
+            <hr className="filter-divider" />
+
+            {/* Times Filter */}
+            <div className="mb-3 filter-section">
+              <div className="d-flex justify-content-between align-items-center mb-2">
+                <Form.Label className="fw-bold mb-0 filter-label">Times</Form.Label>
+                <Button
+                  variant="link"
+                  size="sm"
+                  className="p-0 text-decoration-none"
+                  style={{ fontSize: '0.75rem', color: '#64748b' }}
+                  onClick={() => {
+                    const resetTimeRange = {};
+                    airports.forEach((code) => (resetTimeRange[code] = [0, 1440]));
+                    onFiltersChange({
+                      ...filters,
+                      timeType: 'takeoff',
+                      timeRange: resetTimeRange,
+                    });
                   }}
-                />
+                >
+                  Reset
+                </Button>
+              </div>
+
+              <div className="btn-group w-100 mb-3" style={{ gap: '4px' }}>
+                <Button
+                  variant={filters.timeType === 'takeoff' ? 'primary' : 'outline-secondary'}
+                  size="sm"
+                  onClick={() => onFiltersChange({ ...filters, timeType: 'takeoff' })}
+                  style={{ 
+                    fontSize: '0.85rem',
+                    padding: '6px 12px',
+                    ...(filters.timeType === 'takeoff' ? { 
+                      background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+                      border: 'none'
+                    } : {})
+                  }}
+                >
+                  Take-off
+                </Button>
+                <Button
+                  variant={filters.timeType === 'landing' ? 'primary' : 'outline-secondary'}
+                  size="sm"
+                  onClick={() => onFiltersChange({ ...filters, timeType: 'landing' })}
+                  style={{ 
+                    fontSize: '0.85rem',
+                    padding: '6px 12px',
+                    ...(filters.timeType === 'landing' ? { 
+                      background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+                      border: 'none'
+                    } : {})
+                  }}
+                >
+                  Landing
+                </Button>
+              </div>
+
+              {airports.map((airport) => (
+                <div key={airport} className="mb-4 airport-time-section">
+                  <div className="mb-2 fw-semibold small d-flex align-items-center text-muted">
+                    <FaClock className="me-1" style={{ fontSize: '0.75rem' }} />
+                    {filters.timeType === 'takeoff' ? 'Depart from' : 'Arrive at'} {airport}
+                  </div>
+                  <Slider
+                    range
+                    min={0}
+                    max={1440}
+                    step={30}
+                    value={filters.timeRange?.[airport] || [0, 1440]}
+                    onChange={(value) =>
+                      onFiltersChange({
+                        ...filters,
+                        timeRange: {
+                          ...filters.timeRange,
+                          [airport]: value,
+                        },
+                      })
+                    }
+                    tipFormatter={(val) => {
+                      const hrs = String(Math.floor(val / 60)).padStart(2, '0');
+                      const mins = String(val % 60).padStart(2, '0');
+                      return `${hrs}:${mins}`;
+                    }}
+                    marks={{
+                      0: '00:00',
+                      360: '06:00',
+                      720: '12:00',
+                      1080: '18:00',
+                      1440: '24:00',
+                    }}
+                    className="price-slider"
+                  />
+                </div>
               ))}
             </div>
+            <hr className="filter-divider" />
 
-            {/* Airline Dropdown */}
-            <div className="mb-3">
-              <Form.Label className="fw-bold">Airlines</Form.Label>
+            {/* Airlines */}
+            <div className="mb-3 filter-section airlines-section">
+              <Form.Label className="fw-bold mb-2 filter-label">Airlines</Form.Label>
               <Select
                 isMulti
                 options={airlineOptions}
@@ -156,138 +326,38 @@ const SidebarFilters = ({
                   selectedOptions.forEach(opt => updatedAirlines.add(opt.value));
                   onFiltersChange({ ...filters, airlines: updatedAirlines });
                 }}
+                styles={{
+                  control: (base) => ({
+                    ...base,
+                    borderColor: '#cbd5e1',
+                    borderRadius: '8px',
+                    fontSize: '0.9rem',
+                    minHeight: '38px',
+                  }),
+                  multiValue: (base) => ({
+                    ...base,
+                    backgroundColor: '#e0f2fe',
+                    borderRadius: '6px',
+                  }),
+                  multiValueLabel: (base) => ({
+                    ...base,
+                    color: '#1e293b',
+                    fontSize: '0.85rem',
+                  }),
+                  multiValueRemove: (base) => ({
+                    ...base,
+                    color: '#64748b',
+                    ':hover': {
+                      backgroundColor: '#cbd5e1',
+                      color: '#1e293b',
+                    },
+                  }),
+                }}
               />
               {airlineOptions.length === 0 && (
                 <div className="text-muted small mt-2">No airlines found</div>
               )}
             </div>
-            
-            {/* Times Filter */}
-            <div className="">
-      <div className="d-flex justify-content-between align-items-center mb-2">
-        <Form.Label className="fw-bold mb-0">Times</Form.Label>
-        <Button
-          variant="link"
-          size="sm"
-          className="p-0"
-          onClick={() => {
-            const resetTimeRange = {};
-            airports.forEach((code) => (resetTimeRange[code] = [0, 1440]));
-            onFiltersChange({
-              ...filters,
-              timeType: 'takeoff',
-              timeRange: resetTimeRange,
-            });
-          }}
-        >
-          Reset
-        </Button>
-      </div>
-
-      <div className="btn-group w-100 mb-3">
-        <Button
-          variant={filters.timeType === 'takeoff' ? 'secondary' : 'outline-secondary'}
-          onClick={() => onFiltersChange({ ...filters, timeType: 'takeoff' })}
-        >
-          Take-off
-        </Button>
-        <Button
-          variant={filters.timeType === 'landing' ? 'secondary' : 'outline-secondary'}
-          onClick={() => onFiltersChange({ ...filters, timeType: 'landing' })}
-        >
-          Landing
-        </Button>
-      </div>
-
-      {airports.map((airport) => (
-        <div key={airport} className="mb-5">
-          <div className="mb-1 fw-semibold small">
-            {filters.timeType === 'takeoff' ? 'Depart from' : 'Arrive at'} {airport}
-          </div>
-          <Slider
-            range
-            min={0}
-            max={1440}
-            step={30}
-            value={filters.timeRange?.[airport] || [0, 1440]}
-            onChange={(value) =>
-              onFiltersChange({
-                ...filters,
-                timeRange: {
-                  ...filters.timeRange,
-                  [airport]: value,
-                },
-              })
-            }
-            tipFormatter={(val) => {
-              const hrs = String(Math.floor(val / 60)).padStart(2, '0');
-              const mins = String(val % 60).padStart(2, '0');
-              return `${hrs}:${mins}`;
-            }}
-            marks={{
-              0: '00:00',
-              360: '06:00',
-              720: '12:00',
-              1080: '18:00',
-              1440: '24:00',
-            }}
-           
-          />
-        </div>
-      ))}
-    </div>
-
-
-      {/* Duration Range */}
-<div className="mb-4">
-  <Form.Label className="fw-bold">Duration</Form.Label>
-  <strong>
-    <div className="text-muted">
-      {formatDuration(filters.durationRange[0])} – {formatDuration(filters.durationRange[1])}
-    </div>
-  </strong>
-  
-  <Slider className='mt-2'
-    range
-    min={0}
-    max={2000}
-    value={filters.durationRange}
-    onChange={(value) => {
-      onFiltersChange({ ...filters, durationRange: value });
-    }}
-    marks={{
-      0: '0h',
-      600: '10h',
-      1200: '20h',
-      1800: '30h',
-      2000: '33h',  // 2000 is the max, adjust this to suit your range
-    }}
-    step={50}
-  />
-</div>
-
- {/* Price Range */}
- <Form.Label className="fw-bold mt-2">Price Range</Form.Label>
-      <strong>
-        <div className="text-muted">
-          {formatPrice(filters.priceRange[0])} – {formatPrice(filters.priceRange[1])}
-        </div>
-      </strong>
-      <Slider
-        range
-        min={0}
-        max={2000} // Adjust this max based on your data
-        value={filters.priceRange}
-        onChange={(value) => onFiltersChange({ ...filters, priceRange: value })}
-        marks={{
-          0: formatPrice(0),
-          
-          1000: formatPrice(1000),
-          
-          2000: formatPrice(2000), // Adjust to your max price value
-        }}
-        step={50}
-      />
 
           </Card>
         </div>

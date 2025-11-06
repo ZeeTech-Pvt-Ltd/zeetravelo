@@ -1892,5 +1892,1727 @@
         ]
       }
     }
+  },
+  {
+    "entryId": 9,
+    "entryTime": "2025-11-04T13:21:02.630Z",
+    "bookingData": {
+      "bookingData": {
+        "type": "flight-order",
+        "id": "eJzTd9e3MHZ18Q4HAApNAjw",
+        "queuingOfficeId": "NCE4D31SB",
+        "associatedRecords": [
+          {
+            "reference": "83EDKW",
+            "creationDate": "2025-11-04T13:21:00.000",
+            "originSystemCode": "GDS",
+            "flightOfferId": "1"
+          },
+          {
+            "reference": "83EDKW",
+            "creationDate": "2025-11-04T13:21:00.000",
+            "originSystemCode": "TP",
+            "flightOfferId": "1"
+          }
+        ],
+        "flightOffers": [
+          {
+            "type": "flight-offer",
+            "id": "1",
+            "source": "GDS",
+            "nonHomogeneous": false,
+            "lastTicketingDate": "2025-11-05",
+            "itineraries": [
+              {
+                "segments": [
+                  {
+                    "departure": {
+                      "iataCode": "LHR",
+                      "terminal": "2",
+                      "at": "2025-11-05T08:15:00"
+                    },
+                    "arrival": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-05T11:00:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "1351",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT2H45M",
+                    "id": "201",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 112,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  },
+                  {
+                    "departure": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-05T16:40:00"
+                    },
+                    "arrival": {
+                      "iataCode": "JFK",
+                      "terminal": "1",
+                      "at": "2025-11-05T20:05:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "209",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT8H25M",
+                    "id": "202",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 267,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "price": {
+              "currency": "USD",
+              "total": "429.53",
+              "base": "113.00",
+              "fees": [
+                {
+                  "amount": "0.00",
+                  "type": "TICKETING"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "SUPPLIER"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "FORM_OF_PAYMENT"
+                }
+              ],
+              "grandTotal": "429.53",
+              "billingCurrency": "USD"
+            },
+            "pricingOptions": {
+              "fareType": [
+                "PUBLISHED"
+              ],
+              "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+              "TP"
+            ],
+            "travelerPricings": [
+              {
+                "travelerId": "1",
+                "fareOption": "STANDARD",
+                "travelerType": "ADULT",
+                "price": {
+                  "currency": "USD",
+                  "total": "429.53",
+                  "base": "113.00",
+                  "taxes": [
+                    {
+                      "amount": "118.40",
+                      "code": "GB"
+                    },
+                    {
+                      "amount": "2.30",
+                      "code": "J9"
+                    },
+                    {
+                      "amount": "10.30",
+                      "code": "PT"
+                    },
+                    {
+                      "amount": "30.70",
+                      "code": "UB"
+                    },
+                    {
+                      "amount": "22.90",
+                      "code": "US"
+                    },
+                    {
+                      "amount": "3.84",
+                      "code": "XA"
+                    },
+                    {
+                      "amount": "7.00",
+                      "code": "XY"
+                    },
+                    {
+                      "amount": "7.39",
+                      "code": "YC"
+                    },
+                    {
+                      "amount": "25.60",
+                      "code": "YP"
+                    },
+                    {
+                      "amount": "88.10",
+                      "code": "YQ"
+                    }
+                  ],
+                  "refundableTaxes": "203.23"
+                },
+                "fareDetailsBySegment": [
+                  {
+                    "segmentId": "201",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UK0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  },
+                  {
+                    "segmentId": "202",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UK0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "travelers": [
+          {
+            "id": "1",
+            "dateOfBirth": "1990-01-01",
+            "gender": "MALE",
+            "name": {
+              "firstName": "John",
+              "lastName": "Doe"
+            },
+            "documents": [
+              {
+                "number": "X1234567",
+                "expiryDate": "2030-12-31",
+                "issuanceCountry": "ES",
+                "nationality": "ES",
+                "documentType": "PASSPORT",
+                "holder": true
+              }
+            ],
+            "contact": {
+              "purpose": "STANDARD",
+              "phones": [
+                {
+                  "deviceType": "MOBILE",
+                  "countryCallingCode": "1",
+                  "number": "+1234567890"
+                }
+              ],
+              "emailAddress": "john.doe@example.com"
+            }
+          }
+        ],
+        "ticketingAgreement": {
+          "option": "CONFIRM"
+        },
+        "automatedProcess": [
+          {
+            "code": "IMMEDIATE",
+            "queue": {
+              "number": "0",
+              "category": "0"
+            },
+            "officeId": "NCE4D31SB"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "entryId": 10,
+    "entryTime": "2025-11-05T13:08:11.376Z",
+    "bookingData": {
+      "bookingData": {
+        "type": "flight-order",
+        "id": "eJzTd9e3sIj0MPYBAAqHAjY",
+        "queuingOfficeId": "NCE4D31SB",
+        "associatedRecords": [
+          {
+            "reference": "88YH3L",
+            "creationDate": "2025-11-05T13:08:00.000",
+            "originSystemCode": "GDS",
+            "flightOfferId": "1"
+          },
+          {
+            "reference": "88YH3L",
+            "creationDate": "2025-11-05T13:08:00.000",
+            "originSystemCode": "TP",
+            "flightOfferId": "1"
+          }
+        ],
+        "flightOffers": [
+          {
+            "type": "flight-offer",
+            "id": "1",
+            "source": "GDS",
+            "nonHomogeneous": false,
+            "lastTicketingDate": "2025-11-06",
+            "itineraries": [
+              {
+                "segments": [
+                  {
+                    "departure": {
+                      "iataCode": "LHR",
+                      "terminal": "2",
+                      "at": "2025-11-19T08:15:00"
+                    },
+                    "arrival": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-19T11:00:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "1351",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT2H45M",
+                    "id": "232",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 112,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  },
+                  {
+                    "departure": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-19T16:40:00"
+                    },
+                    "arrival": {
+                      "iataCode": "JFK",
+                      "terminal": "1",
+                      "at": "2025-11-19T20:05:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "209",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT8H25M",
+                    "id": "233",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 267,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "price": {
+              "currency": "USD",
+              "total": "397.13",
+              "base": "81.00",
+              "fees": [
+                {
+                  "amount": "0.00",
+                  "type": "TICKETING"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "SUPPLIER"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "FORM_OF_PAYMENT"
+                }
+              ],
+              "grandTotal": "397.13",
+              "billingCurrency": "USD"
+            },
+            "pricingOptions": {
+              "fareType": [
+                "PUBLISHED"
+              ],
+              "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+              "TP"
+            ],
+            "travelerPricings": [
+              {
+                "travelerId": "1",
+                "fareOption": "STANDARD",
+                "travelerType": "ADULT",
+                "price": {
+                  "currency": "USD",
+                  "total": "397.13",
+                  "base": "81.00",
+                  "taxes": [
+                    {
+                      "amount": "118.20",
+                      "code": "GB"
+                    },
+                    {
+                      "amount": "2.30",
+                      "code": "J9"
+                    },
+                    {
+                      "amount": "10.30",
+                      "code": "PT"
+                    },
+                    {
+                      "amount": "30.60",
+                      "code": "UB"
+                    },
+                    {
+                      "amount": "22.90",
+                      "code": "US"
+                    },
+                    {
+                      "amount": "3.84",
+                      "code": "XA"
+                    },
+                    {
+                      "amount": "7.00",
+                      "code": "XY"
+                    },
+                    {
+                      "amount": "7.39",
+                      "code": "YC"
+                    },
+                    {
+                      "amount": "25.60",
+                      "code": "YP"
+                    },
+                    {
+                      "amount": "88.00",
+                      "code": "YQ"
+                    }
+                  ],
+                  "refundableTaxes": "202.93"
+                },
+                "fareDetailsBySegment": [
+                  {
+                    "segmentId": "232",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  },
+                  {
+                    "segmentId": "233",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "travelers": [
+          {
+            "id": "1",
+            "dateOfBirth": "1990-01-01",
+            "gender": "MALE",
+            "name": {
+              "firstName": "John",
+              "lastName": "Doe"
+            },
+            "documents": [
+              {
+                "number": "X1234567",
+                "expiryDate": "2030-12-31",
+                "issuanceCountry": "ES",
+                "nationality": "ES",
+                "documentType": "PASSPORT",
+                "holder": true
+              }
+            ],
+            "contact": {
+              "purpose": "STANDARD",
+              "phones": [
+                {
+                  "deviceType": "MOBILE",
+                  "countryCallingCode": "1",
+                  "number": "+1234567890"
+                }
+              ],
+              "emailAddress": "john.doe@example.com"
+            }
+          }
+        ],
+        "ticketingAgreement": {
+          "option": "CONFIRM"
+        },
+        "automatedProcess": [
+          {
+            "code": "IMMEDIATE",
+            "queue": {
+              "number": "0",
+              "category": "0"
+            },
+            "officeId": "NCE4D31SB"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "entryId": 11,
+    "entryTime": "2025-11-05T13:17:32.314Z",
+    "bookingData": {
+      "bookingData": {
+        "type": "flight-order",
+        "id": "eJzTd9e3sIj0MPYBAAqHAjY",
+        "queuingOfficeId": "NCE4D31SB",
+        "associatedRecords": [
+          {
+            "reference": "88YH3L",
+            "creationDate": "2025-11-05T13:08:00.000",
+            "originSystemCode": "GDS",
+            "flightOfferId": "1"
+          },
+          {
+            "reference": "88YH3L",
+            "creationDate": "2025-11-05T13:08:00.000",
+            "originSystemCode": "TP",
+            "flightOfferId": "1"
+          }
+        ],
+        "flightOffers": [
+          {
+            "type": "flight-offer",
+            "id": "1",
+            "source": "GDS",
+            "nonHomogeneous": false,
+            "lastTicketingDate": "2025-11-06",
+            "itineraries": [
+              {
+                "segments": [
+                  {
+                    "departure": {
+                      "iataCode": "LHR",
+                      "terminal": "2",
+                      "at": "2025-11-19T08:15:00"
+                    },
+                    "arrival": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-19T11:00:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "1351",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT2H45M",
+                    "id": "232",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 112,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  },
+                  {
+                    "departure": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-19T16:40:00"
+                    },
+                    "arrival": {
+                      "iataCode": "JFK",
+                      "terminal": "1",
+                      "at": "2025-11-19T20:05:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "209",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT8H25M",
+                    "id": "233",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 267,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "price": {
+              "currency": "USD",
+              "total": "397.13",
+              "base": "81.00",
+              "fees": [
+                {
+                  "amount": "0.00",
+                  "type": "TICKETING"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "SUPPLIER"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "FORM_OF_PAYMENT"
+                }
+              ],
+              "grandTotal": "397.13",
+              "billingCurrency": "USD"
+            },
+            "pricingOptions": {
+              "fareType": [
+                "PUBLISHED"
+              ],
+              "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+              "TP"
+            ],
+            "travelerPricings": [
+              {
+                "travelerId": "1",
+                "fareOption": "STANDARD",
+                "travelerType": "ADULT",
+                "price": {
+                  "currency": "USD",
+                  "total": "397.13",
+                  "base": "81.00",
+                  "taxes": [
+                    {
+                      "amount": "118.20",
+                      "code": "GB"
+                    },
+                    {
+                      "amount": "2.30",
+                      "code": "J9"
+                    },
+                    {
+                      "amount": "10.30",
+                      "code": "PT"
+                    },
+                    {
+                      "amount": "30.60",
+                      "code": "UB"
+                    },
+                    {
+                      "amount": "22.90",
+                      "code": "US"
+                    },
+                    {
+                      "amount": "3.84",
+                      "code": "XA"
+                    },
+                    {
+                      "amount": "7.00",
+                      "code": "XY"
+                    },
+                    {
+                      "amount": "7.39",
+                      "code": "YC"
+                    },
+                    {
+                      "amount": "25.60",
+                      "code": "YP"
+                    },
+                    {
+                      "amount": "88.00",
+                      "code": "YQ"
+                    }
+                  ],
+                  "refundableTaxes": "202.93"
+                },
+                "fareDetailsBySegment": [
+                  {
+                    "segmentId": "232",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  },
+                  {
+                    "segmentId": "233",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "travelers": [
+          {
+            "id": "1",
+            "dateOfBirth": "1990-01-01",
+            "gender": "MALE",
+            "name": {
+              "firstName": "John",
+              "lastName": "Doe"
+            },
+            "documents": [
+              {
+                "number": "X1234567",
+                "expiryDate": "2030-12-31",
+                "issuanceCountry": "ES",
+                "nationality": "ES",
+                "documentType": "PASSPORT",
+                "holder": true
+              }
+            ],
+            "contact": {
+              "purpose": "STANDARD",
+              "phones": [
+                {
+                  "deviceType": "MOBILE",
+                  "countryCallingCode": "1",
+                  "number": "+1234567890"
+                }
+              ],
+              "emailAddress": "john.doe@example.com"
+            }
+          }
+        ],
+        "ticketingAgreement": {
+          "option": "CONFIRM"
+        },
+        "automatedProcess": [
+          {
+            "code": "IMMEDIATE",
+            "queue": {
+              "number": "0",
+              "category": "0"
+            },
+            "officeId": "NCE4D31SB"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "entryId": 12,
+    "entryTime": "2025-11-05T13:18:42.455Z",
+    "bookingData": {
+      "bookingData": {
+        "type": "flight-order",
+        "id": "eJzTd9e3sIhy9DQFAAqLAi8",
+        "queuingOfficeId": "NCE4D31SB",
+        "associatedRecords": [
+          {
+            "reference": "88ZAI5",
+            "creationDate": "2025-11-05T13:18:00.000",
+            "originSystemCode": "GDS",
+            "flightOfferId": "2"
+          },
+          {
+            "reference": "88ZAI5",
+            "creationDate": "2025-11-05T13:18:00.000",
+            "originSystemCode": "TP",
+            "flightOfferId": "2"
+          }
+        ],
+        "flightOffers": [
+          {
+            "type": "flight-offer",
+            "id": "2",
+            "source": "GDS",
+            "nonHomogeneous": false,
+            "lastTicketingDate": "2025-11-06",
+            "itineraries": [
+              {
+                "segments": [
+                  {
+                    "departure": {
+                      "iataCode": "LHR",
+                      "terminal": "2",
+                      "at": "2025-11-25T06:00:00"
+                    },
+                    "arrival": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-25T08:45:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "1363",
+                    "aircraft": {
+                      "code": "32N"
+                    },
+                    "duration": "PT2H45M",
+                    "id": "42",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 112,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  },
+                  {
+                    "departure": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-25T16:40:00"
+                    },
+                    "arrival": {
+                      "iataCode": "JFK",
+                      "terminal": "1",
+                      "at": "2025-11-25T20:05:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "209",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT8H25M",
+                    "id": "43",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 267,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "price": {
+              "currency": "USD",
+              "total": "437.13",
+              "base": "121.00",
+              "fees": [
+                {
+                  "amount": "0.00",
+                  "type": "TICKETING"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "SUPPLIER"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "FORM_OF_PAYMENT"
+                }
+              ],
+              "grandTotal": "437.13",
+              "billingCurrency": "USD"
+            },
+            "pricingOptions": {
+              "fareType": [
+                "PUBLISHED"
+              ],
+              "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+              "TP"
+            ],
+            "travelerPricings": [
+              {
+                "travelerId": "1",
+                "fareOption": "STANDARD",
+                "travelerType": "ADULT",
+                "price": {
+                  "currency": "USD",
+                  "total": "437.13",
+                  "base": "121.00",
+                  "taxes": [
+                    {
+                      "amount": "118.20",
+                      "code": "GB"
+                    },
+                    {
+                      "amount": "2.30",
+                      "code": "J9"
+                    },
+                    {
+                      "amount": "10.30",
+                      "code": "PT"
+                    },
+                    {
+                      "amount": "30.60",
+                      "code": "UB"
+                    },
+                    {
+                      "amount": "22.90",
+                      "code": "US"
+                    },
+                    {
+                      "amount": "3.84",
+                      "code": "XA"
+                    },
+                    {
+                      "amount": "7.00",
+                      "code": "XY"
+                    },
+                    {
+                      "amount": "7.39",
+                      "code": "YC"
+                    },
+                    {
+                      "amount": "25.60",
+                      "code": "YP"
+                    },
+                    {
+                      "amount": "88.00",
+                      "code": "YQ"
+                    }
+                  ],
+                  "refundableTaxes": "202.93"
+                },
+                "fareDetailsBySegment": [
+                  {
+                    "segmentId": "42",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "LL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "L",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  },
+                  {
+                    "segmentId": "43",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "LL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "L",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "travelers": [
+          {
+            "id": "1",
+            "dateOfBirth": "1990-01-01",
+            "gender": "MALE",
+            "name": {
+              "firstName": "John",
+              "lastName": "Doe"
+            },
+            "documents": [
+              {
+                "number": "X1234567",
+                "expiryDate": "2030-12-31",
+                "issuanceCountry": "ES",
+                "nationality": "ES",
+                "documentType": "PASSPORT",
+                "holder": true
+              }
+            ],
+            "contact": {
+              "purpose": "STANDARD",
+              "phones": [
+                {
+                  "deviceType": "MOBILE",
+                  "countryCallingCode": "1",
+                  "number": "+1234567890"
+                }
+              ],
+              "emailAddress": "john.doe@example.com"
+            }
+          }
+        ],
+        "ticketingAgreement": {
+          "option": "CONFIRM"
+        },
+        "automatedProcess": [
+          {
+            "code": "IMMEDIATE",
+            "queue": {
+              "number": "0",
+              "category": "0"
+            },
+            "officeId": "NCE4D31SB"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "entryId": 13,
+    "entryTime": "2025-11-05T13:27:34.533Z",
+    "bookingData": {
+      "bookingData": {
+        "type": "flight-order",
+        "id": "eJzTd9e3sDS2CHEGAAn9Ahk",
+        "queuingOfficeId": "NCE4D31SB",
+        "associatedRecords": [
+          {
+            "reference": "8938TC",
+            "creationDate": "2025-11-05T13:27:00.000",
+            "originSystemCode": "GDS",
+            "flightOfferId": "1"
+          },
+          {
+            "reference": "8938TC",
+            "creationDate": "2025-11-05T13:27:00.000",
+            "originSystemCode": "TP",
+            "flightOfferId": "1"
+          }
+        ],
+        "flightOffers": [
+          {
+            "type": "flight-offer",
+            "id": "1",
+            "source": "GDS",
+            "nonHomogeneous": false,
+            "lastTicketingDate": "2025-11-06",
+            "itineraries": [
+              {
+                "segments": [
+                  {
+                    "departure": {
+                      "iataCode": "LHR",
+                      "terminal": "2",
+                      "at": "2025-11-19T08:15:00"
+                    },
+                    "arrival": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-19T11:00:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "1351",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT2H45M",
+                    "id": "212",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 112,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  },
+                  {
+                    "departure": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-19T16:40:00"
+                    },
+                    "arrival": {
+                      "iataCode": "JFK",
+                      "terminal": "1",
+                      "at": "2025-11-19T20:05:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "209",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT8H25M",
+                    "id": "213",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 267,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "price": {
+              "currency": "USD",
+              "total": "397.13",
+              "base": "81.00",
+              "fees": [
+                {
+                  "amount": "0.00",
+                  "type": "TICKETING"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "SUPPLIER"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "FORM_OF_PAYMENT"
+                }
+              ],
+              "grandTotal": "397.13",
+              "billingCurrency": "USD"
+            },
+            "pricingOptions": {
+              "fareType": [
+                "PUBLISHED"
+              ],
+              "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+              "TP"
+            ],
+            "travelerPricings": [
+              {
+                "travelerId": "1",
+                "fareOption": "STANDARD",
+                "travelerType": "ADULT",
+                "price": {
+                  "currency": "USD",
+                  "total": "397.13",
+                  "base": "81.00",
+                  "taxes": [
+                    {
+                      "amount": "118.20",
+                      "code": "GB"
+                    },
+                    {
+                      "amount": "2.30",
+                      "code": "J9"
+                    },
+                    {
+                      "amount": "10.30",
+                      "code": "PT"
+                    },
+                    {
+                      "amount": "30.60",
+                      "code": "UB"
+                    },
+                    {
+                      "amount": "22.90",
+                      "code": "US"
+                    },
+                    {
+                      "amount": "3.84",
+                      "code": "XA"
+                    },
+                    {
+                      "amount": "7.00",
+                      "code": "XY"
+                    },
+                    {
+                      "amount": "7.39",
+                      "code": "YC"
+                    },
+                    {
+                      "amount": "25.60",
+                      "code": "YP"
+                    },
+                    {
+                      "amount": "88.00",
+                      "code": "YQ"
+                    }
+                  ],
+                  "refundableTaxes": "202.93"
+                },
+                "fareDetailsBySegment": [
+                  {
+                    "segmentId": "212",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  },
+                  {
+                    "segmentId": "213",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "travelers": [
+          {
+            "id": "1",
+            "dateOfBirth": "1990-01-01",
+            "gender": "MALE",
+            "name": {
+              "firstName": "John",
+              "lastName": "Doe"
+            },
+            "documents": [
+              {
+                "number": "X1234567",
+                "expiryDate": "2030-12-31",
+                "issuanceCountry": "ES",
+                "nationality": "ES",
+                "documentType": "PASSPORT",
+                "holder": true
+              }
+            ],
+            "contact": {
+              "purpose": "STANDARD",
+              "phones": [
+                {
+                  "deviceType": "MOBILE",
+                  "countryCallingCode": "1",
+                  "number": "+1234567890"
+                }
+              ],
+              "emailAddress": "john.doe@example.com"
+            }
+          }
+        ],
+        "ticketingAgreement": {
+          "option": "CONFIRM"
+        },
+        "automatedProcess": [
+          {
+            "code": "IMMEDIATE",
+            "queue": {
+              "number": "0",
+              "category": "0"
+            },
+            "officeId": "NCE4D31SB"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "entryId": 14,
+    "entryTime": "2025-11-06T05:43:49.568Z",
+    "bookingData": {
+      "bookingData": {
+        "type": "flight-order",
+        "id": "eJzTd9e3cHY2dfEEAApMAiY",
+        "queuingOfficeId": "NCE4D31SB",
+        "associatedRecords": [
+          {
+            "reference": "8CC5DI",
+            "creationDate": "2025-11-06T05:43:00.000",
+            "originSystemCode": "GDS",
+            "flightOfferId": "1"
+          },
+          {
+            "reference": "8CC5DI",
+            "creationDate": "2025-11-06T05:43:00.000",
+            "originSystemCode": "TP",
+            "flightOfferId": "1"
+          }
+        ],
+        "flightOffers": [
+          {
+            "type": "flight-offer",
+            "id": "1",
+            "source": "GDS",
+            "nonHomogeneous": false,
+            "lastTicketingDate": "2025-11-07",
+            "itineraries": [
+              {
+                "segments": [
+                  {
+                    "departure": {
+                      "iataCode": "LHR",
+                      "terminal": "2",
+                      "at": "2025-11-19T08:15:00"
+                    },
+                    "arrival": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-19T11:00:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "1351",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT2H45M",
+                    "id": "230",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 112,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  },
+                  {
+                    "departure": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-19T16:40:00"
+                    },
+                    "arrival": {
+                      "iataCode": "JFK",
+                      "terminal": "1",
+                      "at": "2025-11-19T20:05:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "209",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT8H25M",
+                    "id": "231",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 267,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "price": {
+              "currency": "USD",
+              "total": "396.03",
+              "base": "81.00",
+              "fees": [
+                {
+                  "amount": "0.00",
+                  "type": "TICKETING"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "SUPPLIER"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "FORM_OF_PAYMENT"
+                }
+              ],
+              "grandTotal": "396.03",
+              "billingCurrency": "USD"
+            },
+            "pricingOptions": {
+              "fareType": [
+                "PUBLISHED"
+              ],
+              "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+              "TP"
+            ],
+            "travelerPricings": [
+              {
+                "travelerId": "1",
+                "fareOption": "STANDARD",
+                "travelerType": "ADULT",
+                "price": {
+                  "currency": "USD",
+                  "total": "396.03",
+                  "base": "81.00",
+                  "taxes": [
+                    {
+                      "amount": "117.70",
+                      "code": "GB"
+                    },
+                    {
+                      "amount": "2.30",
+                      "code": "J9"
+                    },
+                    {
+                      "amount": "10.30",
+                      "code": "PT"
+                    },
+                    {
+                      "amount": "30.50",
+                      "code": "UB"
+                    },
+                    {
+                      "amount": "22.90",
+                      "code": "US"
+                    },
+                    {
+                      "amount": "3.84",
+                      "code": "XA"
+                    },
+                    {
+                      "amount": "7.00",
+                      "code": "XY"
+                    },
+                    {
+                      "amount": "7.39",
+                      "code": "YC"
+                    },
+                    {
+                      "amount": "25.50",
+                      "code": "YP"
+                    },
+                    {
+                      "amount": "87.60",
+                      "code": "YQ"
+                    }
+                  ],
+                  "refundableTaxes": "202.23"
+                },
+                "fareDetailsBySegment": [
+                  {
+                    "segmentId": "230",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  },
+                  {
+                    "segmentId": "231",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "travelers": [
+          {
+            "id": "1",
+            "dateOfBirth": "1990-01-01",
+            "gender": "MALE",
+            "name": {
+              "firstName": "John",
+              "lastName": "Doe"
+            },
+            "documents": [
+              {
+                "number": "X1234567",
+                "expiryDate": "2030-12-31",
+                "issuanceCountry": "ES",
+                "nationality": "ES",
+                "documentType": "PASSPORT",
+                "holder": true
+              }
+            ],
+            "contact": {
+              "purpose": "STANDARD",
+              "phones": [
+                {
+                  "deviceType": "MOBILE",
+                  "countryCallingCode": "1",
+                  "number": "+1234567890"
+                }
+              ],
+              "emailAddress": "john.doe@example.com"
+            }
+          }
+        ],
+        "ticketingAgreement": {
+          "option": "CONFIRM"
+        },
+        "automatedProcess": [
+          {
+            "code": "IMMEDIATE",
+            "queue": {
+              "number": "0",
+              "category": "0"
+            },
+            "officeId": "NCE4D31SB"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "entryId": 15,
+    "entryTime": "2025-11-06T05:51:33.773Z",
+    "bookingData": {
+      "bookingData": {
+        "type": "flight-order",
+        "id": "eJzTd9e3cHY2dfEEAApMAiY",
+        "queuingOfficeId": "NCE4D31SB",
+        "associatedRecords": [
+          {
+            "reference": "8CC5DI",
+            "creationDate": "2025-11-06T05:43:00.000",
+            "originSystemCode": "GDS",
+            "flightOfferId": "1"
+          },
+          {
+            "reference": "8CC5DI",
+            "creationDate": "2025-11-06T05:43:00.000",
+            "originSystemCode": "TP",
+            "flightOfferId": "1"
+          }
+        ],
+        "flightOffers": [
+          {
+            "type": "flight-offer",
+            "id": "1",
+            "source": "GDS",
+            "nonHomogeneous": false,
+            "lastTicketingDate": "2025-11-07",
+            "itineraries": [
+              {
+                "segments": [
+                  {
+                    "departure": {
+                      "iataCode": "LHR",
+                      "terminal": "2",
+                      "at": "2025-11-19T08:15:00"
+                    },
+                    "arrival": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-19T11:00:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "1351",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT2H45M",
+                    "id": "230",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 112,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  },
+                  {
+                    "departure": {
+                      "iataCode": "LIS",
+                      "terminal": "1",
+                      "at": "2025-11-19T16:40:00"
+                    },
+                    "arrival": {
+                      "iataCode": "JFK",
+                      "terminal": "1",
+                      "at": "2025-11-19T20:05:00"
+                    },
+                    "carrierCode": "TP",
+                    "number": "209",
+                    "aircraft": {
+                      "code": "32Q"
+                    },
+                    "duration": "PT8H25M",
+                    "id": "231",
+                    "numberOfStops": 0,
+                    "co2Emissions": [
+                      {
+                        "weight": 267,
+                        "weightUnit": "KG",
+                        "cabin": "ECONOMY"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "price": {
+              "currency": "USD",
+              "total": "396.03",
+              "base": "81.00",
+              "fees": [
+                {
+                  "amount": "0.00",
+                  "type": "TICKETING"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "SUPPLIER"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "FORM_OF_PAYMENT"
+                }
+              ],
+              "grandTotal": "396.03",
+              "billingCurrency": "USD"
+            },
+            "pricingOptions": {
+              "fareType": [
+                "PUBLISHED"
+              ],
+              "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+              "TP"
+            ],
+            "travelerPricings": [
+              {
+                "travelerId": "1",
+                "fareOption": "STANDARD",
+                "travelerType": "ADULT",
+                "price": {
+                  "currency": "USD",
+                  "total": "396.03",
+                  "base": "81.00",
+                  "taxes": [
+                    {
+                      "amount": "117.70",
+                      "code": "GB"
+                    },
+                    {
+                      "amount": "2.30",
+                      "code": "J9"
+                    },
+                    {
+                      "amount": "10.30",
+                      "code": "PT"
+                    },
+                    {
+                      "amount": "30.50",
+                      "code": "UB"
+                    },
+                    {
+                      "amount": "22.90",
+                      "code": "US"
+                    },
+                    {
+                      "amount": "3.84",
+                      "code": "XA"
+                    },
+                    {
+                      "amount": "7.00",
+                      "code": "XY"
+                    },
+                    {
+                      "amount": "7.39",
+                      "code": "YC"
+                    },
+                    {
+                      "amount": "25.50",
+                      "code": "YP"
+                    },
+                    {
+                      "amount": "87.60",
+                      "code": "YQ"
+                    }
+                  ],
+                  "refundableTaxes": "202.23"
+                },
+                "fareDetailsBySegment": [
+                  {
+                    "segmentId": "230",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  },
+                  {
+                    "segmentId": "231",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "UL0DSI05",
+                    "brandedFare": "DISCOUNT",
+                    "class": "U",
+                    "includedCheckedBags": {
+                      "quantity": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "travelers": [
+          {
+            "id": "1",
+            "dateOfBirth": "1990-01-01",
+            "gender": "MALE",
+            "name": {
+              "firstName": "John",
+              "lastName": "Doe"
+            },
+            "documents": [
+              {
+                "number": "X1234567",
+                "expiryDate": "2030-12-31",
+                "issuanceCountry": "ES",
+                "nationality": "ES",
+                "documentType": "PASSPORT",
+                "holder": true
+              }
+            ],
+            "contact": {
+              "purpose": "STANDARD",
+              "phones": [
+                {
+                  "deviceType": "MOBILE",
+                  "countryCallingCode": "1",
+                  "number": "+1234567890"
+                }
+              ],
+              "emailAddress": "john.doe@example.com"
+            }
+          }
+        ],
+        "ticketingAgreement": {
+          "option": "CONFIRM"
+        },
+        "automatedProcess": [
+          {
+            "code": "IMMEDIATE",
+            "queue": {
+              "number": "0",
+              "category": "0"
+            },
+            "officeId": "NCE4D31SB"
+          }
+        ]
+      }
+    }
   }
 ]

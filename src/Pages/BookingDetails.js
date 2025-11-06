@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Card, Row, Col, Form, Button } from 'react-bootstrap';
-import { FaClock } from "react-icons/fa";
+import { Card, Row, Col, Form, Button, Container } from 'react-bootstrap';
+import { FaClock, FaPlaneDeparture, FaPlaneArrival } from "react-icons/fa";
 import airlineData from '../data/airlines.json';
 import airports from '../data/airports.json';
 import { useSessionTimeout } from '../Components/SessionTimeoutContext';
+import './BookingDetails.css';
 
 
 const airportNameMap = airports.reduce((map, airport) => {
@@ -146,26 +147,33 @@ const BookingDetails = ({ confirmedPricingData }) => {
   }
 
   return (
-    <div className="container mt-4">
-      <h1 className="mb-2 display-6">Flight Details</h1>
+    <div className="booking-details-container">
+      <div className="booking-details-header">
+        <Container>
+          <h1 className="booking-details-title">Flight Details</h1>
+        </Container>
+      </div>
 
-      {/* Divider */}
-      <hr className="my-3 border-top border-secondary-subtle" />
+      <Container>
 
-      <Row className="mb-2">
+      <Row className="mb-4">
         {/* Flight Details (75%) */}
         <Col md={9}>
           {flight?.itineraries?.map((itinerary, i) => (
-            <Card key={i} className="mb-4 shadow-sm border-0">
-              <Card.Body className="bg-light p-4 rounded">
-                <h5 className="fw-bold fs-4 mb-3">
-                  {itinerary.segments[0].departure.iataCode} to{" "}
-                  {itinerary.segments[itinerary.segments.length - 1].arrival.iataCode} –{" "}
-                  {new Date(itinerary.segments[0].departure.at).toLocaleDateString("en-US", {
-                    weekday: "short",
-                    month: "short",
-                    day: "numeric",
-                  })}
+            <Card key={i} className="flight-details-card">
+              <Card.Body className="flight-card-body">
+                <h5 className="flight-route-header">
+                  <FaPlaneDeparture className="me-2" style={{ color: '#2563eb' }} />
+                  {itinerary.segments[0].departure.iataCode} →{" "}
+                  {itinerary.segments[itinerary.segments.length - 1].arrival.iataCode}
+                  <FaPlaneArrival className="ms-2" style={{ color: '#2563eb' }} />
+                  <span className="ms-3" style={{ fontSize: '1rem', color: '#64748b', fontWeight: 500 }}>
+                    {new Date(itinerary.segments[0].departure.at).toLocaleDateString("en-US", {
+                      weekday: "short",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </span>
                 </h5>
 
                 {itinerary.segments.map((segment, index) => {
@@ -181,43 +189,43 @@ const BookingDetails = ({ confirmedPricingData }) => {
 
                   return (
                     <div key={index}>
-                      <div className="p-4 border rounded mb-3 bg-white shadow-sm">
-                        <div className="mb-2 fs-5 fw-semibold">
+                      <div className="segment-card">
+                        <div className="segment-time">
                           {departure.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}{" "}
-                          <span className="text-muted mx-2">—</span>
+                          <span className="mx-2" style={{ color: '#94a3b8', fontWeight: 400 }}>—</span>
                           {arrival.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                         </div>
 
-                        <div className="mb-2 small text-muted fs-6">
-                          <span className="fw-semibold">{segment.departure.iataCode}</span>{" "}
+                        <div className="segment-route">
+                          <span className="fw-bold" style={{ color: '#1e293b' }}>{segment.departure.iataCode}</span>{" "}
                           {airportNameMap[segment.departure.iataCode] || "Unknown Airport"} →{" "}
-                          <span className="fw-semibold">{segment.arrival.iataCode}</span>{" "}
+                          <span className="fw-bold" style={{ color: '#1e293b' }}>{segment.arrival.iataCode}</span>{" "}
                           {airportNameMap[segment.arrival.iataCode] || "Unknown Airport"}
                         </div>
 
-                        <div className="mb-3 text-muted d-flex align-items-center fs-6">
-                          <FaClock className="me-2" />
-                          Flight Time:{" "}
+                        <div className="segment-info d-flex align-items-center mb-3">
+                          <FaClock className="me-2" style={{ color: '#f59e0b' }} />
+                          <strong>Flight Time:</strong>{" "}
                           <span className="ms-1">
                             {segment.duration.replace("PT", "").toLowerCase()}
                           </span>
                         </div>
 
-                        <div className="d-flex justify-content-between fs-6">
+                        <div className="d-flex justify-content-between align-items-center" style={{ flexWrap: 'wrap', gap: '16px' }}>
                           <div className="d-flex align-items-center">
                             <img
                               src={`https://content.airhex.com/content/logos/airlines_${segment.carrierCode}_64_64_s.png`}
                               alt={segment.carrierCode}
-                              width="32"
-                              height="32"
-                              className="me-2"
+                              width="40"
+                              height="40"
+                              className="me-3 airline-logo"
                               onError={(e) => (e.target.style.display = "none")}
                             />
                             <div>
-                              <div className="fw-semibold">
+                              <div className="fw-bold" style={{ fontSize: '1rem', color: '#1e293b', marginBottom: '4px' }}>
                                 {getAirlineName(segment.carrierCode)}
                               </div>
-                              <div>
+                              <div className="segment-info">
                                 <strong>Flight</strong> {segment.number} ·{" "}
                                 <strong>Aircraft</strong> {segment.aircraft?.code || "N/A"}
                               </div>
@@ -225,24 +233,25 @@ const BookingDetails = ({ confirmedPricingData }) => {
                           </div>
 
                           <div className="text-end">
-                            <div>
-                              <span className="fw-semibold">Cabin:</span>{" "}
-                              {segment.cabin || "Coach"}
+                            <div className="mb-2">
+                              <span className="fw-semibold" style={{ color: '#1e293b' }}>Cabin:</span>{" "}
+                              <span style={{ color: '#2563eb', fontWeight: 600 }}>{segment.cabin || "Coach"}</span>
                             </div>
                             <div>
-                              <span className="fw-semibold">Brand:</span>{" "}
-                              {segment.brandName || "Economy Light"}
+                              <span className="fw-semibold" style={{ color: '#1e293b' }}>Brand:</span>{" "}
+                              <span style={{ color: '#64748b' }}>{segment.brandName || "Economy Light"}</span>
                             </div>
                           </div>
                         </div>
                       </div>
 
                       {stopOver && (
-                        <div className="mb-4 ms-2 ps-3 border-start border-3 fs-6">
+                        <div className="stopover-info">
+                          <FaClock className="me-2" style={{ color: '#2563eb' }} />
                           <span className="fw-semibold">Stop {index + 1}:</span>{" "}
                           {Math.floor(stopOver / 60)}h {stopOver % 60}m in{" "}
                           <strong>{segment.arrival.iataCode}</strong>{" "}
-                          <span className="text-muted">
+                          <span>
                             {airportNameMap[segment.arrival.iataCode] || "Unknown Airport"}
                           </span>
                         </div>
@@ -257,22 +266,19 @@ const BookingDetails = ({ confirmedPricingData }) => {
 
         {/* Pricing Details (25%) */}
         <Col md={3}>
-          <div className="bg-light p-3 rounded border shadow-sm" style={{ minHeight: "40%" }}>
-            <h4 className="border-bottom pb-2 mb-3 fw-semibold text-dark">Pricing Details</h4>
+          <div className="pricing-card">
+            <h4 className="pricing-title">Pricing Details</h4>
 
             {Object.entries(travelerCountMap).map(([type, count], index) => {
               const pricing = flight.travelerPricings.find(tp => tp.travelerType === type);
               return (
-                <div key={index} className="mb-4">
-                  <h6 className="mb-2">
-                    <strong>{count}x Passenger{count > 1 ? 's' : ''}:</strong> {type}
-                  </h6>
-                  {/* <p className="mb-1">
-            <strong>Base:</strong> {pricing?.price.base} {pricing?.price.currency}
-          </p> */}
-                  <p className="mb-1">
-                    <strong>Total:</strong> {pricing?.price.total} {pricing?.price.currency}
-                  </p>
+                <div key={index} className="pricing-item">
+                  <div className="pricing-item-title">
+                    {count}x {type} {count > 1 ? 'Passengers' : 'Passenger'}
+                  </div>
+                  <div className="pricing-item-price">
+                    {pricing?.price.total} {pricing?.price.currency}
+                  </div>
                 </div>
               );
             })}
@@ -282,19 +288,19 @@ const BookingDetails = ({ confirmedPricingData }) => {
       </Row>
 
 
-      <hr />
-      <h3 className='fw-semibold'>Passenger Details</h3>
+      <hr className="section-divider" />
+      <h2 className='fw-bold mb-4' style={{ fontSize: '2rem', color: '#1e293b', letterSpacing: '-0.02em' }}>Passenger Details</h2>
 
       {passengers?.map((passenger, index) => (
-        <Card key={index} className="mb-4 border-primary shadow-sm rounded-3">
-          <Card.Body className="p-4">
-            <h4 className="mb-3 fw-bold text">Passenger {index + 1}</h4>
+        <Card key={index} className="passenger-card">
+          <Card.Body className="passenger-card-body">
+            <h4 className="passenger-number">Passenger {index + 1}</h4>
 
             <Form>
               {/* Personal Details */}
-              <div className="mb-2">
+              <div className="mb-4">
                 <h5 className="fw-bold mb-4">
-                  <span className="badge bg-dark  fs-6 px-3 py-2">
+                  <span className="section-badge">
                     Personal Details
                   </span>
                 </h5>
@@ -302,43 +308,47 @@ const BookingDetails = ({ confirmedPricingData }) => {
                 <Row className="gy-3">
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label className="fw-semibold">First Name</Form.Label>
+                      <Form.Label className="booking-form-label">First Name</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Enter first name"
                         value={passenger.firstName}
                         onChange={(e) => handleChange(index, 'firstName', e.target.value)}
+                        className="booking-form-control"
                       />
                     </Form.Group>
                   </Col>
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label className="fw-semibold">Last Name</Form.Label>
+                      <Form.Label className="booking-form-label">Last Name</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Enter last name"
                         value={passenger.lastName}
                         onChange={(e) => handleChange(index, 'lastName', e.target.value)}
+                        className="booking-form-control"
                       />
                     </Form.Group>
                   </Col>
 
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label className="fw-semibold">Date of Birth</Form.Label>
+                      <Form.Label className="booking-form-label">Date of Birth</Form.Label>
                       <Form.Control
                         type="date"
                         value={passenger.dob}
                         onChange={(e) => handleChange(index, 'dob', e.target.value)}
+                        className="booking-form-control"
                       />
                     </Form.Group>
                   </Col>
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label className="fw-semibold">Gender</Form.Label>
+                      <Form.Label className="booking-form-label">Gender</Form.Label>
                       <Form.Select
                         value={passenger.gender}
                         onChange={(e) => handleChange(index, 'gender', e.target.value)}
+                        className="booking-form-select"
                       >
                         <option value="">Select gender</option>
                         <option value="MALE">Male</option>
@@ -349,10 +359,11 @@ const BookingDetails = ({ confirmedPricingData }) => {
 
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label className="fw-semibold">Nationality</Form.Label>
+                      <Form.Label className="booking-form-label">Nationality</Form.Label>
                       <Form.Select
                         value={passenger.nationality}
                         onChange={(e) => handleChange(index, 'nationality', e.target.value)}
+                        className="booking-form-select"
                       >
                         <option value="">Select nationality</option>
                         {countries.map((country, idx) => (
@@ -367,32 +378,34 @@ const BookingDetails = ({ confirmedPricingData }) => {
               </div>
 
               {/* Contact Details */}
-              <div className="mb-5 mt-5">
+              <div className="mb-4 mt-5">
               <h5 className="fw-bold mb-4">
-  <span className="badge bg-dark fs-6 px-3 py-2">
+  <span className="section-badge">
     Contact Details
   </span>
 </h5>
                 <Row className="gy-3">
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label className="fw-semibold">Email</Form.Label>
+                      <Form.Label className="booking-form-label">Email</Form.Label>
                       <Form.Control
                         type="email"
                         placeholder="Enter email address"
                         value={passenger.email}
                         onChange={(e) => handleChange(index, 'email', e.target.value)}
+                        className="booking-form-control"
                       />
                     </Form.Group>
                   </Col>
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label className="fw-semibold">Phone Number</Form.Label>
+                      <Form.Label className="booking-form-label">Phone Number</Form.Label>
                       <Form.Control
                         type="tel"
                         placeholder="Enter phone number"
                         value={passenger.phone}
                         onChange={(e) => handleChange(index, 'phone', e.target.value)}
+                        className="booking-form-control"
                       />
                     </Form.Group>
                   </Col>
@@ -402,39 +415,42 @@ const BookingDetails = ({ confirmedPricingData }) => {
               {/* Passport Details */}
               <div>
               <h5 className="fw-bold mb-4">
-  <span className="badge bg-dark fs-6 px-3 py-2">
+  <span className="section-badge">
     Passport Details
   </span>
 </h5>
                 <Row className="gy-3">
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label className="fw-semibold">Passport Number</Form.Label>
+                      <Form.Label className="booking-form-label">Passport Number</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Enter passport number"
                         value={passenger.passportNumber}
                         onChange={(e) => handleChange(index, 'passportNumber', e.target.value)}
+                        className="booking-form-control"
                       />
                     </Form.Group>
                   </Col>
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label className="fw-semibold">Expiry Date</Form.Label>
+                      <Form.Label className="booking-form-label">Expiry Date</Form.Label>
                       <Form.Control
                         type="date"
                         value={passenger.passportExpiry}
                         onChange={(e) => handleChange(index, 'passportExpiry', e.target.value)}
+                        className="booking-form-control"
                       />
                     </Form.Group>
                   </Col>
 
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label className="fw-semibold">Issuance Country</Form.Label>
+                      <Form.Label className="booking-form-label">Issuance Country</Form.Label>
                       <Form.Select
                         value={passenger.issuanceCountry}
                         onChange={(e) => handleChange(index, 'issuanceCountry', e.target.value)}
+                        className="booking-form-select"
                       >
                         <option value="">Select country</option>
                         {countries.map((country, idx) => (
@@ -454,9 +470,8 @@ const BookingDetails = ({ confirmedPricingData }) => {
 
 
 
-      <br />
-      <div className="d-flex justify-content-center mt-2">
-        <Button variant="primary" size="lg" onClick={handleSubmitBooking}>
+      <div className="d-flex justify-content-center mt-5 mb-5">
+        <Button variant="primary" size="lg" onClick={handleSubmitBooking} className="confirm-booking-btn">
           Confirm Booking
         </Button>
       </div>
@@ -477,7 +492,7 @@ const BookingDetails = ({ confirmedPricingData }) => {
   </Card>
 )} */}
 
-      <div style={{ marginBottom: '100px' }}></div>
+      </Container>
     </div>
   );
 };

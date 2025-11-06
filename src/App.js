@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from './theme';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import HomePage from './Pages/HomePage';
@@ -121,10 +124,12 @@ const AppContent = () => {
 };
 
 const App = () => (
-  <Router>
-    <AppContent />
-    <HotelApitude />
-  </Router>
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <Router>
+      <AppContent />
+    </Router>
+  </ThemeProvider>
 );
 
 export default App;

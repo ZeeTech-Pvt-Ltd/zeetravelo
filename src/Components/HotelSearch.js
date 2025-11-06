@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import HotelBg from '../Assets/HotelBg.jpg';
 import './HotelSearch.css';
+import './AirportSearch.css';
 import HotelModal from './HotelModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHotel, faMapMarkerAlt, faBarcode, faPlane, faRulerCombined, faClock, faDollarSign, faGlobe } from '@fortawesome/free-solid-svg-icons';
@@ -115,16 +116,19 @@ const HotelSearch = () => {
     <>
       <div
         style={{
-          backgroundImage: `url(${HotelBg})`,
+          backgroundImage: `linear-gradient(rgba(11, 17, 30, 0.45), rgba(11, 17, 30, 0.45)), url(${HotelBg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          paddingTop: '50px',
-          paddingBottom: '80px',
+          paddingTop: '70px',
+          paddingBottom: '48px',
         }}
       >
-        <div className="position-relative z-2" style={{marginLeft:'-5px'}}>
-          <Container className="my-5">
-            <div className="kayak-tab-container">
+        <Container className="my-3">
+          <div className="site-container text-center" style={{ marginBottom: '16px' }}>
+            <h1 className="hero-title">Find your perfect hotel</h1>
+            <p className="hero-subtitle">Compare prices and book your stay</p>
+          </div>
+          <div className="kayak-tab-container">
               <NavLink
                 to="/flights"
                 className={({ isActive }) => `kayak-tab ${isActive ? 'active' : ''}`}
@@ -166,10 +170,9 @@ const HotelSearch = () => {
               </NavLink>
             </div>
 
-            {/* <HotelOffersButton /> */}
-            <Form className="border rounded p-4 shadow-sm text-dark" style={{ backgroundColor: 'rgba(221, 221, 221, 0.95)' }}>
-
-              <Row className="g-3 align-items-end">
+            <Card className="bookme-search-panel p-4 shadow-sm search-card">
+              <Form>
+              <Row className="align-items-end">
                 <Col md={4} className="position-relative">
                   <Form.Group controlId="location">
                     <Form.Label className="fw-semibold">Location</Form.Label>
@@ -274,10 +277,10 @@ const HotelSearch = () => {
                   </Button>
                 </Col>
               </Row>
-            </Form>
+              </Form>
+            </Card>
           </Container>
         </div>
-      </div>
 
       <div className="position-relative" style={{
         backgroundColor: hotels.length > 0 ? "rgb(245, 245, 245)" : "white",

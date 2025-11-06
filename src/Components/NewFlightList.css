@@ -1,61 +1,113 @@
 /* components/NewFlightList.css */
-.body{
-  background-color: grey;
-}
 .flight-card {
-    
-    transition: transform 0.2s;
-  }
-  
-  .flight-card:hover {
-    transform: scale(1.02);
-  }
-  
-  .flight-card .confirmed-info {
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .confirmed-info {
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #ffffff;
-  }
-  
-  .segment-detail {
-    background-color: #f8f9fa;
-  }
-  
-  .transition-collapse {
-    transition: all 0.3s ease;
-  }
-  .collapse {
-    display: none;
-  }
-  .show {
-    display: block;
-  }
+  border: 1px solid rgba(77, 157, 224, 0.2) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 50%, #f0f9ff 100%) !important;
+  overflow: hidden;
+  position: relative;
+}
 
-    .no-flights-message {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #f9f9f9;
+.flight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.2), 0 6px 16px rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(77, 157, 224, 0.4) !important;
+}
+
+.flight-card .confirmed-info {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.confirmed-info {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.segment-detail {
+  background-color: #f6f8fb;
   border-radius: 12px;
-  margin-top: 30px;
-  color: #333;
+  padding: 16px;
+}
+
+.transition-collapse {
+  transition: all 0.3s ease;
+}
+
+.collapse {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.no-flights-message {
+  text-align: center;
+  padding: 48px 24px;
+  background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+  border-radius: 16px;
+  margin-top: 32px;
+  color: var(--ink-900);
+  border: 1px solid #eef2f7;
 }
 
 .no-flights-message h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--ink-900);
 }
 
 .no-flights-message p {
   font-size: 1rem;
-  color: #666;
+  color: var(--ink-500);
+}
+
+/* Flight type badge */
+.flight-type-badge {
+  background: linear-gradient(135deg, rgba(77, 157, 224, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+  color: #2563eb;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: 2px solid rgba(77, 157, 224, 0.3);
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+}
+
+/* Flight card body improvements */
+.flight-card .card-body {
+  padding: 28px !important;
+  background: transparent !important;
+}
+
+/* Enhanced font sizes for flight card content */
+.flight-card .row {
+  font-size: 1.1rem;
+}
+
+.flight-card img {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+/* Improved expanded details */
+.flight-card .border {
+  border-color: #eef2f7 !important;
+  border-radius: 12px !important;
+}
+
+.flight-card .bg-light {
+  background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%) !important;
 }
 
   

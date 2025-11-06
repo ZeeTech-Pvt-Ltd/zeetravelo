@@ -125,12 +125,13 @@ const TravelBanner = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#fdfdfd', padding: '20px 0' }}>
+    <div>
       <div className="recommended-header-container text-center">
         <h5 className="recommended-header-title">Travel Deals</h5>
       </div>
 
-      <div className="travel-banner">
+      <div className="popular-flights-container deals-container">
+        <div className="popular-flights-grid">
         {destinations.map((destination, index) => (
           <div
             key={index}
@@ -143,12 +144,13 @@ const TravelBanner = () => {
               alt={destination.name}
               className="travel-image"
             />
-            <div className="travel-info">
-              <h3 className="text-center mb-2">{currentCity} → {destination.name}</h3>
-              <p>{destination.description}</p>
+            <div className="travel-content">
+              <h3 className="travel-title">{currentCity} → {destination.name}</h3>
+              <p className="travel-desc">{destination.description}</p>
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

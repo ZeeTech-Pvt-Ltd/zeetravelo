@@ -41,3 +41,121 @@
     color: white;
   }
   
+/* New Bookme-like hero and panel styling */
+.bookme-search-panel {
+  background: linear-gradient(135deg, rgba(77, 157, 224, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%);
+  border: none;
+  border-radius: 20px;
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25), 0 8px 16px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.bookme-search-panel .form-label {
+  color: #eaf1ff;
+}
+
+.bookme-search-panel .form-control,
+.bookme-search-panel .form-select {
+  background: #ffffff;
+  border-color: #e3e8ff;
+  color: #111827;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+.bookme-search-panel .form-control:focus,
+.bookme-search-panel .form-select:focus {
+  border-color: #4d9de0;
+  box-shadow: 0 4px 12px rgba(77, 157, 224, 0.2);
+  outline: none;
+}
+
+.bookme-search-panel .btn-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  border: none;
+  padding: 12px 32px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+  transition: all 0.2s ease;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.bookme-search-panel .btn-primary:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.5);
+}
+.bookme-search-panel .btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+.bookme-search-panel .btn-outline-secondary {
+  border-color: #d1d7ff;
+}
+
+/* Trip type pills */
+.bookme-trip-pills .form-check {
+  margin-right: 8px;
+}
+.bookme-trip-pills .form-check-input { display: none; }
+.bookme-trip-pills .form-check-label {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.20);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+}
+.bookme-trip-pills .form-check-label:hover {
+  background: rgba(255,255,255,0.30);
+  transform: translateY(-1px);
+}
+.bookme-trip-pills .form-check-input:checked + .form-check-label {
+  background: #ffffff;
+  color: #2563eb;
+  border-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+  font-weight: 700;
+}
+
+/* Hero headings */
+.hero-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+}
+.hero-subtitle {
+  font-size: 1rem;
+  color: #e5ecff;
+  margin: 0 0 12px 0;
+}
+
+/* Section wrappers for colorful home scheme */
+.section {
+  padding: 32px 0;
+  margin-bottom: 0;
+}
+.section-gradient-a {
+  background: linear-gradient(180deg, #e8f4fd 0%, #f0f9ff 100%);
+}
+.section-gradient-b {
+  background: linear-gradient(180deg, #e0f2fe 0%, #e8f4fd 100%);
+}
+.section-gradient-c {
+  background: linear-gradient(180deg, #dbeafe 0%, #e0f2fe 100%);
+}
+
+/* Improve contrast of headings on gradient sections */
+.section-gradient-a .recommended-header-title,
+.section-gradient-b .recommended-header-title,
+.section-gradient-c .recommended-header-title { color: #0f172a; }

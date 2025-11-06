@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import axios from 'axios';
 import FlightBg from '../Assets/FlightBg.jpg';
@@ -24,6 +24,7 @@ import TravelBanner from '../Components/TravelBanner';
 import Footer from '../Components/Footer';
 import PopularFlights from '../Components/PopularFlight';
 import TravelRecommend from '../Components/TravelRecommend';
+import WhyBookWithUs from '../Components/WhyBookWithUs';
 
 
 function Home({ header = 'Search Flights', setSearchParams }) {
@@ -51,6 +52,7 @@ function Home({ header = 'Search Flights', setSearchParams }) {
 
 
   const navigate = useNavigate();
+  const location = useLocation();
 
 
   const adjustCount = (setter, newValue) => {
@@ -78,7 +80,13 @@ function Home({ header = 'Search Flights', setSearchParams }) {
     return match ? match[1] : '';
   };
 
-
+  const formatDateToYYYYMMDDLocal = (date) => {
+    if (!date) return null;
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
 
   const handleSearch = () => {
     // startTimer();
@@ -87,8 +95,8 @@ function Home({ header = 'Search Flights', setSearchParams }) {
         const params = {
           origin: extractIataCode(from),
           destination: extractIataCode(to),
-          date: departureDate.toISOString().split('T')[0],
-          returnDate: tripType === 'return' && returnDate ? returnDate.toISOString().split('T')[0] : '',
+          date: formatDateToYYYYMMDDLocal(departureDate),
+          returnDate: tripType === 'return' && returnDate ? formatDateToYYYYMMDDLocal(returnDate) : '',
           adults,
           children,
           infants,
@@ -167,18 +175,22 @@ function Home({ header = 'Search Flights', setSearchParams }) {
     <div>
     <div
       style={{
-        backgroundImage: `url(${FlightBg})`,
+        backgroundImage: `linear-gradient(rgba(11, 17, 30, 0.45), rgba(11, 17, 30, 0.45)), url(${FlightBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        paddingTop: '50px',
-        paddingBottom: '40px',
+        paddingTop: '70px',
+        paddingBottom: '48px',
       }}
     >
-      <Container className="my-5">
+      <Container className="my-3">
+      <div className="site-container text-center" style={{ marginBottom: '16px' }}>
+        <h1 className="hero-title">Find your next flight</h1>
+        <p className="hero-subtitle">Compare deals across airlines and book in minutes</p>
+      </div>
       <div className="kayak-tab-container">
       <NavLink
         to="/flights"
-        className={({ isActive }) => `kayak-tab ${isActive ? 'active' : ''}`}
+        className={({ isActive }) => `kayak-tab ${isActive || location.pathname === '/' ? 'active' : ''}`}
       >
         <FaPlaneDeparture className="icon" />
         <span>Flights</span>
@@ -217,13 +229,16 @@ function Home({ header = 'Search Flights', setSearchParams }) {
       </NavLink>
     </div>
 
-        <Card className="p-4 shadow-sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
+        <Card className="bookme-search-panel p-4 shadow-sm search-card">
           <Form ref={dropdownRef}>
-            <Row className="mb-3">
+            <Row className="mb-3 bookme-trip-pills">
               <Col>
-                <Form.Check inline label="One-way" type="radio" name="tripType" value="oneway" checked={tripType === 'oneway'} onChange={(e) => setTripType(e.target.value)} />
-                <Form.Check inline label="Return" type="radio" name="tripType" value="return" checked={tripType === 'return'} onChange={(e) => setTripType(e.target.value)} />
-                <Form.Check inline label="Multi-city" type="radio" name="tripType" value="multicity" checked={tripType === 'multicity'} disabled />
+                <Form.Check inline type="radio" name="tripType" value="oneway" id="trip-oneway" checked={tripType === 'oneway'} onChange={(e) => setTripType(e.target.value)} />
+                <Form.Label htmlFor="trip-oneway" className="form-check-label">One Way</Form.Label>
+                <Form.Check inline type="radio" name="tripType" value="return" id="trip-return" checked={tripType === 'return'} onChange={(e) => setTripType(e.target.value)} />
+                <Form.Label htmlFor="trip-return" className="form-check-label">Round Trip</Form.Label>
+                <Form.Check inline type="radio" name="tripType" value="multicity" id="trip-multi" checked={tripType === 'multicity'} disabled />
+                <Form.Label htmlFor="trip-multi" className="form-check-label">Multi-City</Form.Label>
               </Col>
             </Row>
 
@@ -402,9 +417,18 @@ function Home({ header = 'Search Flights', setSearchParams }) {
       </Container>
       
     </div>
-    <TravelRecommend/>
-    <TravelBanner/>
-    <PopularFlights/>
+    <div className="section section-gradient-a">
+      <TravelRecommend/>
+    </div>
+    <div className="section section-gradient-b">
+      <TravelBanner/>
+    </div>
+    <div className="section section-gradient-c">
+      <PopularFlights/>
+    </div>
+    <div className="section section-gradient-a">
+      <WhyBookWithUs />
+    </div>
     <Footer/>
     </div>
   );

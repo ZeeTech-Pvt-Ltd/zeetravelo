@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './TravelRecommend.css';
+import './TravelBanner.css';
 import airports from '../data/New_airports.json';
 import { Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -132,7 +133,7 @@ const TravelRecommend = () => {
     };
 
     return (
-        <div style={{ backgroundColor: '#f8f9fa', padding: '20px 0' }}>
+        <div>
             <div className="recommended-header-container text-center">
                 <h5 className="recommended-header-title">Recommended Travel Sites</h5>
             </div>
@@ -147,25 +148,26 @@ const TravelRecommend = () => {
                     <p>No recommendations found based on your location.</p>
                 </div>
             ) : (
-                <div className="travel-banner">
-                    {recommended.map((place, idx) => (
-                        <div
-                            key={idx}
-                            className="travel-card"
-                            onClick={() => handleCardClick(place)}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            <img
-                                className="travel-image"
-                                src={images[place.name] || 'https://via.placeholder.com/300x200?text=Destination'}
-                                alt={place.name}
-                            />
-                            <div className="travel-info">
-                                <h3 className="text-center">{currentCity.charAt(0).toUpperCase() + currentCity.slice(1)} → {place.name}</h3>
-
+                <div className="popular-flights-container deals-container">
+                    <div className="popular-flights-grid">
+                        {recommended.map((place, idx) => (
+                            <div
+                                key={idx}
+                                className="travel-card"
+                                onClick={() => handleCardClick(place)}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <img
+                                    className="travel-image"
+                                    src={images[place.name] || 'https://via.placeholder.com/300x200?text=Destination'}
+                                    alt={place.name}
+                                />
+                                <div className="travel-content">
+                                    <h3 className="travel-title">{currentCity.charAt(0).toUpperCase() + currentCity.slice(1)} → {place.name}</h3>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             )}
         </div>

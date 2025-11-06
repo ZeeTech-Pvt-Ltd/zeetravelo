@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <>
       {/* Top Navbar */}
-      <div className="top-navbar d-flex align-items-center justify-content-start px-3 gap-3">
+      <div className="top-navbar app-navbar d-flex align-items-center justify-content-start px-3 gap-3">
 
         <div className="hamburger-icon" onClick={toggleSidebar}>
           <FaBars size={24} />
@@ -34,9 +34,9 @@ const Navbar = () => {
       {isOpen && <div className="overlay" onClick={closeSidebar}></div>}
 
       {/* Sidebar */}
-      <div className={`sidebar bg-white shadow-sm ${isOpen ? 'open' : ''}`}>
+      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
         <div className="sidebar-header d-flex justify-content-between align-items-center px-3 py-3">
-          <span className="fw-bold text-primary">ZeeTravelo</span>
+          <span className="fw-bold">ZeeTravelo</span>
           <FaTimes className="close-icon" onClick={toggleSidebar} />
         </div>
 

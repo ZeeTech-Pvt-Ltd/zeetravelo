@@ -17,6 +17,7 @@ import { FaPlaneDeparture, FaHotel, FaCarSide, FaShip, FaTags } from 'react-icon
 import { NavLink } from 'react-router-dom';
 import CarBg from '../Assets/CarBg.jpg';
 import CarOffers from './CarOffers';
+import './AirportSearch.css';
 
 function CarSearchForm({ header }) {
   const [pickupDate, setPickupDate] = useState(null);
@@ -70,15 +71,19 @@ function CarSearchForm({ header }) {
     <>
       <div
         style={{
-          backgroundImage: `url(${CarBg})`,
+          backgroundImage: `linear-gradient(rgba(11, 17, 30, 0.45), rgba(11, 17, 30, 0.45)), url(${CarBg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          paddingTop: '50px',
-          paddingBottom: '40px',
+          paddingTop: '70px',
+          paddingBottom: '48px',
         }}
       >
-        <Container>
-          <div className="kayak-tab-container mb-4">
+        <Container className="my-3">
+          <div className="site-container text-center" style={{ marginBottom: '16px' }}>
+            <h1 className="hero-title">Find your perfect car</h1>
+            <p className="hero-subtitle">Compare deals and book your rental</p>
+          </div>
+          <div className="kayak-tab-container">
             <NavLink to="/flights" className={({ isActive }) => `kayak-tab ${isActive ? 'active' : ''}`}>
               <FaPlaneDeparture className="icon" />
               <span>Flights</span>
@@ -101,13 +106,11 @@ function CarSearchForm({ header }) {
             </NavLink>
           </div>
 
-          <Card className="p-4 shadow-sm">
-            <h2 className="text-center mb-4">{header}</h2>
-
+          <Card className="bookme-search-panel p-4 shadow-sm search-card">
             <Form>
               <Row className="mb-3">
                 <Col md={6}>
-                  <Form.Label>Location</Form.Label>
+                  <Form.Label className="fw-semibold">Location</Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Enter City or Pickup Location"
@@ -139,7 +142,7 @@ function CarSearchForm({ header }) {
 
               <Row className="align-items-end g-3 mb-3">
                 <Col md={3}>
-                  <Form.Label>Pickup Date</Form.Label>
+                  <Form.Label className="fw-semibold">Pickup Date</Form.Label>
                   <DatePicker
                     selected={pickupDate}
                     onChange={(date) => setPickupDate(date)}
@@ -149,7 +152,7 @@ function CarSearchForm({ header }) {
                 </Col>
 
                 <Col md={3}>
-                  <Form.Label>Dropoff Date</Form.Label>
+                  <Form.Label className="fw-semibold">Dropoff Date</Form.Label>
                   <DatePicker
                     selected={dropoffDate}
                     onChange={(date) => setDropoffDate(date)}

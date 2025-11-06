@@ -1,30 +1,284 @@
+/* Modern Filter Sidebar Styling */
+.filter-card {
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+  padding: 16px !important;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.filter-header {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px !important;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px !important;
+  display: block;
+}
+
+.filter-divider {
+  border: none;
+  border-top: 1px dashed #e2e8f0;
+  margin: 12px 0 !important;
+}
+
+/* Price Range */
+.price-slider {
+  margin: 4px 0;
+}
+
+.price-values {
+  margin-top: 4px;
+}
+
+.price-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Layover Buttons */
+.layover-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.layover-btn {
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  min-width: 60px;
+  text-align: center;
+}
+
+.layover-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.layover-btn.selected {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Time Grid */
+.time-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.time-box {
+  padding: 12px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-box:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.time-box.selected {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+.time-icon {
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
+
+.time-box.selected .time-icon svg {
+  color: #ffffff !important;
+}
+
+.time-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.time-box.selected .time-label {
+  color: #ffffff;
+}
+
+.time-value {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.time-box.selected .time-value {
+  color: #e5ecff;
+}
+
+/* Airlines */
+.airlines-section {
+  padding-left: 8px;
+}
+
+.airline-check {
+  padding: 3px 0;
+}
+
+.airline-check .form-check-input {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.airline-check .form-check-input:checked {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+.airline-check .form-check-label {
+  font-size: 0.9rem;
+  color: #1e293b;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+/* Slider Styling */
+.rc-slider {
+  margin: 0 8px !important;
+  padding: 0 !important;
+}
+
 .rc-slider-track {
-    background-color: black;
-  }
-  
- /* For the slider marks (dots) */
+  background-color: #2563eb !important;
+  height: 3px !important;
+}
+
+.rc-slider-rail {
+  background-color: #e2e8f0 !important;
+  height: 3px !important;
+}
+
+.rc-slider-handle {
+  width: 14px !important;
+  height: 14px !important;
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  margin-top: -5.5px !important;
+  margin-left: -7px !important;
+}
+
+.rc-slider-handle:hover,
+.rc-slider-handle:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3) !important;
+}
+
+.rc-slider-handle:active {
+  border-color: #2563eb !important;
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4) !important;
+}
+
 .rc-slider-dot {
-    background-color: black !important;  /* Change marks dots to black */
-    border-color: black !important;      /* Ensure marks dots border is also black */
-  }
-  
-  /* For the handle dots (the circles you drag) */
-  .rc-slider-handle {
-    background-color: black !important;  /* Change handle circle color to black */
-    border-color: black !important;      /* Ensure handle border is also black */
-  }
-  
-  /* Optional: Change the color when handles are hovered or focused */
-  .rc-slider-handle:hover,
-  .rc-slider-handle:focus {
-    background-color: black !important;
-    border-color: black !important;
-  }
-  
-  /* Change the unselected handles (starting and ending dots) to black */
-  .rc-slider-handle:not(.rc-slider-handle-clicked) {
-    background-color: black !important;
-    border-color: black !important;
-  }
-  
- 
+  display: none !important;
+}
+
+/* Slider marks styling */
+.rc-slider-mark {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.rc-slider-mark-text {
+  font-size: 0.75rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+/* Adjust last mark (24:00) position to 95% */
+.rc-slider-mark-text:last-child {
+  left: 95% !important;
+  transform: translateX(-100%);
+}
+
+/* Section spacing */
+.filter-section {
+  margin-bottom: 12px;
+}
+
+.filter-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Custom scrollbar - hidden by default, shown on hover */
+.sidebar-scrollable::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.sidebar-scrollable:hover::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-scrollable::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.sidebar-scrollable::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.sidebar-scrollable::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* For Firefox */
+.sidebar-scrollable {
+  scrollbar-width: none;
+}
+
+.sidebar-scrollable:hover {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+/* Airport time section spacing */
+.airport-time-section {
+  margin-bottom: 40px !important;
+}
+
+.airport-time-section:last-child {
+  margin-bottom: 12px !important;
+}
