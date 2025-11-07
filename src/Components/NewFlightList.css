@@ -1,12 +1,102 @@
 /* components/NewFlightList.css */
+
+/* Layout Fix for Flight Results Page */
+.flight-results-container {
+  padding-left: 12px;
+  padding-right: 12px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  .flight-results-container {
+    overflow-x: hidden !important;
+  }
+}
+
+.flight-results-container .row {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .flight-results-container .row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+  
+  .flight-results-container .row > [class*="col-md-9"],
+  .flight-results-container .row > [class*="col-lg-9"] {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+  }
+  
+  .flight-results-container .row > [class*="col-md-3"],
+  .flight-results-container .row > [class*="col-lg-3"] {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .flight-results-container {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .flight-results-container .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100%;
+  }
+  
+  .flight-results-container .row > [class*="col-"] {
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
+
 .flight-card {
   border: 1px solid rgba(77, 157, 224, 0.2) !important;
-  border-radius: 20px !important;
+  border-radius: 16px !important;
   box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
   transition: all 0.3s ease;
   background: linear-gradient(135deg, #ffffff 0%, #f8fbff 50%, #f0f9ff 100%) !important;
   overflow: hidden;
   position: relative;
+  max-width: 100%;
+  margin-bottom: 16px !important;
+}
+
+/* Responsive flight card */
+@media (max-width: 767px) {
+  .flight-card {
+    border-radius: 12px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .flight-card .card-body {
+    padding: 12px 16px !important;
+  }
 }
 
 .flight-card:hover {
@@ -86,13 +176,87 @@
 
 /* Flight card body improvements */
 .flight-card .card-body {
-  padding: 28px !important;
+  padding: 16px 20px !important;
   background: transparent !important;
+  font-size: 0.9rem;
 }
 
-/* Enhanced font sizes for flight card content */
+/* Responsive flight card body */
+@media (max-width: 767px) {
+  .flight-card {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .flight-card .card-body {
+    padding: 12px 16px !important;
+    font-size: 0.85rem;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .flight-card .row {
+    font-size: 0.85rem;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+  
+  .flight-card .row > [class*="col-"] {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .flight-type-badge {
+    font-size: 0.9rem !important;
+    padding: 8px 16px !important;
+    display: block;
+    text-align: center;
+  }
+  
+  .segment-detail {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+  
+  .segment-detail > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 12px;
+  }
+  
+  .flight-select-btn {
+    width: 100% !important;
+    padding: 10px 24px !important;
+    font-size: 0.875rem !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .flight-card h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  /* Ensure proper spacing for Show Details button */
+  .flight-card .text-center.mt-3 {
+    margin-top: 16px !important;
+    padding-top: 8px !important;
+  }
+  
+  /* Ensure no horizontal overflow */
+  .flight-card * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Reduced font sizes for flight card content */
 .flight-card .row {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .flight-card img {

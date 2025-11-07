@@ -2,28 +2,28 @@ import React from 'react';
 import { FaHandHoldingUsd, FaCreditCard, FaHeadset, FaShieldAlt } from 'react-icons/fa';
 import './WhyBookWithUs.css';
 
-const features = [
-  {
+  const features = [
+    {
     icon: <FaHandHoldingUsd size={40} />,
-    title: 'Affordable Flight Deals',
-    description: 'Save big with exclusive discounts on domestic and international flights.',
-  },
-  {
+      title: 'Affordable Flight Deals',
+      description: 'Save big with exclusive discounts on domestic and international flights.',
+    },
+    {
     icon: <FaCreditCard size={40} />,
-    title: 'Pay in Your Currency',
-    description: 'Book flights using 17+ supported currencies worldwide for your convenience.',
-  },
-  {
+      title: 'Pay in Your Currency',
+      description: 'Book flights using 17+ supported currencies worldwide for your convenience.',
+    },
+    {
     icon: <FaHeadset size={40} />,
-    title: '24/7 Customer Support',
-    description: 'Enjoy round-the-clock support for all your travel needs and queries.',
-  },
+      title: '24/7 Customer Support',
+      description: 'Enjoy round-the-clock support for all your travel needs and queries.',
+    },
   {
     icon: <FaShieldAlt size={40} />,
     title: 'Secure Payments',
     description: 'Your transactions are protected with industry‑standard encryption.',
   },
-];
+  ];
 
 const WhyBookWithUs = () => {
   return (
@@ -42,7 +42,7 @@ const WhyBookWithUs = () => {
               <div className="travel-desc" style={{ color: '#e5ecff', lineHeight: '1.6' }}>{f.description}</div>
             </div>
           </div>
-        ))}
+          ))}
       </div>
     </div>
   );

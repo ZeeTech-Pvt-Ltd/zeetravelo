@@ -79,3 +79,51 @@
   color: var(--ink-500);
   font-weight: 500;
 }
+
+/* Responsive Sort Options */
+@media (max-width: 767px) {
+  .sort-options-wrapper {
+    gap: 8px;
+    margin-bottom: 16px !important;
+    padding: 0 12px;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .sort-card {
+    min-width: 100px;
+    max-width: 100%;
+    flex: 1 1 calc(33.333% - 6px);
+    padding: 12px 16px;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+  
+  .sort-card-title {
+    font-size: 0.875rem;
+    margin-bottom: 4px;
+  }
+  
+  .sort-card-price {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+  }
+  
+  .sort-card-duration {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .sort-options-wrapper {
+    padding: 0 12px;
+  }
+  
+  .sort-card {
+    flex: 1 1 100% !important;
+    margin-bottom: 8px;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}

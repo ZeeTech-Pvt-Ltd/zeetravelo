@@ -175,8 +175,8 @@ const HotelSearch = () => {
 
             <Card className="bookme-search-panel p-4 shadow-sm search-card">
               <Form>
-              <Row className="align-items-end">
-                <Col md={4} className="position-relative">
+              <Row className="align-items-end g-3">
+                <Col xs={12} sm={6} md={4} lg={4} className="position-relative">
                   <Form.Group controlId="location">
                     <Form.Label className="fw-semibold">Location</Form.Label>
                     <Form.Control
@@ -217,7 +217,7 @@ const HotelSearch = () => {
                   </Form.Group>
                 </Col>
 
-                <Col md={4}>
+                <Col xs={12} sm={6} md={4} lg={4}>
                   <Form.Group controlId="dateRange">
                     <Form.Label className="fw-semibold">Check-In & Check-Out</Form.Label>
                     <DatePicker
@@ -236,7 +236,7 @@ const HotelSearch = () => {
                   </Form.Group>
                 </Col>
 
-                <Col md={1}>
+                <Col xs={6} sm={3} md={1} lg={1}>
                   <Form.Group controlId="guests">
                     <Form.Label className="fw-semibold">Guests</Form.Label>
                     <Form.Select
@@ -253,7 +253,7 @@ const HotelSearch = () => {
                   </Form.Group>
                 </Col>
 
-                <Col md={1}>
+                <Col xs={6} sm={3} md={1} lg={1}>
                   <Form.Group controlId="rooms">
                     <Form.Label className="fw-semibold">Rooms</Form.Label>
                     <Form.Select
@@ -270,11 +270,12 @@ const HotelSearch = () => {
                   </Form.Group>
                 </Col>
 
-                <Col md={2}>
+                <Col xs={12} sm={12} md={2} lg={2} className="search-button-col">
                   <Button
                     variant="primary"
                     onClick={handleSearch}
                     disabled={loading || !cityCode || !checkInDate || !checkOutDate}
+                    className="w-100"
                   >
                     {loading ? <Spinner animation="border" size="sm" /> : 'Search'}
                   </Button>

@@ -14,7 +14,7 @@ const SidebarFilters = ({
   availableStops = ['0', '1', '2+'],
 }) => {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1200);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [airlineCounts, setAirlineCounts] = useState({});
   const [airlineOptions, setAirlineOptions] = useState([]);
 
@@ -36,7 +36,7 @@ const SidebarFilters = ({
   
   
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1200);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -108,9 +108,7 @@ const SidebarFilters = ({
     top: '72px',
     alignSelf: 'flex-start',
     zIndex: 1000,
-    maxHeight: 'calc(100vh - 100px)',
-    overflowY: 'auto',
-    overflowX: 'hidden',
+    width: '100%',
   };
 
   const totalFlights = Array.isArray(flightData) ? flightData.length : 0;
@@ -131,7 +129,7 @@ const SidebarFilters = ({
       )}
 
       <Collapse in={!isMobile || showMobileFilters}>
-        <div style={sidebarStyle} className="sidebar-scrollable">
+        <div style={sidebarStyle}>
           <Card className="shadow-sm border-0 filter-card">
             <h5 className="mb-3 fw-bold filter-header">Filters</h5>
 
@@ -157,10 +155,9 @@ const SidebarFilters = ({
             <div className="mb-3 filter-section">
               <Form.Label className="fw-bold mb-2 filter-label">Number of Layover</Form.Label>
               <div className="layover-buttons">
-                {['Non-stop', '1', '2', '3', 'Any'].map(layover => {
+                {['Non-stop', '1', '2', '3'].map(layover => {
                   const stopsSize = filters.stops?.size || 0;
                   const isSelected = 
-                    (layover === 'Any' && stopsSize === 0) ||
                     (layover === 'Non-stop' && filters.stops?.has('0')) ||
                     (layover === '1' && filters.stops?.has('1')) ||
                     (layover === '2' && filters.stops?.has('2')) ||
@@ -172,12 +169,10 @@ const SidebarFilters = ({
                       className={`layover-btn ${isSelected ? 'selected' : ''}`}
                       onClick={() => {
                         const updatedStops = new Set();
-                        if (layover !== 'Any') {
-                          if (layover === 'Non-stop') {
-                            updatedStops.add('0');
-                          } else {
-                            updatedStops.add(layover);
-                          }
+                        if (layover === 'Non-stop') {
+                          updatedStops.add('0');
+                        } else {
+                          updatedStops.add(layover);
                         }
                         onFiltersChange({ ...filters, stops: updatedStops });
                       }}
@@ -187,6 +182,14 @@ const SidebarFilters = ({
                   );
                 })}
               </div>
+              <button
+                className={`layover-btn layover-btn-any ${filters.stops?.size === 0 ? 'selected' : ''}`}
+                onClick={() => {
+                  onFiltersChange({ ...filters, stops: new Set() });
+                }}
+              >
+                Any
+              </button>
             </div>
             <hr className="filter-divider" />
 

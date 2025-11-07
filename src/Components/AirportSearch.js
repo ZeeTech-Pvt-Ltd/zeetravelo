@@ -67,10 +67,21 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
   const [loading, setLoading] = useState(false);
 
 
-  const adjustCount = (type, value) => {
-    if (type === 'adults') setAdults(prev => Math.max(1, prev + value));
-    if (type === 'children') setChildren(prev => Math.max(0, prev + value));
-    if (type === 'infants') setInfants(prev => Math.max(0, prev + value));
+  const adjustCount = (setter, newValue) => {
+    if (newValue < 0) return;
+    
+    // Calculate the new total with the updated value
+    let newTotal;
+    if (setter === setAdults) {
+      newTotal = newValue + children + infants;
+      if (newTotal <= 9 && newValue >= 1) setAdults(newValue);
+    } else if (setter === setChildren) {
+      newTotal = adults + newValue + infants;
+      if (newTotal <= 9 && newValue >= 0) setChildren(newValue);
+    } else if (setter === setInfants) {
+      newTotal = adults + children + newValue;
+      if (newTotal <= 9 && newValue >= 0) setInfants(newValue);
+    }
   };
 
 
@@ -256,18 +267,18 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
             <Row className="mb-3 bookme-trip-pills">
               <Col>
                 <Form.Check inline type="radio" name="tripType" value="oneway" id="trip-oneway" checked={tripType === 'oneway'} onChange={(e) => setTripType(e.target.value)} />
-                <Form.Label htmlFor="trip-oneway" className="form-check-label">One Way</Form.Label>
+                <Form.Label htmlFor="trip-oneway" className={`form-check-label ${tripType === 'oneway' ? 'active' : ''}`}>One Way</Form.Label>
                 <Form.Check inline type="radio" name="tripType" value="return" id="trip-return" checked={tripType === 'return'} onChange={(e) => setTripType(e.target.value)} />
-                <Form.Label htmlFor="trip-return" className="form-check-label">Round Trip</Form.Label>
+                <Form.Label htmlFor="trip-return" className={`form-check-label ${tripType === 'return' ? 'active' : ''}`}>Round Trip</Form.Label>
                 <Form.Check inline type="radio" name="tripType" value="multicity" id="trip-multi" checked={tripType === 'multicity'} disabled />
-                <Form.Label htmlFor="trip-multi" className="form-check-label">Multi-City</Form.Label>
+                <Form.Label htmlFor="trip-multi" className={`form-check-label ${tripType === 'multicity' ? 'active' : ''}`}>Multi-City</Form.Label>
               </Col>
             </Row>
 
             {error && <Alert variant="danger">{error}</Alert>}
 
-            <Row className="align-items-end">
-              <Col md={2} className="position-relative">
+            <Row className="align-items-end g-3">
+              <Col xs={12} sm={6} md={2} lg={2} className="position-relative">
                 <Form.Label className="fw-semibold">From</Form.Label>
                 <Form.Control
                   type="text"
@@ -280,7 +291,7 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
                   }}
                 />
                 {showFromSuggestions && fromSuggestions.length > 0 && (
-                  <ListGroup className="position-absolute w-100" style={{ zIndex: 2000, minWidth: '350px' }}>
+                  <ListGroup className="position-absolute w-100 airport-suggestions" style={{ zIndex: 9999, minWidth: '350px' }}>
                     {fromSuggestions.map((sug) => (
                       <ListGroup.Item
                         key={sug.id}
@@ -297,9 +308,10 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
                 )}
               </Col>
 
-              <Col md="auto" className="d-flex align-items-end">
+              <Col xs="auto" sm="auto" md="auto" lg="auto" className="d-flex align-items-end pb-2">
                 <Button
                   variant="light"
+                  className="swap-button"
                   onClick={() => {
                     const temp = from;
                     setFrom(to);
@@ -311,7 +323,7 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
                 </Button>
               </Col>
 
-              <Col md={2} className="position-relative">
+              <Col xs={12} sm={6} md={2} lg={2} className="position-relative">
                 <Form.Label className="fw-semibold">To</Form.Label>
                 <Form.Control
                   type="text"
@@ -324,7 +336,7 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
                   }}
                 />
                 {showToSuggestions && toSuggestions.length > 0 && (
-                  <ListGroup className="position-absolute w-100" style={{ zIndex: 2000, minWidth: '350px' }}>
+                  <ListGroup className="position-absolute w-100 airport-suggestions" style={{ zIndex: 9999, minWidth: '350px' }}>
                     {toSuggestions.map((sug) => (
                       <ListGroup.Item
                         key={sug.id}
@@ -344,7 +356,7 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
 
               {/* Date picker(s) */}
               {tripType === 'return' ? (
-                <Col md={3} className="d-flex flex-column">
+                <Col xs={12} sm={6} md={3} lg={3} className="d-flex flex-column">
                   <Form.Label className="mb-1 fw-semibold">Departure & Return</Form.Label>
                   <DatePicker
                     selectsRange
@@ -358,10 +370,11 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
                     placeholderText="Departure - Return"
                     minDate={new Date()}
                     monthsShown={2}
+                    popperClassName="react-datepicker-popper-custom"
                   />
                 </Col>
               ) : (
-                <Col md={3}>
+                <Col xs={12} sm={6} md={3} lg={3}>
                   <Form.Label className="fw-semibold">Departure</Form.Label>
                   <DatePicker
                     selected={departureDate}
@@ -369,13 +382,13 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
                     className="form-control"
                     placeholderText="Departure Date"
                     minDate={new Date()}
-
+                    popperClassName="react-datepicker-popper-custom"
                   />
                 </Col>
               )}
 
               {/* Passengers & Class */}
-              <Col md={tripType === 'return' ? 3 : 3} className="position-relative" ref={dropdownRef}>
+              <Col xs={12} sm={6} md={2} lg={2} className="position-relative" ref={dropdownRef}>
                 <Form.Label className="fw-semibold">Passengers & Class</Form.Label>
                 <div className="dropdown w-100">
                   <Button
@@ -390,33 +403,103 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
                   </Button>
 
                   {showDropdown && (
-                    <div className="dropdown-menu show p-3 shadow" style={{ zIndex: 1050, width: '100%', maxHeight: '300px', overflowY: 'auto' }}>
-                      {['Adults', 'Children', 'Infants'].map((type, idx) => {
-                        const count = { Adults: adults, Children: children, Infants: infants }[type];
-                        const setCount = { Adults: setAdults, Children: setChildren, Infants: setInfants }[type];
-                        return (
-                          <div className="d-flex justify-content-between align-items-center mb-2" key={idx}>
-                            <span>{type}</span>
-                            <div className="d-flex align-items-center gap-2">
-                              <Button variant="outline-secondary" size="sm" onClick={() => adjustCount(setCount, count - 1)} disabled={count <= 0}>–</Button>
-                              <span>{count}</span>
-                              <Button variant="outline-secondary" size="sm" onClick={() => adjustCount(setCount, count + 1)} disabled={adults + children + infants >= 9}>+</Button>
+                    <div className="dropdown-menu show p-4 shadow passengers-dropdown" style={{ zIndex: 9999, width: '100%', minWidth: '320px', maxHeight: '400px', overflowY: 'auto' }}>
+                      <div className="mb-3">
+                        <h6 className="fw-bold mb-3" style={{ color: '#1e293b', fontSize: '0.95rem' }}>Passengers</h6>
+                        {['Adults', 'Children', 'Infants'].map((type, idx) => {
+                          const count = { Adults: adults, Children: children, Infants: infants }[type];
+                          const setCount = { Adults: setAdults, Children: setChildren, Infants: setInfants }[type];
+                          const total = adults + children + infants;
+                          const isMaxReached = total >= 9;
+                          const isMinReached = (type === 'Adults' && count <= 1) || (type !== 'Adults' && count <= 0);
+                          
+                          return (
+                            <div className="d-flex justify-content-between align-items-center mb-3" key={idx}>
+                              <div>
+                                <span className="fw-semibold" style={{ color: '#1e293b', fontSize: '0.9rem' }}>{type}</span>
+                                {type === 'Infants' && (
+                                  <div className="small text-muted" style={{ fontSize: '0.75rem' }}>(Under 2 years)</div>
+                                )}
+                              </div>
+                              <div className="d-flex align-items-center gap-3">
+                                <Button 
+                                  variant="outline-secondary" 
+                                  size="sm" 
+                                  onClick={() => adjustCount(setCount, count - 1)} 
+                                  disabled={isMinReached}
+                                  className="passenger-btn"
+                                  style={{ 
+                                    minWidth: '36px', 
+                                    height: '36px',
+                                    borderRadius: '8px',
+                                    border: '1.5px solid #e5e7eb',
+                                    fontWeight: '600',
+                                    fontSize: '1.1rem',
+                                    padding: '0'
+                                  }}
+                                >
+                                  –
+                                </Button>
+                                <span className="fw-bold" style={{ minWidth: '30px', textAlign: 'center', color: '#1e293b', fontSize: '1rem' }}>{count}</span>
+                                <Button 
+                                  variant="outline-secondary" 
+                                  size="sm" 
+                                  onClick={() => adjustCount(setCount, count + 1)} 
+                                  disabled={isMaxReached}
+                                  className="passenger-btn"
+                                  style={{ 
+                                    minWidth: '36px', 
+                                    height: '36px',
+                                    borderRadius: '8px',
+                                    border: '1.5px solid #e5e7eb',
+                                    fontWeight: '600',
+                                    fontSize: '1.1rem',
+                                    padding: '0'
+                                  }}
+                                >
+                                  +
+                                </Button>
+                              </div>
                             </div>
+                          );
+                        })}
+                        <div className="mt-3 pt-3 border-top">
+                          <div className="small text-muted mb-2">
+                            <strong>Total:</strong> {adults + children + infants} {adults + children + infants === 1 ? 'passenger' : 'passengers'} (Max: 9)
                           </div>
-                        );
-                      })}
+                        </div>
+                      </div>
 
-                      <Form.Group className="mt-3">
-                        <Form.Label>Class</Form.Label>
-                        <Form.Select value={travelClass} onChange={(e) => setTravelClass(e.target.value)}>
+                      <Form.Group className="mt-4 pt-3 border-top">
+                        <Form.Label className="fw-semibold mb-2" style={{ color: '#1e293b', fontSize: '0.9rem' }}>Travel Class</Form.Label>
+                        <Form.Select 
+                          value={travelClass} 
+                          onChange={(e) => setTravelClass(e.target.value)}
+                          style={{
+                            borderRadius: '8px',
+                            border: '1.5px solid #e5e7eb',
+                            padding: '10px 12px',
+                            fontSize: '0.9rem'
+                          }}
+                        >
                           <option value="Economy">Economy</option>
                           <option value="Business">Business</option>
                           <option value="First">First</option>
                         </Form.Select>
                       </Form.Group>
 
-                      <div className="text-end mt-3">
-                        <Button variant="primary" size="sm" onClick={() => setShowDropdown(false)}>
+                      <div className="text-end mt-4">
+                        <Button 
+                          variant="primary" 
+                          size="sm" 
+                          onClick={() => setShowDropdown(false)}
+                          style={{
+                            padding: '10px 24px',
+                            borderRadius: '8px',
+                            fontWeight: '600',
+                            fontSize: '0.9rem'
+                          }}
+                        >
                           Apply
                         </Button>
                       </div>
@@ -426,8 +509,8 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
               </Col>
 
               {/* Search Button */}
-              <Col md={1}>
-                <Button variant="primary" onClick={handleSearch} disabled={loading || !from.trim()}>
+              <Col xs={12} sm={12} md={2} lg={2} className="search-button-col">
+                <Button variant="primary" onClick={handleSearch} disabled={loading || !from.trim()} className="w-100">
                   {loading ? <Spinner animation="border" size="sm" /> : 'Search'}
                 </Button>
               </Col>

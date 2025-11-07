@@ -402,11 +402,10 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
     );
 
   return (
-    <Container className="my-5">
-      <Row>
+    <Container fluid className="px-0 px-md-3 my-3 my-md-5 flight-results-container">
+      <Row className="g-0 g-md-3 mx-0">
         {/* Sidebar Filters on the left */}
-        <Col md={3} style={{ paddingRight: '24px', minWidth: '320px', maxWidth: '380px' }}>
-          <br />
+        <Col xs={12} md={3} lg={3} className="mb-3 mb-md-0">
           <SidebarFilters
             availableStops={['0', '1', '2+']}
             filters={filters}
@@ -414,12 +413,10 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
             flightData={sortedFlights}
             airlineData={airlineData} // pass as-is (array)
           />
-
-
         </Col>
 
         {/* Main Content: Sort Options and Flight List */}
-        <Col md={9}>
+        <Col xs={12} md={9} lg={9}>
           <SortOptions
             sortType={sortType}
             onSortChange={handleSortChange}
@@ -444,20 +441,20 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                 .map((flight, index) => (
 
                   <Card className="mb-3 flight-card" key={index} style={{ border: 'none', boxShadow: 'none' }}>
-                    <Card.Body className="p-4">
+                    <Card.Body className="p-3">
                       {/* Flight Type Heading */}
-                      <div className="mb-3">
+                      <div className="mb-2">
                         <span className="flight-type-badge">
                           {searchParams.tripType === 'oneway' ? 'One Way Flight' : 'Return Flight'}
                         </span>
                       </div>
 
-                      <Row className="gx-4 py-2">
-                        <Col md={9}>
+                      <Row className="gx-2 py-1 mx-0">
+                        <Col xs={12} md={9} className="px-2 px-md-3">
                           {flight.itineraries.map((itinerary, i) => (
                             <div key={i} className="mb-2">
-                              <Row className="align-items-center text-center g-3 fs-6">
-                                <Col md={4}>
+                              <Row className="align-items-center text-center g-2 g-md-3 mx-0">
+                                <Col xs={12} sm={6} md={4} className="mb-2 mb-md-0 px-2">
                                   <div className="d-flex align-items-center justify-content-center mb-1">
                                     <img
                                       src={`https://content.airhex.com/content/logos/airlines_${itinerary.segments[0].carrierCode}_64_64_s.png`}
@@ -468,34 +465,34 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                                       style={{ borderRadius: '4px' }}
                                       onError={(e) => (e.target.style.display = 'none')}
                                     />
-                                    <span className="fw-bold" style={{ fontSize: '1.25rem', color: '#1e293b' }}>
+                                    <span className="fw-bold" style={{ fontSize: '0.95rem', color: '#1e293b' }}>
                                       {getAirlineName(itinerary.segments[0].carrierCode)}
                                     </span>
                                   </div>
-                                  <div style={{ fontSize: '1.1rem', color: '#64748b', fontWeight: 600 }}>
+                                  <div style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: 600 }}>
                                     <strong>Flight No:</strong> {itinerary.segments[0].number}
                                   </div>
                                 </Col>
 
-                                <Col md={4}>
-                                  <div style={{ fontSize: '1.2rem', marginBottom: '10px', fontWeight: 700, color: '#1e293b' }}>
-                                    <FaClock className="me-1" style={{ color: '#f59e0b', fontSize: '1.1rem' }} />
+                                <Col xs={12} sm={6} md={4} className="mb-2 mb-md-0 px-2">
+                                  <div style={{ fontSize: '0.95rem', marginBottom: '8px', fontWeight: 700, color: '#1e293b' }}>
+                                    <FaClock className="me-1" style={{ color: '#f59e0b', fontSize: '0.9rem' }} />
                                     <strong>Duration:</strong>{' '}
                                     {itinerary.duration.replace('PT', '').toLowerCase()}
                                   </div>
-                                  <div style={{ fontSize: '1.1rem', color: '#64748b', fontWeight: 600 }}>
+                                  <div style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: 600 }}>
                                     <strong>Stops:</strong> {itinerary.segments.length - 1}
                                   </div>
                                 </Col>
 
-                                <Col md={4}>
-                                  <div className="fw-bold mb-2" style={{ fontSize: '1.35rem', color: '#1e293b' }}>
-                                    <FaPlaneDeparture className="me-1" style={{ color: '#2563eb', fontSize: '1.2rem' }} />
+                                <Col xs={12} sm={12} md={4} className="mb-2 mb-md-0 px-2">
+                                  <div className="fw-bold mb-2" style={{ fontSize: '1rem', color: '#1e293b' }}>
+                                    <FaPlaneDeparture className="me-1" style={{ color: '#2563eb', fontSize: '0.9rem' }} />
                                     {itinerary.segments[0].departure.iataCode} →{' '}
                                     {itinerary.segments.slice(-1)[0].arrival.iataCode}
-                                    <FaPlaneArrival className="ms-1" style={{ color: '#2563eb', fontSize: '1.2rem' }} />
+                                    <FaPlaneArrival className="ms-1" style={{ color: '#2563eb', fontSize: '0.9rem' }} />
                                   </div>
-                                  <div style={{ fontSize: '1.15rem', color: '#64748b', fontWeight: 700 }}>
+                                  <div style={{ fontSize: '0.9rem', color: '#64748b', fontWeight: 700 }}>
                                     {new Date(itinerary.segments[0].departure.at).toLocaleTimeString([], {
                                       hour: '2-digit',
                                       minute: '2-digit',
@@ -513,13 +510,14 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                         </Col>
 
                         <Col
+                          xs={12}
                           md={3}
-                          className="d-flex flex-column justify-content-center align-items-center border-start border-secondary-subtle ps-4"
+                          className="d-flex flex-column justify-content-center align-items-center border-start-0 border-md-start border-secondary-subtle ps-2 ps-md-3 mt-3 mt-md-0 pt-3 pt-md-0 px-2"
                         >
-                          <div className="text-uppercase mb-2" style={{ letterSpacing: '1px', fontSize: '1rem', fontWeight: 700, color: '#64748b' }}>
+                          <div className="text-uppercase mb-2 text-center" style={{ letterSpacing: '1px', fontSize: '0.85rem', fontWeight: 700, color: '#64748b', width: '100%' }}>
                             {flight.travelerPricings?.[0]?.fareDetailsBySegment?.[0]?.cabin || 'Class'}
                           </div>
-                          <h3 className="mb-4 fw-bold" style={{ color: '#2563eb', fontSize: '2rem', letterSpacing: '-0.02em', lineHeight: '1.2' }}>
+                          <h3 className="mb-3 fw-bold text-center" style={{ color: '#2563eb', fontSize: '1.5rem', letterSpacing: '-0.02em', lineHeight: '1.2', width: '100%' }}>
                             {flight.price.total} {flight.price.currency}
                           </h3>
 
@@ -530,7 +528,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                               setSelectedFlight(flight);
                               handleSelectWithModal(flight, index);
                             }}
-                            className="flight-select-btn"
+                            className="flight-select-btn w-100 w-md-auto mb-3"
                             style={{ 
                               background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
                               border: 'none',
@@ -565,15 +563,15 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                           return (
                             <div
                               key={itinIdx}
-                              className="mb-3 p-4 border rounded"
+                              className="mb-2 p-3 border rounded"
                               style={{
-                                borderLeft: '4px solid #2563eb',
+                                borderLeft: '3px solid #2563eb',
                                 background: 'linear-gradient(135deg, #f8fbff 0%, #ffffff 100%)',
                                 boxShadow: '0 4px 12px rgba(37, 99, 235, 0.08)',
-                                borderRadius: '12px',
+                                borderRadius: '10px',
                               }}
                             >
-                              <h6 className="fw-bold mb-3 fs-5 text-center" style={{ color: '#2563eb', letterSpacing: '-0.01em' }}>{tripLabel}</h6>
+                              <h6 className="fw-bold mb-2 text-center" style={{ color: '#2563eb', letterSpacing: '-0.01em', fontSize: '0.9rem' }}>{tripLabel}</h6>
 
                               {itinerary.segments.map((segment, segIdx, segmentsArray) => {
                                 const departureTime = new Date(segment.departure.at);
@@ -596,7 +594,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
 
                                 return (
                                   <React.Fragment key={`${itinIdx}-${segIdx}`}>
-                                    <div className="position-relative mb-3 p-4 border rounded segment-detail d-flex justify-content-between align-items-center" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f8fbff 100%)', borderRadius: '12px', borderColor: '#eef2f7' }}>
+                                    <div className="position-relative mb-2 p-3 border rounded segment-detail d-flex justify-content-between align-items-center" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f8fbff 100%)', borderRadius: '10px', borderColor: '#eef2f7' }}>
 
                                       {/* Top-right: Duration Badge */}
                                       <div className="position-absolute top-0 end-0 m-2">
@@ -613,35 +611,35 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                                           {/* Departure section */}
                                           <div className="d-flex align-items-center flex-wrap mb-2" style={{ maxWidth: '320px' }}>
                                             <div className="me-2 text-end">
-                                              <div className="text-muted fs-5">
+                                              <div className="text-muted" style={{ fontSize: '0.9rem' }}>
                                                 <strong>{departureTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</strong>
                                               </div>
-                                              <div className="text-muted small">
+                                              <div className="text-muted small" style={{ fontSize: '0.75rem' }}>
                                                 {departureTime.toLocaleDateString()}
                                               </div>
                                             </div>
-                                            <div className="text-muted small text-wrap fw-bold" style={{ maxWidth: '200px' }}>
+                                            <div className="text-muted small text-wrap fw-bold" style={{ maxWidth: '200px', fontSize: '0.8rem' }}>
                                               {airportNameMap[segment.departure.iataCode] || 'Unknown Airport'}
                                             </div>
                                           </div>
 
                                           {/* Plane icon between departure and arrival */}
                                           <div className="my-2 d-flex justify-content-center w-100">
-                                            <TbPlane style={{ transform: 'rotate(90deg)', fontSize: '2rem', opacity: 0.7, marginLeft: '20px' }} />
+                                            <TbPlane style={{ transform: 'rotate(90deg)', fontSize: '1.5rem', opacity: 0.7, marginLeft: '20px' }} />
                                           </div>
 
 
                                           {/* Arrival section */}
                                           <div className="d-flex align-items-center flex-wrap" style={{ maxWidth: '320px' }}>
                                             <div className="me-2 text-end">
-                                              <div className="text-muted fs-5">
+                                              <div className="text-muted" style={{ fontSize: '0.9rem' }}>
                                                 <strong>{arrivalTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</strong>
                                               </div>
-                                              <div className="text-muted small">
+                                              <div className="text-muted small" style={{ fontSize: '0.75rem' }}>
                                                 {arrivalTime.toLocaleDateString()}
                                               </div>
                                             </div>
-                                            <div className="text-muted small text-wrap fw-bold" style={{ maxWidth: '200px' }}>
+                                            <div className="text-muted small text-wrap fw-bold" style={{ maxWidth: '200px', fontSize: '0.8rem' }}>
                                               {airportNameMap[segment.arrival.iataCode] || 'Unknown Airport'}
                                             </div>
                                           </div>
@@ -652,18 +650,18 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                                           <img
                                             src={airlineLogoUrl}
                                             alt={segment.carrierCode}
-                                            width="60"
-                                            height="60"
+                                            width="50"
+                                            height="50"
                                             className="me-3"
                                             onError={(e) => (e.target.style.display = 'none')}
                                           />
                                           <div className="d-flex flex-column text-start">
-                                            <div className="fw-semibold fs-5">
+                                            <div className="fw-semibold" style={{ fontSize: '0.85rem' }}>
                                               {getAirlineName(segment.carrierCode)} {segment.number}
                                             </div>
-                                            <div className="text-muted">
+                                            <div className="text-muted" style={{ fontSize: '0.75rem' }}>
                                               {segment.carrierCode}
-                                              <span className="badge bg-dark ms-2 fs-6">
+                                              <span className="badge bg-dark ms-2" style={{ fontSize: '0.7rem' }}>
                                                 {segment.aircraft?.code || 'N/A'}
                                               </span>
                                             </div>
@@ -675,11 +673,11 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                                     {/* Layover info if applicable */}
                                     {layover && (
                                       <div className="text-center mb-2">
-                                        <span className="text-muted fs-6">
+                                        <span className="text-muted" style={{ fontSize: '0.8rem' }}>
                                           Layover in <strong>{airportNameMap[segment.arrival.iataCode] || 'Unknown Airport'}</strong>: {layover}
                                         </span>
                                         {layoverMinutes >= 180 && (
-                                          <span className="badge bg-danger-subtle text-danger ms-2 fs-6">Long layover</span>
+                                          <span className="badge bg-danger-subtle text-danger ms-2" style={{ fontSize: '0.7rem' }}>Long layover</span>
                                         )}
                                       </div>
                                     )}
@@ -694,7 +692,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                       
 
                       {/* Show/Hide Details Button */}
-                      <div className="text-center" style={{ marginBottom: '-10px', marginTop: '-20px' }}>
+                      <div className="text-center mt-3">
                         <Button
                           variant="link"
                           onClick={() => {
@@ -709,6 +707,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                             }
                           }}
                           className="text-decoration-none"
+                          style={{ padding: '8px 16px' }}
                         >
                           {expandedIndex === index ? (
                             <>

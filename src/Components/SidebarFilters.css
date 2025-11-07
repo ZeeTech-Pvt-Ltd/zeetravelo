@@ -49,35 +49,53 @@
 /* Layover Buttons */
 .layover-buttons {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
+  margin-bottom: 8px;
 }
 
 .layover-btn {
-  padding: 8px 16px;
-  border: 1px solid #e2e8f0;
+  padding: 6px 12px;
+  border: 1.5px solid #e2e8f0;
   border-radius: 8px;
   background: #ffffff;
   color: #1e293b;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  flex: 1;
-  min-width: 60px;
+  min-width: 50px;
+  max-width: 80px;
   text-align: center;
+  flex: 0 0 auto;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .layover-btn:hover {
   background: #f8fafc;
   border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .layover-btn.selected {
-  background: #2563eb;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   border-color: #2563eb;
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  transform: translateY(-1px);
+}
+
+.layover-btn-any {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 6px;
+  height: 36px;
 }
 
 /* Time Grid */
@@ -240,38 +258,10 @@
   margin-bottom: 0;
 }
 
-/* Custom scrollbar - hidden by default, shown on hover */
-.sidebar-scrollable::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
-
-.sidebar-scrollable:hover::-webkit-scrollbar {
-  width: 6px;
-}
-
-.sidebar-scrollable::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border-radius: 3px;
-}
-
-.sidebar-scrollable::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
-}
-
-.sidebar-scrollable::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* For Firefox */
+/* Sidebar - No scrollbar, display full size */
 .sidebar-scrollable {
-  scrollbar-width: none;
-}
-
-.sidebar-scrollable:hover {
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 #f1f5f9;
+  overflow: visible !important;
+  max-height: none !important;
 }
 
 /* Airport time section spacing */
@@ -281,4 +271,67 @@
 
 .airport-time-section:last-child {
   margin-bottom: 12px !important;
+}
+
+/* Responsive Sidebar Filters */
+@media (max-width: 767px) {
+  .filter-card {
+    padding: 12px !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .filter-header {
+    font-size: 1rem;
+    margin-bottom: 10px !important;
+  }
+  
+  .filter-label {
+    font-size: 0.85rem;
+    margin-bottom: 4px !important;
+  }
+  
+  .filter-section {
+    margin-bottom: 10px;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .filter-divider {
+    margin: 10px 0 !important;
+  }
+  
+  .layover-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    min-width: 50px;
+    flex: 1 1 auto;
+  }
+  
+  .airport-time-section {
+    margin-bottom: 24px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .airport-time-section:last-child {
+    margin-bottom: 10px !important;
+  }
+  
+  .price-value {
+    font-size: 0.85rem;
+  }
+  
+  /* Ensure filters don't overflow */
+  .filter-card * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .price-slider {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }

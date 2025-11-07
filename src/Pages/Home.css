@@ -41,89 +41,400 @@
     color: white;
   }
   
-/* New Bookme-like hero and panel styling */
+/* Professional Flight Search Form Panel */
 .bookme-search-panel {
-  background: linear-gradient(135deg, rgba(77, 157, 224, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%);
-  border: none;
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(37, 99, 235, 0.95) 50%, rgba(59, 130, 246, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   color: #ffffff;
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25), 0 8px 16px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 20px 60px rgba(37, 99, 235, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px) saturate(180%);
+  overflow: visible;
+  position: relative;
+  padding: 28px 32px !important;
+  z-index: 1;
+}
+
+.bookme-search-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
 }
 
 .bookme-search-panel .form-label {
-  color: #eaf1ff;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  opacity: 0.9;
 }
 
 .bookme-search-panel .form-control,
 .bookme-search-panel .form-select {
   background: #ffffff;
-  border-color: #e3e8ff;
-  color: #111827;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
-}
-.bookme-search-panel .form-control:focus,
-.bookme-search-panel .form-select:focus {
-  border-color: #4d9de0;
-  box-shadow: 0 4px 12px rgba(77, 157, 224, 0.2);
-  outline: none;
+  border: 1.5px solid rgba(226, 232, 240, 0.8);
+  color: #1e293b;
+  border-radius: 10px;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    inset 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 14px 18px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  min-height: 52px;
+  line-height: 1.5;
 }
 
+.bookme-search-panel .form-control::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.bookme-search-panel .form-control:focus,
+.bookme-search-panel .form-select:focus {
+  border-color: #3b82f6;
+  box-shadow: 
+    0 0 0 4px rgba(59, 130, 246, 0.15),
+    0 4px 12px rgba(59, 130, 246, 0.2),
+    inset 0 1px 2px rgba(0, 0, 0, 0.02);
+  outline: none;
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Form Row Responsive Layout */
+.bookme-search-panel .row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.bookme-search-panel .row > [class*="col-"] {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+
+/* Search Button Column - Ensure it stays inside */
+.bookme-search-panel .search-button-col {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 0 !important;
+}
+
+/* Enhanced form field spacing */
+.bookme-search-panel .form-group {
+  margin-bottom: 0;
+}
+
+/* Prominent Search Button */
 .bookme-search-panel .btn-primary {
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-  border: none;
-  padding: 12px 32px;
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 18px 36px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-  transition: all 0.2s ease;
-  font-weight: 700;
+  box-shadow: 
+    0 12px 32px rgba(30, 64, 175, 0.5),
+    0 6px 16px rgba(0, 0, 0, 0.2),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    0 0 0 0 rgba(59, 130, 246, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 800;
   font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.1em;
+  width: 100%;
+  height: 100%;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  transform: scale(1.02);
 }
+
+.bookme-search-panel .btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.bookme-search-panel .btn-primary:hover::before {
+  left: 100%;
+}
+
 .bookme-search-panel .btn-primary:hover {
-  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.5);
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 16px 40px rgba(30, 64, 175, 0.6),
+    0 8px 20px rgba(0, 0, 0, 0.25),
+    inset 0 2px 0 rgba(255, 255, 255, 0.35),
+    0 0 0 4px rgba(59, 130, 246, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
 }
+
 .bookme-search-panel .btn-primary:active {
-  transform: translateY(0);
-  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+  transform: translateY(0) scale(1.02);
+  box-shadow: 
+    0 4px 12px rgba(30, 64, 175, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.bookme-search-panel .btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: scale(1.02);
+  background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+}
+
+/* Airport Suggestions Z-Index Fix */
+.airport-suggestions {
+  z-index: 9999 !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  margin-top: 4px !important;
+}
+
+.airport-suggestions .list-group-item {
+  border: none !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  padding: 12px 16px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.airport-suggestions .list-group-item:hover {
+  background: #f3f4f6 !important;
+  transform: translateX(4px);
+}
+
+.airport-suggestions .list-group-item:last-child {
+  border-bottom: none !important;
+}
+
+/* Passengers Dropdown Styling */
+.passengers-dropdown {
+  background: #ffffff !important;
+  border: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-radius: 16px !important;
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  padding: 20px !important;
+  margin-top: 8px !important;
+}
+
+.passengers-dropdown .passenger-btn {
+  transition: all 0.2s ease !important;
+  color: #64748b !important;
+  background: #ffffff !important;
+}
+
+.passengers-dropdown .passenger-btn:hover:not(:disabled) {
+  background: #f1f5f9 !important;
+  border-color: #3b82f6 !important;
+  color: #3b82f6 !important;
+  transform: scale(1.05);
+}
+
+.passengers-dropdown .passenger-btn:disabled {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+  background: #f8fafc !important;
+}
+
+.passengers-dropdown .form-select {
+  border: 1.5px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.passengers-dropdown .form-select:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  outline: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .bookme-search-panel .row > [class*="col-md-"] {
+    margin-bottom: 16px;
+  }
+  .bookme-search-panel .search-button-col {
+    align-items: stretch;
+  }
+  .bookme-search-panel .btn-primary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .bookme-search-panel {
+    padding: 24px 20px !important;
+    border-radius: 18px;
+  }
+  .bookme-search-panel .row > [class*="col-"] {
+    margin-bottom: 18px;
+  }
+  .bookme-search-panel .search-button-col {
+    margin-top: 4px;
+  }
+  .bookme-trip-pills {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 16px;
+  }
+  .bookme-trip-pills .form-check {
+    margin-right: 6px;
+    margin-bottom: 8px;
+  }
+  .bookme-trip-pills .form-check-label {
+    padding: 10px 18px;
+    font-size: 0.8125rem;
+  }
 }
 
 .bookme-search-panel .btn-outline-secondary {
-  border-color: #d1d7ff;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Trip type pills */
-.bookme-trip-pills .form-check {
-  margin-right: 8px;
+.bookme-search-panel .btn-outline-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
 }
-.bookme-trip-pills .form-check-input { display: none; }
+
+/* Swap Button Styling */
+.bookme-search-panel .swap-button {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 12px 16px;
+  min-width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1.25rem;
+  font-weight: 700;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.bookme-search-panel .swap-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: rotate(180deg) scale(1.05);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.bookme-search-panel .swap-button:active {
+  transform: rotate(180deg) scale(0.98);
+}
+
+/* Trip type pills - Professional Design */
+.bookme-trip-pills {
+  margin-bottom: 24px !important;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.bookme-trip-pills .form-check {
+  margin-right: 12px;
+  margin-bottom: 0;
+}
+
+.bookme-trip-pills .form-check-input { 
+  display: none; 
+}
+
 .bookme-trip-pills .form-check-label {
   display: inline-block;
-  padding: 10px 20px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.20);
-  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 600;
-  font-size: 0.95rem;
-  border: 2px solid transparent;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
 }
+
+.bookme-trip-pills .form-check-label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.bookme-trip-pills .form-check-label:hover::before {
+  left: 100%;
+}
+
 .bookme-trip-pills .form-check-label:hover {
-  background: rgba(255,255,255,0.30);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.bookme-trip-pills .form-check-input:checked + .form-check-label,
+.bookme-trip-pills .form-check-label.active {
+  background: #ffffff;
+  color: #1e40af;
+  border-color: #ffffff;
+  box-shadow: 
+    0 6px 16px rgba(255, 255, 255, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  font-weight: 700;
   transform: translateY(-1px);
 }
-.bookme-trip-pills .form-check-input:checked + .form-check-label {
-  background: #ffffff;
-  color: #2563eb;
-  border-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
-  font-weight: 700;
+
+.bookme-trip-pills .form-check-input:disabled + .form-check-label {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* Hero headings */
