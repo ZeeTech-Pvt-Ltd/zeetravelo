@@ -93,11 +93,11 @@
 /* Center the grid items for Recommended Travel Sites */
 .deals-container .popular-flights-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 280px));
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   justify-content: center;
   justify-items: center;
-  max-width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -114,6 +114,10 @@
     padding-left: 40px;
     padding-right: 40px;
   }
+  
+  .deals-container .popular-flights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -123,6 +127,7 @@
   }
   
   .deals-container .popular-flights-grid {
+    grid-template-columns: repeat(2, 1fr);
     justify-content: center;
   }
 }

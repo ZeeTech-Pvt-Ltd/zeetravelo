@@ -19,11 +19,11 @@
   
   .popular-flights-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 280px));
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
     justify-content: center;
     justify-items: center;
-    max-width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
   }
   
@@ -123,7 +123,7 @@
   }
   
   .popular-flights-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -134,7 +134,7 @@
   }
   
   .popular-flights-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     justify-content: center;
   }

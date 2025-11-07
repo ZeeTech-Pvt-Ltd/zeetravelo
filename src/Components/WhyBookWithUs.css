@@ -4,3 +4,27 @@
   background-color: #0b0f19 !important;
 }
 
+/* Responsive grid for Why Book With Us */
+@media (max-width: 1024px) {
+  .popular-flights-container .popular-flights-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .popular-flights-container .popular-flights-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .popular-flights-container .popular-flights-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .popular-flights-container .flight-card {
+    max-width: 360px;
+    width: 100%;
+  }
+}
+
