@@ -15,14 +15,14 @@
 
 /* Center the grid items when there are fewer items */
 .deals-container .popular-flights-grid {
-  display: grid;
+    display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+    gap: 18px;
   justify-content: center;
   justify-items: center;
   max-width: 1200px;
   margin: 0 auto;
-}
+  }
   
   .travel-card {
     position: relative;
@@ -147,7 +147,7 @@
     max-width: 360px;
     width: 100%;
   }
-}
+  }
   
 .recommended-header-container {
   max-width: 1400px;

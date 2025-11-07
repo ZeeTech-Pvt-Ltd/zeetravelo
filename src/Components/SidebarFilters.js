@@ -104,10 +104,7 @@ const SidebarFilters = ({
   if (!filters || !filters.priceRange) return null;  // Early exit if priceRange is undefined
 
   const sidebarStyle = {
-    position: 'sticky',
-    top: '72px',
-    alignSelf: 'flex-start',
-    zIndex: 1000,
+    position: 'relative',
     width: '100%',
   };
 
@@ -155,10 +152,10 @@ const SidebarFilters = ({
             <div className="mb-3 filter-section">
               <Form.Label className="fw-bold mb-2 filter-label">Number of Layover</Form.Label>
               <div className="layover-buttons">
-                {['Non-stop', '1', '2', '3'].map(layover => {
+                {['0', '1', '2', '3'].map(layover => {
                   const stopsSize = filters.stops?.size || 0;
                   const isSelected = 
-                    (layover === 'Non-stop' && filters.stops?.has('0')) ||
+                    (layover === '0' && filters.stops?.has('0')) ||
                     (layover === '1' && filters.stops?.has('1')) ||
                     (layover === '2' && filters.stops?.has('2')) ||
                     (layover === '3' && filters.stops?.has('3'));
@@ -169,7 +166,7 @@ const SidebarFilters = ({
                       className={`layover-btn ${isSelected ? 'selected' : ''}`}
                       onClick={() => {
                         const updatedStops = new Set();
-                        if (layover === 'Non-stop') {
+                        if (layover === '0') {
                           updatedStops.add('0');
                         } else {
                           updatedStops.add(layover);

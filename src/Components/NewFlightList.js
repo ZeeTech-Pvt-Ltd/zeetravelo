@@ -401,47 +401,51 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
       </Alert>
     );
 
+  const filteredFlights = applyFilters();
+
   return (
-    <Container fluid className="px-0 px-md-3 my-3 my-md-5 flight-results-container">
-      <Row className="g-0 g-md-3 mx-0">
-        {/* Sidebar Filters on the left */}
-        <Col xs={12} md={3} lg={3} className="mb-3 mb-md-0">
-          <SidebarFilters
-            availableStops={['0', '1', '2+']}
-            filters={filters}
-            onFiltersChange={setFilters}
-            flightData={sortedFlights}
-            airlineData={airlineData} // pass as-is (array)
-          />
-        </Col>
+    <section className="flight-results-section">
+      <Container className="flight-results-container">
+        <div className="flight-results-panel">
+          <Row className="flight-results-row">
+            {/* Sidebar Filters on the left */}
+            <Col xs={12} md={3} lg={3} className="filter-column">
+              <SidebarFilters
+                availableStops={['0', '1', '2+']}
+                filters={filters}
+                onFiltersChange={setFilters}
+                flightData={filteredFlights}
+                airlineData={airlineData} // pass as-is (array)
+              />
+            </Col>
 
-        {/* Main Content: Sort Options and Flight List */}
-        <Col xs={12} md={9} lg={9}>
-          <SortOptions
-            sortType={sortType}
-            onSortChange={handleSortChange}
-            sortData={sortData}
-          />
+            {/* Main Content: Sort Options and Flight List */}
+            <Col xs={12} md={9} lg={9} className="results-column">
+              <SortOptions
+                sortType={sortType}
+                onSortChange={handleSortChange}
+                sortData={sortData}
+              />
 
-          {loading ? (
-            <div className="text-center py-5">
-              <Spinner animation="border" variant="primary" /> Loading flights...
-            </div>
-          ) : (
-            <>
-              {loadingSort && (
-                <div className="text-center my-3">
-                  <Spinner animation="border" variant="primary" size="sm" />
-                  <span className="ms-2">Updating Flights...</span>
+              {loading ? (
+                <div className="text-center py-5">
+                  <Spinner animation="border" variant="primary" /> Loading flights...
                 </div>
-              )}
+              ) : (
+                <>
+                  {loadingSort && (
+                    <div className="text-center my-3">
+                      <Spinner animation="border" variant="primary" size="sm" />
+                      <span className="ms-2">Updating Flights...</span>
+                    </div>
+                  )}
 
-              {applyFilters(sortedFlights)
+              {filteredFlights
                 .slice(0, visibleCount)
                 .map((flight, index) => (
 
-                  <Card className="mb-3 flight-card" key={index} style={{ border: 'none', boxShadow: 'none' }}>
-                    <Card.Body className="p-3">
+                      <Card className="mb-3 flight-card" key={index} style={{ border: 'none', boxShadow: 'none' }}>
+                        <Card.Body className="p-3">
                       {/* Flight Type Heading */}
                       <div className="mb-2">
                         <span className="flight-type-badge">
@@ -725,29 +729,20 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
 
                 ))}
 
-                {/* error message if no flights available */}
-      <div className="flight-results-container">
-        {loading && <p>Loading flights...</p>}
-
-        {error && <p className="error-message">{error}</p>}
-
-        {!loading && !error && flights.length === 0 && (
-          <div className="no-flights-message">
-            <img
-              src={noPlane}
-              alt="No flights"
-              style={{ width: 100, marginBottom: 20 }}
-            />
-            <h3>Oops! No flights available for your search.</h3>
-            <p>Try changing your travel dates or destinations and search again.</p>
-          </div>
-        )}
-
-        
-      </div>
+                  {filteredFlights.length === 0 && (
+                    <div className="no-flights-message">
+                      <img
+                        src={noPlane}
+                        alt="No flights"
+                        style={{ width: 100, marginBottom: 20 }}
+                      />
+                      <h3>Oops! No flights available for your search.</h3>
+                      <p>Try changing your travel dates or destinations and search again.</p>
+                    </div>
+                  )}
 
 
-              {visibleCount < applyFilters(sortedFlights).length && (
+              {visibleCount < filteredFlights.length && (
                 <div className="text-center my-4">
                   <Button
                     variant="outline-primary"
@@ -781,7 +776,9 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
           )}
         </Col>
       </Row>
+        </div>
     </Container>
+  </section>
   );
 
 };

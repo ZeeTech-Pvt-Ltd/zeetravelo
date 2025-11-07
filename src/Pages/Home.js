@@ -257,8 +257,9 @@ function Home({ header = 'Search Flights', setSearchParams }) {
 
             <Row className="align-items-end g-3">
               <Col xs={12} sm={6} md={2} lg={2} className="position-relative">
-                <Form.Label className="fw-semibold">From</Form.Label>
-                <Form.Control
+                          <Form.Group controlId="fromAirport" className="form-group-custom">
+                          <Form.Label className="fw-semibold form-label-custom">From</Form.Label>
+                          <Form.Control
                   type="text"
                   placeholder="From Airport"
                   value={from}
@@ -268,6 +269,7 @@ function Home({ header = 'Search Flights', setSearchParams }) {
                     setShowFromSuggestions(true);
                   }}
                 />
+                          </Form.Group>
                 {showFromSuggestions && fromSuggestions.length > 0 && (
                   <ListGroup className="position-absolute w-100 airport-suggestions" style={{ zIndex: 9999, minWidth: '350px' }}>
                     {fromSuggestions.map((sug) => (
@@ -303,8 +305,9 @@ function Home({ header = 'Search Flights', setSearchParams }) {
               </Col>
 
               <Col xs={12} sm={6} md={2} lg={2} className="position-relative">
-                <Form.Label className="fw-semibold">To</Form.Label>
-                <Form.Control
+                          <Form.Group controlId="toAirport" className="form-group-custom">
+                          <Form.Label className="fw-semibold form-label-custom">To</Form.Label>
+                          <Form.Control
                   type="text"
                   placeholder="To Airport"
                   value={to}
@@ -314,6 +317,7 @@ function Home({ header = 'Search Flights', setSearchParams }) {
                     setShowToSuggestions(true);
                   }}
                 />
+                          </Form.Group>
                 {showToSuggestions && toSuggestions.length > 0 && (
                   <ListGroup className="position-absolute w-100 airport-suggestions" style={{ zIndex: 9999, minWidth: '350px' }}>
                     {toSuggestions.map((sug) => (
@@ -334,34 +338,38 @@ function Home({ header = 'Search Flights', setSearchParams }) {
 
               {/* Date picker(s) */}
               {tripType === 'return' ? (
-                <Col xs={12} sm={6} md={3} lg={3} className="d-flex flex-column">
-                  <Form.Label className="mb-1 fw-semibold">Departure & Return</Form.Label>
-                  <DatePicker
-                    selectsRange
-                    startDate={departureDate}
-                    endDate={returnDate}
-                    onChange={([start, end]) => {
-                      setDepartureDate(start);
-                      setReturnDate(end);
-                    }}
-                    className="form-control"
-                    placeholderText="Departure - Return"
-                    minDate={new Date()}
-                    monthsShown={2}
-                    popperClassName="react-datepicker-popper-custom"
-                  />
+                <Col xs={12} sm={6} md={3} lg={3}>
+                  <Form.Group controlId="departureReturn" className="form-group-custom">
+                    <Form.Label className="fw-semibold form-label-custom">Departure & Return</Form.Label>
+                    <DatePicker
+                      selectsRange
+                      startDate={departureDate}
+                      endDate={returnDate}
+                      onChange={([start, end]) => {
+                        setDepartureDate(start);
+                        setReturnDate(end);
+                      }}
+                      className="form-control form-control-custom"
+                      placeholderText="Departure - Return"
+                      minDate={new Date()}
+                      monthsShown={2}
+                      popperClassName="react-datepicker-popper-custom"
+                    />
+                  </Form.Group>
                 </Col>
               ) : (
                 <Col xs={12} sm={6} md={3} lg={3}>
-                  <Form.Label className="fw-semibold">Departure</Form.Label>
-                  <DatePicker
-                    selected={departureDate}
-                    onChange={(date) => setDepartureDate(date)}
-                    className="form-control"
-                    placeholderText="Departure Date"
-                    minDate={new Date()}
-                    popperClassName="react-datepicker-popper-custom"
-                  />
+                  <Form.Group controlId="departureDate" className="form-group-custom">
+                    <Form.Label className="fw-semibold form-label-custom">Departure</Form.Label>
+                    <DatePicker
+                      selected={departureDate}
+                      onChange={(date) => setDepartureDate(date)}
+                      className="form-control form-control-custom"
+                      placeholderText="Departure Date"
+                      minDate={new Date()}
+                      popperClassName="react-datepicker-popper-custom"
+                    />
+                  </Form.Group>
                 </Col>
               )}
 

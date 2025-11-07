@@ -76,6 +76,7 @@
   text-transform: uppercase;
   font-size: 0.75rem;
   opacity: 0.9;
+  align-self: flex-start;
 }
 
 .bookme-search-panel .form-control,
@@ -116,12 +117,15 @@
 .bookme-search-panel .row {
   margin-left: -10px;
   margin-right: -10px;
+  align-items: flex-end;
 }
 
 .bookme-search-panel .row > [class*="col-"] {
   padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Search Button Column - Ensure it stays inside */

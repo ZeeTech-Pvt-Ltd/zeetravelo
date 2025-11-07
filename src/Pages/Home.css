@@ -96,6 +96,44 @@
   line-height: 1.5;
 }
 
+.bookme-search-panel .form-group-custom {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookme-search-panel .form-group-custom .react-datepicker-wrapper,
+.bookme-search-panel .form-group-custom .react-datepicker__input-container,
+.bookme-search-panel .form-group-custom .form-control-custom {
+  width: 100%;
+}
+
+.bookme-search-panel .form-label-custom {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.bookme-search-panel .form-control-custom {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  padding: 14px 18px !important;
+  backdrop-filter: blur(8px);
+}
+
+.bookme-search-panel .form-control-custom::placeholder {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.bookme-search-panel .form-control-custom:focus {
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+}
+
 .bookme-search-panel .form-control::placeholder {
   color: #94a3b8;
   font-weight: 400;
@@ -139,63 +177,45 @@
 
 /* Prominent Search Button */
 .bookme-search-panel .btn-primary {
-  background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 18px 36px;
-  border-radius: 12px;
-  box-shadow: 
-    0 12px 32px rgba(30, 64, 175, 0.5),
-    0 6px 16px rgba(0, 0, 0, 0.2),
-    inset 0 2px 0 rgba(255, 255, 255, 0.3),
-    0 0 0 0 rgba(59, 130, 246, 0.4);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-weight: 800;
-  font-size: 1rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 14px 28px;
+  border-radius: 14px;
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.25),
+    0 2px 8px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.25s ease;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  width: 100%;
-  height: 100%;
-  min-height: 58px;
-  display: flex;
+  color: #ffffff;
+  min-height: 52px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;
-  position: relative;
-  overflow: hidden;
-  transform: scale(1.02);
 }
 
 .bookme-search-panel .btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.bookme-search-panel .btn-primary:hover::before {
-  left: 100%;
+  display: none;
 }
 
 .bookme-search-panel .btn-primary:hover {
-  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 
-    0 16px 40px rgba(30, 64, 175, 0.6),
-    0 8px 20px rgba(0, 0, 0, 0.25),
-    inset 0 2px 0 rgba(255, 255, 255, 0.35),
-    0 0 0 4px rgba(59, 130, 246, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(30, 64, 175, 0.45) 100%);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.28),
+    0 4px 12px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
 .bookme-search-panel .btn-primary:active {
-  transform: translateY(0) scale(1.02);
-  box-shadow: 
-    0 4px 12px rgba(30, 64, 175, 0.4),
-    0 2px 4px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .bookme-search-panel .btn-primary:disabled {

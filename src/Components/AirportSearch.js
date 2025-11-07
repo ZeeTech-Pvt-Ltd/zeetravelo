@@ -406,14 +406,14 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
                     <div className="dropdown-menu show p-4 shadow passengers-dropdown" style={{ zIndex: 9999, width: '100%', minWidth: '320px', maxHeight: '400px', overflowY: 'auto' }}>
                       <div className="mb-3">
                         <h6 className="fw-bold mb-3" style={{ color: '#1e293b', fontSize: '0.95rem' }}>Passengers</h6>
-                        {['Adults', 'Children', 'Infants'].map((type, idx) => {
-                          const count = { Adults: adults, Children: children, Infants: infants }[type];
-                          const setCount = { Adults: setAdults, Children: setChildren, Infants: setInfants }[type];
+                      {['Adults', 'Children', 'Infants'].map((type, idx) => {
+                        const count = { Adults: adults, Children: children, Infants: infants }[type];
+                        const setCount = { Adults: setAdults, Children: setChildren, Infants: setInfants }[type];
                           const total = adults + children + infants;
                           const isMaxReached = total >= 9;
                           const isMinReached = (type === 'Adults' && count <= 1) || (type !== 'Adults' && count <= 0);
                           
-                          return (
+                        return (
                             <div className="d-flex justify-content-between align-items-center mb-3" key={idx}>
                               <div>
                                 <span className="fw-semibold" style={{ color: '#1e293b', fontSize: '0.9rem' }}>{type}</span>

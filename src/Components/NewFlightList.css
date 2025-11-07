@@ -1,13 +1,75 @@
 /* components/NewFlightList.css */
 
 /* Layout Fix for Flight Results Page */
+.flight-results-section {
+  background: #ffffff;
+  padding: 0 0 80px 0;
+  position: relative;
+}
+
 .flight-results-container {
-  padding-left: 12px;
-  padding-right: 12px;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  box-sizing: border-box;
+  max-width: 1200px !important;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 3;
+}
+
+.flight-results-panel {
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+  padding: 32px 36px;
+  margin-top: 24px;
+}
+
+.flight-results-row {
+  --bs-gutter-x: 32px;
+}
+
+.filter-column {
+  padding-right: 0 !important;
+}
+
+.results-column {
+  padding-left: 0 !important;
+}
+
+.flight-results-panel .sort-options-wrapper {
+  margin-bottom: 24px !important;
+  justify-content: center;
+}
+
+.flight-results-panel .sort-card {
+  max-width: 220px;
+}
+
+@media (max-width: 992px) {
+  .flight-results-panel {
+    margin-top: 16px;
+    padding: 28px 24px;
+  }
+
+  .filter-column {
+    margin-bottom: 24px;
+  }
+
+  .filter-column,
+  .results-column {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .flight-results-container {
+    padding: 0 16px;
+  }
+
+  .flight-results-panel {
+    padding: 24px 18px;
+    margin-top: 12px;
+  }
 }
 
 /* Prevent horizontal scroll on mobile */
@@ -17,61 +79,32 @@
     width: 100% !important;
     max-width: 100vw !important;
   }
-  
+}
+
+@media (min-width: 1600px) {
   .flight-results-container {
-    overflow-x: hidden !important;
+    max-width: 1400px !important;
   }
-}
 
-.flight-results-container .row {
-  margin-left: 0;
-  margin-right: 0;
-  width: 100%;
-}
+  .flight-results-panel {
+    padding: 36px 48px;
+    margin-top: 32px;
+  }
 
-/* Responsive adjustments */
-@media (min-width: 768px) {
-  .flight-results-container .row {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-start;
+  .filter-column {
+    margin-left: -32px;
   }
-  
-  .flight-results-container .row > [class*="col-md-9"],
-  .flight-results-container .row > [class*="col-lg-9"] {
-    flex: 1 1 auto;
-    min-width: 0;
-    max-width: 100%;
-  }
-  
-  .flight-results-container .row > [class*="col-md-3"],
-  .flight-results-container .row > [class*="col-lg-3"] {
-    flex: 0 0 auto;
-  }
-}
 
-@media (max-width: 767px) {
-  .flight-results-container {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-    max-width: 100%;
+  .results-column {
+    padding-left: 32px !important;
   }
-  
-  .flight-results-container .row {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    width: 100%;
+
+  .flight-results-panel .sort-options-wrapper {
+    justify-content: center;
   }
-  
-  .flight-results-container .row > [class*="col-"] {
-    padding-left: 12px;
-    padding-right: 12px;
-    width: 100%;
-    max-width: 100%;
-    flex: 0 0 100%;
+
+  .flight-results-panel .sort-card {
+    max-width: 230px;
   }
 }
 

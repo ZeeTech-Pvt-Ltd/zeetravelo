@@ -168,11 +168,11 @@ const BookingDetails = ({ confirmedPricingData }) => {
                   {itinerary.segments[itinerary.segments.length - 1].arrival.iataCode}
                   <FaPlaneArrival className="ms-2" style={{ color: '#2563eb' }} />
                   <span className="ms-3" style={{ fontSize: '1rem', color: '#64748b', fontWeight: 500 }}>
-                    {new Date(itinerary.segments[0].departure.at).toLocaleDateString("en-US", {
-                      weekday: "short",
-                      month: "short",
-                      day: "numeric",
-                    })}
+                  {new Date(itinerary.segments[0].departure.at).toLocaleDateString("en-US", {
+                    weekday: "short",
+                    month: "short",
+                    day: "numeric",
+                  })}
                   </span>
                 </h5>
 
