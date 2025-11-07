@@ -27,13 +27,13 @@ import './WhyBookWithUs.css';
 
 const WhyBookWithUs = () => {
   return (
-    <div className="popular-flights-container" style={{ background: 'transparent', paddingTop: '0', paddingBottom: '0' }}>
-      <div className="recommended-header-container text-center" style={{ marginBottom: '32px' }}>
+    <div className="popular-flights-container" style={{ background: 'transparent', paddingTop: '0', paddingBottom: '0', maxWidth: '1400px', margin: '0 auto' }}>
+      <div className="recommended-header-container text-center" style={{ marginBottom: '32px', maxWidth: '1400px', margin: '0 auto 32px auto' }}>
         <h5 className="recommended-header-title">Why Book with ZeeTravelo?</h5>
       </div>
-      <div className="popular-flights-grid">
+      <div className="popular-flights-grid" style={{ justifyContent: 'center', justifyItems: 'center', maxWidth: '100%', margin: '0 auto' }}>
         {features.map((f, idx) => (
-          <div key={idx} className="flight-card" style={{ backgroundColor: '#0b0f19', background: '#0b0f19', paddingBottom: '20px' }}>
+          <div key={idx} className="flight-card" style={{ backgroundColor: '#0b0f19', background: '#0b0f19', paddingBottom: '20px', maxWidth: '280px', width: '100%' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '28px', paddingBottom: '12px', color: '#0b5ed7' }}>
               {f.icon}
             </div>

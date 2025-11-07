@@ -75,9 +75,10 @@
 }
 
 .recommended-header-container {
-  max-width: 1180px;
+  max-width: 1400px;
   margin: 0 auto 12px;
   padding: 8px 16px 0 16px;
+  text-align: center;
 }
 .recommended-header-title {
   font-size: 2.25rem;
@@ -87,6 +88,60 @@
   line-height: 1.1;
   margin: 0;
   display: inline-block;
+}
+
+/* Center the grid items for Recommended Travel Sites */
+.deals-container .popular-flights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 280px));
+  gap: 18px;
+  justify-content: center;
+  justify-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Responsive centering for Recommended Travel Sites */
+@media (max-width: 1400px) {
+  .recommended-header-container {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .recommended-header-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .recommended-header-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .deals-container .popular-flights-grid {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .recommended-header-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  .deals-container .popular-flights-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  
+  .travel-card {
+    max-width: 360px;
+    width: 100%;
+  }
 }
 
 

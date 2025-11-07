@@ -5,7 +5,24 @@
   }
   
 /* Use PopularFlights grid layout for deals */
-.deals-container { background: transparent !important; padding: 0 80px; border-radius: 0; }
+.deals-container { 
+  background: transparent !important; 
+  padding: 0 80px; 
+  border-radius: 0; 
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+/* Center the grid items when there are fewer items */
+.deals-container .popular-flights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 280px));
+  gap: 18px;
+  justify-content: center;
+  justify-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
   
   .travel-card {
     position: relative;
@@ -81,16 +98,57 @@
     transform: rotate(25deg) translate(200%, 200%);
   }
 
-  @media (max-width: 768px) {
-    .deals-container { padding-left: 12px; padding-right: 12px; }
-    .travel-card { width: 100%; max-width: 360px; }
-    .travel-title { font-size: 1rem; }
+/* Responsive padding */
+@media (max-width: 1400px) {
+  .deals-container { 
+    padding-left: 60px !important; 
+    padding-right: 60px !important; 
+  }
+}
+
+@media (max-width: 1024px) {
+  .deals-container { 
+    padding-left: 40px !important; 
+    padding-right: 40px !important; 
+  }
+}
+
+@media (max-width: 768px) {
+  .deals-container { 
+    padding-left: 20px !important; 
+    padding-right: 20px !important; 
   }
   
+  .deals-container .popular-flights-grid {
+    justify-content: center;
+  }
+  
+  .travel-card { width: 100%; max-width: 360px; }
+  .travel-title { font-size: 1rem; }
+}
+
+@media (max-width: 576px) {
+  .deals-container { 
+    padding-left: 16px !important; 
+    padding-right: 16px !important; 
+  }
+  
+  .deals-container .popular-flights-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  
+  .travel-card {
+    max-width: 360px;
+    width: 100%;
+  }
+}
+  
 .recommended-header-container {
-  max-width: 1180px;
+  max-width: 1400px;
   margin: 0 auto 12px;
   padding: 8px 16px 0 16px;
+  text-align: center;
 }
 
 .recommended-header-title {

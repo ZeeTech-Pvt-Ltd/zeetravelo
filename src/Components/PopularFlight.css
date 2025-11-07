@@ -2,6 +2,8 @@
     background: transparent;
     padding: 24px 80px;
     border-radius: 0;
+    max-width: 1400px;
+    margin: 0 auto;
   }
   
   .popular-title {
@@ -17,8 +19,12 @@
   
   .popular-flights-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 280px));
     gap: 18px;
+    justify-content: center;
+    justify-items: center;
+    max-width: 100%;
+    margin: 0 auto;
   }
   
   .flight-card {
@@ -77,9 +83,10 @@
   .show-more-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(11,94,215,0.35); }
   
   .recommended-header-container {
-  max-width: 1180px;
+  max-width: 1400px;
   margin: 0 auto 12px;
   padding: 8px 16px 0 16px;
+  text-align: center;
 }
 .recommended-header-title {
   font-size: 2.25rem;
@@ -99,4 +106,54 @@
   height: 4px;
   border-radius: 999px;
   /* background: linear-gradient(90deg, var(--brand-700), var(--brand-600)); */
+}
+
+/* Responsive padding */
+@media (max-width: 1400px) {
+  .popular-flights-container {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .popular-flights-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  .popular-flights-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .popular-flights-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .popular-flights-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .popular-flights-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  .popular-flights-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  
+  .flight-card,
+  .travel-card {
+    max-width: 360px;
+    width: 100%;
+  }
 }
