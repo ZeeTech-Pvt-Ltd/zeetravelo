@@ -75,6 +75,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
     priceRange: [0, 2000],
     airlines: new Set(),
   });
+  const [visibleCount, setVisibleCount] = useState(15);
 
 
 
