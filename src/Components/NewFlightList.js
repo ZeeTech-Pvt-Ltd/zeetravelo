@@ -236,10 +236,9 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
 
 
   useEffect(() => {
-    const { availableStops, durationBounds } = getAvailableFilters(flights);
+    const { durationBounds } = getAvailableFilters(flights);
     setFilters(prev => ({
       ...prev,
-      stops: new Set(availableStops),
       durationRange: durationBounds,
     }));
   }, [flights]);
@@ -570,7 +569,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                               className="mb-2 p-3 border rounded"
                               style={{
                                 borderLeft: '3px solid #2563eb',
-                                background: 'linear-gradient(135deg, #f8fbff 0%, #ffffff 100%)',
+                                background: '#ffffff',
                                 boxShadow: '0 4px 12px rgba(37, 99, 235, 0.08)',
                                 borderRadius: '10px',
                               }}
@@ -598,7 +597,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
 
                                 return (
                                   <React.Fragment key={`${itinIdx}-${segIdx}`}>
-                                    <div className="position-relative mb-2 p-3 border rounded segment-detail d-flex justify-content-between align-items-center" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f8fbff 100%)', borderRadius: '10px', borderColor: '#eef2f7' }}>
+                                    <div className="position-relative mb-2 p-3 border rounded segment-detail d-flex justify-content-between align-items-center" style={{ background: '#ffffff', borderRadius: '10px', borderColor: '#eef2f7' }}>
 
                                       {/* Top-right: Duration Badge */}
                                       <div className="position-absolute top-0 end-0 m-2">
