@@ -151,6 +151,7 @@ const SidebarFilters = ({
                 Any
               </button>
             </div>
+            <hr className="filter-divider" />
 
             {/* Airline Dropdown */}
             <div className="filter-section airlines-section">
@@ -200,6 +201,7 @@ const SidebarFilters = ({
                 <div className="text-muted small mt-2">No airlines found</div>
               )}
             </div>
+            <hr className="filter-divider" />
             {/* Times Filter */}
             <div className="filter-section">
               <div className="d-flex justify-content-between align-items-center mb-2">
@@ -273,6 +275,7 @@ const SidebarFilters = ({
                 </div>
               ))}
             </div>
+            <hr className="filter-divider" />
 
 
             {/* Duration Range */}
@@ -300,6 +303,7 @@ const SidebarFilters = ({
                 step={50}
               />
             </div>
+            <hr className="filter-divider" />
 
             {/* Price Range */}
             <div className="filter-section">

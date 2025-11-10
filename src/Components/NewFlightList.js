@@ -445,13 +445,6 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
 
                       <Card className="mb-3 flight-card" key={index} style={{ border: 'none', boxShadow: 'none' }}>
                         <Card.Body className="p-3">
-                      {/* Flight Type Heading */}
-                      <div className="mb-2">
-                        <span className="flight-type-badge">
-                          {searchParams.tripType === 'oneway' ? 'One Way Flight' : 'Return Flight'}
-                        </span>
-                      </div>
-
                       <Row className="gx-2 py-1 mx-0">
                         <Col xs={12} md={9} className="px-2 px-md-3">
                           {flight.itineraries.map((itinerary, i) => (
@@ -535,22 +528,19 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                             style={{ 
                               background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
                               border: 'none',
-                              padding: '12px 32px',
+                              padding: '10px 24px',
                               borderRadius: '12px',
                               fontWeight: 700,
-                              fontSize: '0.95rem',
+                              fontSize: '0.85rem',
                               textTransform: 'uppercase',
                               letterSpacing: '0.5px',
-                              boxShadow: '0 6px 16px rgba(37, 99, 235, 0.3)',
                               transition: 'all 0.2s ease'
                             }}
                             onMouseEnter={(e) => {
                               e.target.style.transform = 'translateY(-2px)';
-                              e.target.style.boxShadow = '0 8px 20px rgba(37, 99, 235, 0.4)';
                             }}
                             onMouseLeave={(e) => {
                               e.target.style.transform = 'translateY(0)';
-                              e.target.style.boxShadow = '0 6px 16px rgba(37, 99, 235, 0.3)';
                             }}
                           >
                             Select Flight
