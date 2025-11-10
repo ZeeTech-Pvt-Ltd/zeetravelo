@@ -7,7 +7,6 @@ import {
   Form,
   Button,
   Spinner,
-  Alert,
   ListGroup,
   Card,
 } from 'react-bootstrap';
@@ -27,9 +26,7 @@ function CarSearchForm({ header }) {
   const [locationSuggestions, setLocationSuggestions] = useState([]);
   const dropdownRef = useRef(null);
 
-  const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const fetchLocationSuggestions = async (keyword) => {
     if (!keyword.trim()) {
@@ -47,8 +44,6 @@ function CarSearchForm({ header }) {
 
   const handleSearch = () => {
     setLoading(true);
-    setError(null);
-    setCars([]);
   };
 
   useEffect(() => {
@@ -60,13 +55,6 @@ function CarSearchForm({ header }) {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  const formatDate = (date) => {
-    if (date) {
-      return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-    }
-    return '';
-  };
 
   return (
     <>

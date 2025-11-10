@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import AirportSearch from '../Components/AirportSearch';
 import NewFlightList from '../Components/NewFlightList';
@@ -32,8 +32,6 @@ const HomePage = ({ searchParams, setSearchParams, confirmedPricingData, setConf
   }, [location.search, setSearchParams]);
 
 
-  const [sortBy, setSortBy] = useState('best');
-
   return (
     <div style={{ backgroundColor: 'rgb(245, 245, 245)', minHeight: '100vh', paddingBottom: '20px' }}>
       {/* <AirportSearch header="Zeetech Flight Booking System" setSearchParams={setSearchParams} /> */}
@@ -46,8 +44,7 @@ const HomePage = ({ searchParams, setSearchParams, confirmedPricingData, setConf
       {searchParams.origin && searchParams.destination && searchParams.date && (
         <NewFlightList
           searchParams={searchParams}
-          sortBy={sortBy}
-          onFlightConfirm={setConfirmedPricingData}
+          setConfirmedPricingData={setConfirmedPricingData}
         />
       )}
       {confirmedPricingData && (

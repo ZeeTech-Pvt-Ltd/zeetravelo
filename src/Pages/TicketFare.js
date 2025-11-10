@@ -1,5 +1,5 @@
 import React from 'react';
-import { BadgeDollarSign, Luggage, ShieldCheck, Info, CalendarDays, Users } from 'lucide-react';
+import { Luggage, ShieldCheck, Info, CalendarDays } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'; // Importing useNavigate from react-router-dom
 

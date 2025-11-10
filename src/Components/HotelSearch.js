@@ -7,12 +7,9 @@ import HotelBg from '../Assets/HotelBg.jpg';
 import './HotelSearch.css';
 import './AirportSearch.css';
 import HotelModal from './HotelModal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHotel, faMapMarkerAlt, faBarcode, faPlane, faRulerCombined, faClock, faDollarSign, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { FaPlaneDeparture, FaHotel, FaCarSide, FaShip, FaTags } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import SidebarHotel from './SidebarHotel';
-import HotelOffersButton from './HotelOffersButton';
 
 const HotelSearch = () => {
   const [location, setLocation] = useState('');
@@ -27,7 +24,7 @@ const HotelSearch = () => {
   const [showLocationSuggestions, setShowLocationSuggestions] = useState(false);
   const [selectedHotel, setSelectedHotel] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [hotelOffers, setHotelOffers] = useState([]);
+  const [, setHotelOffers] = useState([]);
   const [error, setError] = useState(null);
 
   const handleSelectHotel = (hotel) => {

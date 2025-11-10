@@ -5,7 +5,6 @@ import theme from './theme';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import HomePage from './Pages/HomePage';
-import AirportSearch from './Components/AirportSearch';
 import Home from './Pages/Home';
 import Navbar from './Components/Navbar';
 import BaggageDetails from './Pages/BaggageDetails';
@@ -14,7 +13,6 @@ import SeatingDetails from './Pages/SeatingDetails';
 import FinalOverview from './Pages/FinalOverview';
 import BookingConfirmation from './Pages/BookingConfirmation';
 import NewFlightList from './Components/NewFlightList';
-import OrderDetails from './Components/OrderDetails';
 import BookingDetails from './Pages/BookingDetails';
 import HotelSearch from './Components/HotelSearch';
 import HotelBooking from './Components/HotelBooking';
@@ -23,7 +21,6 @@ import DisplayBookingOrder from './Pages/DisplayBookingOrder';
 import { SessionTimeoutProvider } from './Components/SessionTimeoutContext';
 import CarSearch from './Components/CarSearch';
 import CarBooking from './Pages/CarBooking';
-import HotelApitude from './Components/HotelApitude';
 
 const stepMap = {
   '/': 0,

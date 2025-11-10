@@ -9,7 +9,6 @@ import {
   Col,
   Form,
   Button,
-  Spinner,
   Alert,
   ListGroup,
   Card,
@@ -43,11 +42,7 @@ function Home({ header = 'Search Flights', setSearchParams }) {
   const [toSuggestions, setToSuggestions] = useState([]);
   const dropdownRef = useRef(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [highlightedIndex, setHighlightedIndex] = useState(-1);
-  const [flights, setFlights] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
   // const { startTimer } = useSessionTimeout();
 
 
@@ -496,8 +491,8 @@ function Home({ header = 'Search Flights', setSearchParams }) {
 
               {/* Search Button */}
               <Col xs={12} sm={12} md={2} lg={2} className="search-button-col">
-                <Button variant="primary" onClick={handleSearch} disabled={loading || !from.trim()} className="w-100">
-                  {loading ? <Spinner animation="border" size="sm" /> : 'Search'}
+                <Button variant="primary" onClick={handleSearch} disabled={!from.trim()} className="w-100">
+                  Search
                 </Button>
               </Col>
             </Row>

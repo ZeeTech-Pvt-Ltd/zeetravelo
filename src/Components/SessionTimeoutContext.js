@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useRef, useState, useEffect } from 'react';
+import React, { createContext, useContext, useRef, useState, useEffect, useCallback } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { BsClockHistory } from 'react-icons/bs';
@@ -22,14 +22,14 @@ export const SessionTimeoutProvider = ({ children }) => {
 
   const isHomepage = location.pathname === '/';
 
-  const closeAllModals = () => {
+  const closeAllModals = useCallback(() => {
     setModalState({
       token: false,
       pricing: false,
       bookingUpdate: false,
       flightUpdate: false
     });
-  };
+  }, []);
 
   // Save search params when on flights page
   useEffect(() => {
@@ -40,7 +40,7 @@ export const SessionTimeoutProvider = ({ children }) => {
     }
   }, [location.pathname, location.search]);
 
-  const startTimer = () => {
+  const startTimer = useCallback(() => {
     clearTimeout(timerRef.current);
     if (isHomepage) return;
 
@@ -55,9 +55,9 @@ export const SessionTimeoutProvider = ({ children }) => {
         setModalState(prev => ({ ...prev, token: true }));
       }
     }, 1 * 60 * 1000);
-  };
+  }, [closeAllModals, isHomepage, location.pathname]);
 
-  const startPricingTimer = () => {
+  const startPricingTimer = useCallback(() => {
     clearTimeout(pricingTimerRef.current);
     if (isHomepage) return;
 
@@ -74,9 +74,9 @@ export const SessionTimeoutProvider = ({ children }) => {
       }
       startPricingTimer(); // restart loop
     }, 15 * 60 * 1000);   //15 minutes timer expier
-  };
+  }, [closeAllModals, isHomepage, location.pathname]);
 
-  const handleReload = () => {
+  const handleReload = useCallback(() => {
     if (isHomepage) return;
 
     let params = null;
@@ -110,7 +110,7 @@ export const SessionTimeoutProvider = ({ children }) => {
     }
 
     startTimer(); // restart timer
-  };
+  }, [closeAllModals, isHomepage, location.pathname, location.search, navigate, savedSearchParams, startTimer]);
 
   useEffect(() => {
     return () => {
@@ -132,7 +132,7 @@ export const SessionTimeoutProvider = ({ children }) => {
     } else {
       startTimer();
     }
-  }, [location.pathname]);
+  }, [closeAllModals, isHomepage, location.pathname, startPricingTimer, startTimer]);
 
   return (
     <SessionTimeoutContext.Provider value={{ startTimer, startPricingTimer }}>

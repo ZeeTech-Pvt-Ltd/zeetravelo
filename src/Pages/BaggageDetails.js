@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Card, Container, Row, Col, Badge, ListGroup, Button } from 'react-bootstrap';
-import { FaPlaneDeparture, FaPlaneArrival, FaUser, FaPassport, FaPhone, FaEnvelope, FaDollarSign } from 'react-icons/fa';
+import { FaPlaneDeparture, FaPlaneArrival, FaUser, FaPassport, FaPhone, FaEnvelope } from 'react-icons/fa';
 import OrderDetails from '../Components/OrderDetails';
 import airlineData from '../data/airlines.json';
 import airports from '../data/airports.json';
@@ -27,7 +27,6 @@ const getAirportName = (iataCode) => airportNameMap[iataCode] || iataCode;
 const BaggageDetails = () => {
   const location = useLocation();
   const { flight, passengers } = location.state || {};
-  const { startBookingUpdateTimer } = useSessionTimeout();
   const { startPricingTimer } = useSessionTimeout();
   console.log('Flight:', flight);
   console.log('Passengers:', passengers);
@@ -42,7 +41,7 @@ useEffect(() => {
 // }, []);
 useEffect(() => {
   startPricingTimer();
-}, []);
+}, [startPricingTimer]);
 
   // Error handling for missing data
   if (!flight || !passengers) {

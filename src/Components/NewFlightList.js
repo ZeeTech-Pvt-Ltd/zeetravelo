@@ -6,11 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import SortOptions from './SortOptions';
 import './SortOptions.css';
 import SidebarFilters from './SidebarFilters';
-import { FaPlane, FaPlaneDeparture, FaPlaneArrival, FaClock, FaExchangeAlt, FaDollarSign, FaBuilding, FaHashtag, FaChevronDown, FaChevronUp, FaSuitcase, FaWifi, FaPlug, FaChair } from 'react-icons/fa';
-import {
-  FaUserTie, FaMoneyBillAlt, FaCoins, FaReceipt, FaRegCreditCard,
-} from 'react-icons/fa';
-import FlightDetailsModal from './FlightDetailsModal';
+import { FaPlaneDeparture, FaPlaneArrival, FaClock, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import airlineData from '../data/airlines.json';
 import airports from '../data/airports.json';
 import { TbPlane } from 'react-icons/tb';
@@ -21,21 +17,15 @@ import noPlane from '../Assets/noPlane.png'
 
 const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
   const [flights, setFlights] = useState([]);
-  const [sortedFlights, setSortedFlights] = useState([]);
   const [sortType, setSortType] = useState('best');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [processingIndex, setProcessingIndex] = useState(null);
-  const [confirmedFlightDetails, setConfirmedFlightDetails] = useState({});
   const [expandedIndex, setExpandedIndex] = useState(null);
   const navigate = useNavigate();
-  const [selectedFlight, setSelectedFlight] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(15);
   const location = useLocation();
 
 
-  const { startFlightTimer } = useSessionTimeout();
   const [loadingSort, setLoadingSort] = useState(false);
 
   const { startPricingTimer } = useSessionTimeout();
@@ -56,16 +46,17 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
 
   useEffect(() => {
     startPricingTimer(); // Starts pricing timeout when component loads
-  }, []);
+  }, [startPricingTimer]);
 
 
 
   const handleSelectWithModal = async (flight, index) => {
     setShowModal(true); // Show modal
-    await handleSelect(flight, index); // Wait for pricing confirmation
-    setSelectedFlight(flight);
-    setShowModal(false); // Optionally hide modal just before navigation
-    // Navigate or show booking details next (already handled in handleSelect presumably)
+    try {
+      await handleSelect(flight, index); // Wait for pricing confirmation
+    } finally {
+      setShowModal(false);
+    }
   };
 
   const getAirlineName = (iataCode) => {
@@ -85,34 +76,6 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
     airlines: new Set(),
   });
 
-
-
-  useEffect(() => {
-    const filteredFlights = flights.filter((flight) => {
-      const segments = flight.itineraries[0]?.segments || [];
-      const stopLabel = segments.length === 1 ? '0' : segments.length === 2 ? '1' : '2+';
-
-      const price = parseFloat(flight.price.total);
-      const [minPrice, maxPrice] = filters.priceRange;
-
-      const stopsMatch = filters.stops.size === 0 || filters.stops.has(stopLabel);
-      const priceMatch = price >= minPrice && price <= maxPrice;
-
-      // ✨ Airline match
-      const segmentAirlines = new Set(segments.map(seg => seg.carrierCode));
-      const airlineMatch =
-        filters.airlines.size === 0 ||
-        [...segmentAirlines].some(code => filters.airlines.has(code));
-
-      return stopsMatch && priceMatch && airlineMatch;
-    });
-
-    const sorted = [...filteredFlights].sort((a, b) =>
-      parseFloat(a.price.total) - parseFloat(b.price.total)
-    );
-
-    setSortedFlights(sorted);
-  }, [flights, filters]);
 
 
   const getAvailableFilters = (flights) => {
@@ -230,12 +193,6 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
   };
 
   useEffect(() => {
-    const filtered = applyFilters();
-    setSortedFlights(filtered);
-  }, [flights, filters, sortType]);
-
-
-  useEffect(() => {
     const { durationBounds } = getAvailableFilters(flights);
     setFilters(prev => ({
       ...prev,
@@ -315,7 +272,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
         const results = response.data.data || response.data;
 
         setFlights(results);
-        setSortedFlights(results);
+        // setSortedFlights(results); // This line is removed
       } catch (error) {
         console.error('Error fetching flights:', error.response?.data || error.message);
         setError('Failed to fetch flights. Please try again.');
@@ -327,27 +284,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
     fetchFlights();
   }, [location.search]);
 
-  useEffect(() => {
-    if (!flights.length) return;
-
-    let sorted = [...flights];
-    if (sortType === 'cheapest') {
-      sorted.sort((a, b) => parseFloat(a.price.total) - parseFloat(b.price.total));
-    } else if (sortType === 'fastest') {
-      const parseDuration = (duration) => {
-        const [h = '0H', m = '0M'] = duration.replace('PT', '').split(/[HM]/).filter(Boolean);
-        return parseInt(h) * 60 + parseInt(m || 0);
-      };
-      sorted.sort(
-        (a, b) =>
-          parseDuration(a.itineraries[0].duration) - parseDuration(b.itineraries[0].duration)
-      );
-    }
-    setSortedFlights(sorted);
-  }, [sortType, flights]);
-
   const handleSelect = async (flight, index) => {
-    setProcessingIndex(index);
     setError(null);
     setExpandedIndex(index);
 
@@ -363,12 +300,6 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
       if (!confirmedFlight) {
         throw new Error('No confirmed flight found in the response');
       }
-
-      // Save confirmed flight details (and pricing) to state
-      setConfirmedFlightDetails((prev) => ({
-        ...prev,
-        [index]: confirmedFlight,
-      }));
 
       // Set confirmed pricing data
       if (setConfirmedPricingData) {
@@ -387,8 +318,6 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
     } catch (error) {
       console.error('Error fetching confirmed pricing:', error);
       setError('Failed to confirm flight pricing.');
-    } finally {
-      setProcessingIndex(null);  // Reset processing state
     }
   };
 
@@ -519,11 +448,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
 
                           <Button
                             variant="primary"
-                            onClick={() => {
-                              handleSelect(flight, index);
-                              setSelectedFlight(flight);
-                              handleSelectWithModal(flight, index);
-                            }}
+                            onClick={() => handleSelectWithModal(flight, index)}
                             className="flight-select-btn w-100 w-md-auto mb-3"
                             style={{ 
                               background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
@@ -693,10 +618,6 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                               setExpandedIndex(null);
                             } else {
                               setExpandedIndex(index);
-                              setConfirmedFlightDetails((prev) => ({
-                                ...prev,
-                                [index]: flight,
-                              }));
                             }
                           }}
                           className="text-decoration-none"
@@ -756,11 +677,6 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                   <p className="text-muted">Please wait while we finalize the latest prices.</p>
                 </Modal.Body>
               </Modal>
-              {/* <FlightDetailsModal
-            show={showModal}
-            handleClose={() => setShowModal(false)}
-            flight={selectedFlight}
-          /> */}
             </>
           )}
         </Col>

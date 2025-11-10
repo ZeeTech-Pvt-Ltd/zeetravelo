@@ -12,7 +12,6 @@ import {
   Form,
   Button,
   ListGroup,
-  Spinner,
   Card,
   Alert,
 } from 'react-bootstrap';
@@ -64,7 +63,6 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
   const dropdownRef = useRef(null);
   const [error, setError] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [loading, setLoading] = useState(false);
 
 
   const adjustCount = (setter, newValue) => {
@@ -510,8 +508,8 @@ function AirportSearch({ header = 'Search Flights', setSearchParams }) {
 
               {/* Search Button */}
               <Col xs={12} sm={12} md={2} lg={2} className="search-button-col">
-                <Button variant="primary" onClick={handleSearch} disabled={loading || !from.trim()} className="w-100">
-                  {loading ? <Spinner animation="border" size="sm" /> : 'Search'}
+                <Button variant="primary" onClick={handleSearch} disabled={!from.trim()} className="w-100">
+                  Search
                 </Button>
               </Col>
             </Row>

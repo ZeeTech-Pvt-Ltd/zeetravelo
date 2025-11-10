@@ -13,7 +13,6 @@ import { FaExclamationTriangle } from 'react-icons/fa';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-import OrderDetails from '../Components/OrderDetails'; // adjust path as needed
 import html2pdf from 'html2pdf.js';
 
 const handleDownloadPDF = () => {
@@ -82,17 +81,12 @@ const ConfirmBooking = () => {
       
 
     // Defensive checks
-    //   const booking = orderDetails || {};
     const booking = orderDetails?.data || {};
-
-    const associatedRecord = booking.associatedRecords?.[0] || {};
 
     const renderFlightSummary = () => {
         const flightOffer = orderDetails?.data?.flightOffers?.[0];
         console.log("Confirm Booking", orderDetails, flight, passengers);
         if (!flightOffer) return null;
-
-        const segments = flightOffer.itineraries.flatMap(itinerary => itinerary.segments);
 
         return (
             <div style={{

@@ -42,17 +42,17 @@ const Footer = () => {
         <div className="footer-group app-section">
   <h5>Get the App</h5>
   <div className="app-buttons">
-    <a href="#" target="_blank" rel="noreferrer">
+    <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
         alt="Get it on Google Play"
       />
     </a>
-    <a href="#" target="_blank" rel="noreferrer">
+    <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
       <img
         src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
         alt="Download on the App Store"
-/>
+      />
     </a>
   </div>
 </div>

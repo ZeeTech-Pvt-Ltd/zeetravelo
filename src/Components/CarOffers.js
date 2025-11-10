@@ -131,7 +131,6 @@ const CarOffers = ({
     try {
       const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
       const response = await axios.post(`${API_BASE_URL}/api/transfer-booking`, payload);
-      const bookingData = response.data;
 
       navigate('/car-booking', {
         state: { bookingData: response.data }

@@ -31,7 +31,7 @@ const BookingDetails = ({ confirmedPricingData }) => {
 
   useEffect(() => {
     startPricingTimer(); // triggers redirect after 15 minutes
-  }, []);
+  }, [startPricingTimer]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -128,8 +128,6 @@ const BookingDetails = ({ confirmedPricingData }) => {
     "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
   ];
 
-
-  const segments = flight?.itineraries?.[0]?.segments || [];
 
   // Group traveler types
   const travelerCountMap = flight?.travelerPricings?.reduce((acc, tp) => {
