@@ -7,19 +7,6 @@
   padding: 32px 28px !important;
   width: 100%;
   max-width: 100%;
-  overflow: visible;
-  max-height: calc(100vh - 160px);
-  overflow-y: auto;
-  scrollbar-width: thin;
-}
-
-.filter-card::-webkit-scrollbar {
-  width: 6px;
-}
-
-.filter-card::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.4);
-  border-radius: 999px;
 }
 
 .filter-header {

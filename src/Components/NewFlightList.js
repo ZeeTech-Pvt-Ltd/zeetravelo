@@ -378,7 +378,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                       <Row className="gx-2 py-1 mx-0">
                         <Col xs={12} md={9} className="px-2 px-md-3">
                           {flight.itineraries.map((itinerary, i) => (
-                            <div key={i} className="mb-2">
+                            <div key={i} className="mb-5">
                               <Row className="align-items-center text-center g-2 g-md-3 mx-0">
                                 <Col xs={12} sm={6} md={4} className="mb-2 mb-md-0 px-2">
                                   <div className="d-flex align-items-center justify-content-center mb-1">
@@ -418,7 +418,7 @@ const NewFlightList = ({ searchParams, setConfirmedPricingData }) => {
                                     {itinerary.segments.slice(-1)[0].arrival.iataCode}
                                     <FaPlaneArrival className="ms-1" style={{ color: '#2563eb', fontSize: '0.9rem' }} />
                                   </div>
-                                  <div style={{ fontSize: '0.9rem', color: '#64748b', fontWeight: 700 }}>
+                                  <div style={{ fontSize: '0.9rem', color: '#64748b', fontWeight: 700, marginBottom: '6px' }}>
                                     {new Date(itinerary.segments[0].departure.at).toLocaleTimeString([], {
                                       hour: '2-digit',
                                       minute: '2-digit',

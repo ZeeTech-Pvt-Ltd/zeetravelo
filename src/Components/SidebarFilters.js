@@ -81,22 +81,13 @@ const SidebarFilters = ({
   // Ensure filters.priceRange exists and is correctly accessed
   if (!filters || !filters.priceRange) return null;  // Early exit if priceRange is undefined
 
-  const sidebarStyle = {
-    position: 'sticky',
-    top: '80px',
-    alignSelf: 'flex-start',
-    zIndex: 1000,
-    marginTop: '-63px',
-    
-  };
-
   const totalFlights = Array.isArray(flightData) ? flightData.length : 0;
 
   
 
   return (
     
-    <div style={sidebarStyle} className="mb-3">
+    <div className="mb-3">
       {isMobile && (
         <Button
           onClick={() => setShowMobileFilters(!showMobileFilters)}
