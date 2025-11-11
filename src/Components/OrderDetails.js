@@ -394,7 +394,7 @@ const OrderDetails = ({ flight, passengers }) => {
           marginTop: '30px',
           background: '#f9f9f9',
           padding: '30px',
-          borderRadius: '16px',
+          borderRadius: '10px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
         }}>
           <h2 style={{ marginBottom: '20px', color: '#222' }}>Order Summary</h2>

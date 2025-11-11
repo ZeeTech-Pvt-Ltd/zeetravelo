@@ -27,7 +27,7 @@
   .travel-card {
     position: relative;
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: 10px;
     border: none;
     box-shadow: 0 12px 28px rgba(2,6,23,0.18);
     transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;

@@ -54,7 +54,7 @@
 .segment-card {
   background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%) !important;
   border: 1px solid rgba(77, 157, 224, 0.15) !important;
-  border-radius: 16px !important;
+  border-radius: 10px !important;
   padding: 24px !important;
   margin-bottom: 16px;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08) !important;
@@ -272,4 +272,5 @@
     margin-top: 24px;
   }
 }
+
 

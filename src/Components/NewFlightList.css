@@ -2,8 +2,8 @@
 
 /* Layout Fix for Flight Results Page */
 .flight-results-section {
-  background: #ffffff;
-  padding: 0 0 80px 0;
+  background: transparent;
+  padding: 20px 0 80px 0;
   position: relative;
 }
 
@@ -39,11 +39,11 @@
 
 .flight-results-panel .sort-options-wrapper {
   margin-bottom: 24px !important;
-  justify-content: center;
+  width: 100%;
 }
 
 .flight-results-panel .sort-card {
-  max-width: 220px;
+  max-width: none;
 }
 
 @media (max-width: 992px) {
@@ -114,7 +114,7 @@
 
 .flight-card {
   border: 1px solid rgba(226, 232, 240, 0.9) !important;
-  border-radius: 16px !important;
+  border-radius: 10px !important;
   box-shadow: none !important;
   transition: all 0.3s ease;
   background: #ffffff !important;
@@ -179,7 +179,7 @@
   text-align: center;
   padding: 48px 24px;
   background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
-  border-radius: 16px;
+  border-radius: 10px;
   margin-top: 32px;
   color: var(--ink-900);
   border: 1px solid #eef2f7;

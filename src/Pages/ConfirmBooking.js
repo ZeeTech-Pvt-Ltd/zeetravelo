@@ -341,7 +341,7 @@ const ConfirmBooking = () => {
                                         marginTop: 30,
                                         background: '#f9f9f9',
                                         padding: 30,
-                                        borderRadius: 16,
+                                        borderRadius: 10,
                                         boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
                                     }}
                                 >

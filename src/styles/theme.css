@@ -152,7 +152,7 @@ input.form-control, .MuiInputBase-root {
 .react-datepicker {
   border: none !important;
   box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1) !important;
-  border-radius: 16px !important;
+  border-radius: 10px !important;
   overflow: hidden;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif !important;
   z-index: 99999 !important;
@@ -230,6 +230,7 @@ input.form-control, .MuiInputBase-root {
 .react-datepicker__navigation:hover *::before {
   border-color: #e5ecff !important;
 }
+
 
 
 
